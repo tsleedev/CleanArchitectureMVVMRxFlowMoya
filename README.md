@@ -7,7 +7,7 @@ Clean Architecture + MVVM + RxSwift + RxFlow + Moya로 프로젝트를 구성하
 
 
 ## 전체 Architecture 구성도
-![Alt text](README_FILES/Action_configuration.png?raw=true "Modules Dependencie")
+![Alt text](README_FILES/Architecture.png?raw=true "Modules Dependencie")
 
 
 ## 구현
