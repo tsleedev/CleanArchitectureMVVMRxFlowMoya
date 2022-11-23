@@ -1,0 +1,96 @@
+# By default, SwiftLint uses a set of sensible default rules you can adjust:
+disabled_rules: # rule identifiers turned on by default to exclude from running
+#  - colon
+#  - comma
+#  - control_statement
+#  - comment_spacing
+#  - empty_count
+#  - file_length
+#  - legacy_constructor
+#  - opening_brace
+#  - return_arrow_whitespace
+#  - shorthand_operator
+#  - unused_closure_parameter
+#  - unused_optional_binding
+#  - vertical_whitespace
+
+#  - force_cast
+  - identifier_name
+#  - cyclomatic_complexity
+#  - type_body_length
+  - function_body_length
+#  - function_parameter_count
+  
+  - trailing_whitespace
+#  - line_length
+  - nesting
+#  - type_name
+  - multiple_closures_with_trailing_closure
+opt_in_rules: # some rules are turned off by default, so you need to opt-in
+#  - empty_count # Find all the available rules by running: `swiftlint rules`
+
+# Alternatively, specify all rules explicitly by uncommenting this option:
+# only_rules: # delete `disabled_rules` & `opt_in_rules` if using this
+#   - empty_parameters
+#   - vertical_whitespace
+
+included: # paths to include during linting. `--path` is ignored if present.
+  - CleanArchitectureMVVMRxFlowMoya
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+#  - Source/ExcludedFolder
+#  - Source/ExcludedFile.swift
+#  - Source/*/ExcludedFile.swift # Exclude files with a wildcard
+analyzer_rules: # Rules run by `swiftlint analyze` (experimental)
+  - explicit_self
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+force_cast: warning # implicitly
+force_try:
+  severity: warning # explicitly
+# rules that have both warning and error levels, can set just the warning level
+# implicitly
+line_length: 200
+# they can set both implicitly with an array
+type_body_length:
+  - 300 # warning
+  - 400 # error
+# or they can set both explicitly
+file_length:
+  warning: 500
+  error: 1200
+# naming rules can set warnings/errors for min_length and max_length
+# additionally they can set excluded names
+type_name:
+  min_length: 3 # only warning
+  max_length: # warning and error
+    warning: 40
+    error: 50
+  excluded: iPhone # excluded via string
+  allowed_symbols: ["_"] # these are allowed in type names
+identifier_name:
+  min_length: # only min_length
+    error: 4 # only error
+  excluded: # excluded via string array
+    - id
+    - URL
+    - GlobalAPIKey
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, codeclimate, junit, html, emoji, sonarqube, markdown, github-actions-logging)
+
+#custom_rules:
+#  pirates_beat_ninjas: # rule identifier
+#    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+#    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+#    name: "Pirates Beat Ninjas" # rule name. optional.
+#    regex: "([nN]inja)" # matching pattern
+#    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+#    match_kinds: # SyntaxKinds to match. optional.
+#      - comment
+#      - identifier
+#    message: "Pirates are better than ninjas." # violation message. optional.
+#    severity: error # violation severity. optional.
+#  no_hiding_in_strings:
+#    regex: "([nN]inja)"
+#    match_kinds: string
