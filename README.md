@@ -2,7 +2,7 @@
 
 Clean Architecture + MVVM + RxSwift + RxFlow + Moya로 프로젝트를 구성하였습니다.
 
-이 프로젝트를 참고해서 RxFlow 추가 및 Package 분리를 하였습니다.
+이 프로젝트를 참고해서 RxFlow 추가 및 Package 분리, 테스트 케이스 추가를 하였습니다.
 [iOS-Clean-Architecture-MVVM-RxSwift](https://github.com/kwontaewan/iOS-Clean-Architecture-MVVM-RxSwift)
 
 
@@ -15,6 +15,7 @@ Clean Architecture + MVVM + RxSwift + RxFlow + Moya로 프로젝트를 구성하
 * RxSwiftExt를 이용해서 TableView의 마지막까지 스크롤하게 될 경우 다음 페이지 로드 구현
 * RxMoya를 통해 API Network 구현
 * RxSwift로 테이블 구현
+* SnapKit, Then을 통해 Code-base UI를 구성
 * Kingfisher를 이용해서 이미지 비동기 로드 및 TableViewCell이 재사용되면서 이전 이미지가 로드 될 수 있는 경우에 대해 처리
 * SwiftLint를 이용해서 코드 컨벤션 유지
 
