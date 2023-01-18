@@ -5,8 +5,8 @@
 //  Created by TAE SU LEE on 2022/11/16.
 //
 
+import TSCore
 import UIKit
-import Platform
 import RxFlow
 
 public class SearchFlow: DetectDeinit, Flow {

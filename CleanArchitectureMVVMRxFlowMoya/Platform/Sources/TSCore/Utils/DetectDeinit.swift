@@ -5,8 +5,8 @@
 //  Created by TAE SU LEE on 2022/11/16.
 //
 
+import TSLogger
 import Foundation
-import Logging
 
 open class DetectDeinit: NSObject {
     

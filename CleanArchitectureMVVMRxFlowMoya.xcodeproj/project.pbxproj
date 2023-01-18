@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		7C04A1F02924D8310002F7B3 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C04A1EF2924D8310002F7B3 /* AppDIContainer.swift */; };
-		7C4228E12924D4FE00FB59BB /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 7C4228E02924D4FE00FB59BB /* Logging */; };
+		7C2EB2B729383C4E00DA51D3 /* TSCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2EB2B629383C4E00DA51D3 /* TSCore */; };
+		7C2EB2B929383C4E00DA51D3 /* TSCoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2EB2B829383C4E00DA51D3 /* TSCoreUI */; };
+		7C2EB2BB29383C4E00DA51D3 /* TSLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2EB2BA29383C4E00DA51D3 /* TSLogger */; };
 		7C466F1F2924D3CE0021E8C6 /* AppStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C466F1D2924D1CD0021E8C6 /* AppStep.swift */; };
 		7C466F202924D3CE0021E8C6 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C466F1C2924D1CD0021E8C6 /* AppFlow.swift */; };
 		7C466F212924D3CE0021E8C6 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C466F1E2924D1CD0021E8C6 /* Application.swift */; };
 		7C466F222924D3D20021E8C6 /* SearchSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C466F1A2924D1CD0021E8C6 /* SearchSceneDIContainer.swift */; };
 		7CAA63062925FC5700872B92 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7CAA63052925FC5600872B92 /* .swiftlint.yml */; };
 		7CAB50802924CA5F0050B7FB /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 7CAB507F2924CA5F0050B7FB /* Presentation */; };
-		7CAB50832924CAF80050B7FB /* Platform in Frameworks */ = {isa = PBXBuildFile; productRef = 7CAB50822924CAF80050B7FB /* Platform */; };
 		7CD2375E2924981600F0614C /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 7CD2375D2924981600F0614C /* Data */; };
 		7CD53DF4292286D00018637E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD53DF3292286D00018637E /* AppDelegate.swift */; };
 		7CD53DF6292286D00018637E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD53DF5292286D00018637E /* SceneDelegate.swift */; };
@@ -52,7 +53,6 @@
 		7CF178E029234C52002811A4 /* CleanArchitectureMVVMRxFlowMoyaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanArchitectureMVVMRxFlowMoyaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF178E229234C52002811A4 /* CleanArchitectureMVVMRxFlowMoyaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanArchitectureMVVMRxFlowMoyaTests.swift; sourceTree = "<group>"; };
 		7CFA25A7292DD6C000421E55 /* Platform */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Platform; path = CleanArchitectureMVVMRxFlowMoya/Platform; sourceTree = "<group>"; };
-		7CFA25A8292DD6D700421E55 /* CommonView */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = CommonView; path = CleanArchitectureMVVMRxFlowMoya/CommonView; sourceTree = "<group>"; };
 		7CFA25A9292DD6F000421E55 /* Presentation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Presentation; path = CleanArchitectureMVVMRxFlowMoya/Presentation; sourceTree = "<group>"; };
 		7CFA25AA292DD6FE00421E55 /* Domain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Domain; path = CleanArchitectureMVVMRxFlowMoya/Domain; sourceTree = "<group>"; };
 		7CFA25AB292DD71100421E55 /* Data */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Data; path = CleanArchitectureMVVMRxFlowMoya/Data; sourceTree = "<group>"; };
@@ -63,11 +63,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C4228E12924D4FE00FB59BB /* Logging in Frameworks */,
+				7C2EB2B929383C4E00DA51D3 /* TSCoreUI in Frameworks */,
+				7C2EB2B729383C4E00DA51D3 /* TSCore in Frameworks */,
 				7CAB50802924CA5F0050B7FB /* Presentation in Frameworks */,
 				7CE6CE532924955600936EEE /* Domain in Frameworks */,
 				7CF1790929248965002811A4 /* RxFlow in Frameworks */,
-				7CAB50832924CAF80050B7FB /* Platform in Frameworks */,
+				7C2EB2BB29383C4E00DA51D3 /* TSLogger in Frameworks */,
 				7CD2375E2924981600F0614C /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				7CFA25A7292DD6C000421E55 /* Platform */,
-				7CFA25A8292DD6D700421E55 /* CommonView */,
 				7CFA25A9292DD6F000421E55 /* Presentation */,
 				7CFA25AA292DD6FE00421E55 /* Domain */,
 				7CFA25AB292DD71100421E55 /* Data */,
@@ -201,8 +201,9 @@
 				7CE6CE522924955600936EEE /* Domain */,
 				7CD2375D2924981600F0614C /* Data */,
 				7CAB507F2924CA5F0050B7FB /* Presentation */,
-				7CAB50822924CAF80050B7FB /* Platform */,
-				7C4228E02924D4FE00FB59BB /* Logging */,
+				7C2EB2B629383C4E00DA51D3 /* TSCore */,
+				7C2EB2B829383C4E00DA51D3 /* TSCoreUI */,
+				7C2EB2BA29383C4E00DA51D3 /* TSLogger */,
 			);
 			productName = BirdviewTest_LTS;
 			productReference = 7CD53DF0292286D00018637E /* CleanArchitectureMVVMRxFlowMoya.app */;
@@ -601,9 +602,17 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7C4228E02924D4FE00FB59BB /* Logging */ = {
+		7C2EB2B629383C4E00DA51D3 /* TSCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Logging;
+			productName = TSCore;
+		};
+		7C2EB2B829383C4E00DA51D3 /* TSCoreUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TSCoreUI;
+		};
+		7C2EB2BA29383C4E00DA51D3 /* TSLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TSLogger;
 		};
 		7C4EAF1D292609FF00ACF1A5 /* SwiftLint */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -613,10 +622,6 @@
 		7CAB507F2924CA5F0050B7FB /* Presentation */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Presentation;
-		};
-		7CAB50822924CAF80050B7FB /* Platform */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Platform;
 		};
 		7CD2375D2924981600F0614C /* Data */ = {
 			isa = XCSwiftPackageProductDependency;

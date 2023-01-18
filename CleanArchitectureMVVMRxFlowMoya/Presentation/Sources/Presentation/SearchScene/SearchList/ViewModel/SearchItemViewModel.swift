@@ -5,9 +5,9 @@
 //  Created by TAE SU LEE on 2022/11/15.
 //
 
-import Foundation
-import CommonView
+import TSCoreUI
 import Domain
+import Foundation
 
 public struct SearchItemViewModel: Equatable {
     public let fullName: String?

@@ -26,7 +26,7 @@ let package = Package(
         .target(
             name: "Data",
             dependencies: [
-                .product(name: "Platform", package: "Platform"),
+                .product(name: "TSCore", package: "Platform"),
                 .product(name: "Domain", package: "Domain"),
                 .product(name: "RxSwift", package: "RxSwift"),
                 .product(name: "Moya", package: "Moya"),

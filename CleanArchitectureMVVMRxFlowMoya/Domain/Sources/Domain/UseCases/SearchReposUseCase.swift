@@ -5,7 +5,7 @@
 //  Created by TAE SU LEE on 2022/11/15.
 //
 
-import Platform
+import TSCore
 import RxSwift
 
 public protocol SearchReposUseCaseProtocol {

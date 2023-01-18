@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CommonView"
-               BuildableName = "CommonView"
-               BlueprintName = "CommonView"
+               BlueprintIdentifier = "TSCoreUI"
+               BuildableName = "TSCoreUI"
+               BlueprintName = "TSCoreUI"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CommonViewTests"
-               BuildableName = "CommonViewTests"
-               BlueprintName = "CommonViewTests"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -60,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CommonView"
-            BuildableName = "CommonView"
-            BlueprintName = "CommonView"
+            BlueprintIdentifier = "TSCoreUI"
+            BuildableName = "TSCoreUI"
+            BlueprintName = "TSCoreUI"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>

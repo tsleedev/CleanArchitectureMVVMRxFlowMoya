@@ -5,8 +5,8 @@
 //  Created by TAE SU LEE on 2022/11/16.
 //
 
+import TSCoreUI
 import UIKit
-import Platform
 import WebKit
 import SnapKit
 import Then

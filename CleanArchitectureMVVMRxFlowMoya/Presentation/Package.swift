@@ -16,7 +16,6 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../Platform"),
-        .package(path: "../CommonView"),
         .package(path: "../Domain"),
         .package(url: "https://github.com/ReactiveX/RxSwift", .upToNextMajor(from: "6.0.0")),
         .package(url: "https://github.com/RxSwiftCommunity/RxSwiftExt", .upToNextMajor(from: "6.0.0")),
@@ -31,8 +30,8 @@ let package = Package(
         .target(
             name: "Presentation",
             dependencies: [
-                .product(name: "Platform", package: "Platform"),
-                .product(name: "CommonView", package: "CommonView"),
+                .product(name: "TSCore", package: "Platform"),
+                .product(name: "TSCoreUI", package: "Platform"),
                 .product(name: "Domain", package: "Domain"),
                 .product(name: "RxSwift", package: "RxSwift"),
                 .product(name: "RxCocoa", package: "RxSwift"),

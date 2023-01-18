@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Logging"
-               BuildableName = "Logging"
-               BlueprintName = "Logging"
+               BlueprintIdentifier = "TSLogger"
+               BuildableName = "TSLogger"
+               BlueprintName = "TSLogger"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Logging"
-            BuildableName = "Logging"
-            BlueprintName = "Logging"
+            BlueprintIdentifier = "TSLogger"
+            BuildableName = "TSLogger"
+            BlueprintName = "TSLogger"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>

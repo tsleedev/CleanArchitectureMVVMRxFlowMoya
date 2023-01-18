@@ -5,9 +5,9 @@
 //  Created by TAE SU LEE on 2022/11/16.
 //
 
-import UIKit
 import Domain
 import Data
+import UIKit
 
 final class SearchSceneDIContainer {
     
