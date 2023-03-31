@@ -6,17 +6,26 @@
 //
 
 import TSLogger
+import DILayer
 import UIKit
 import RxFlow
 import RxSwift
 
-final public class Application {
-    
+final class Application {
     static let shared = Application()
+    private let appConfiguration: AppConfiguration
     
     private var coordinator: FlowCoordinator?
     private var disposeBag = DisposeBag()
     private var window: UIWindow?
+    
+    private init() {
+        #if DEBUG
+        appConfiguration = AppConfiguration(mode: .useSampleData, target: .stg)
+        #else
+        appConfiguration = AppConfiguration(mode: .useRealData, target: .prod)
+        #endif
+    }
     
     func start(scene: UIScene) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -28,16 +37,15 @@ final public class Application {
         let coordinator = FlowCoordinator()
         
         coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
-            Log.flow("will navigate to flow=\(String(describing: type(of: flow))) and step=\(step)")
+            TSLogger.flow("will navigate to flow=\(String(describing: type(of: flow))) and step=\(step)")
         }).disposed(by: disposeBag)
         
         coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
-            Log.flow("did navigate to flow=\(String(describing: type(of: flow))) and step=\(step)")
-        }).disposed(by: self.disposeBag)
+            TSLogger.flow("did navigate to flow=\(String(describing: type(of: flow))) and step=\(step)")
+        }).disposed(by: disposeBag)
         
-        let appFlow = AppFlow(window: window)
+        let appFlow = AppFlow(window: window, appDIContainer: AppDIContainer(configuration: appConfiguration))
         coordinator.coordinate(flow: appFlow, with: AppStepper())
-        window.makeKeyAndVisible()
         self.coordinator = coordinator
         self.window = window
     }

@@ -5,6 +5,7 @@
 //  Created by TAE SU LEE on 2022/11/14.
 //
 
+import TSCoreUI
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -14,6 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
+        TSWindowManager.shared.configure(with: scene)
         Application.shared.start(scene: scene)
     }
 

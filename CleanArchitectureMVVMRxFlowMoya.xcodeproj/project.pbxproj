@@ -7,24 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C04A1F02924D8310002F7B3 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C04A1EF2924D8310002F7B3 /* AppDIContainer.swift */; };
-		7C2EB2B729383C4E00DA51D3 /* TSCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2EB2B629383C4E00DA51D3 /* TSCore */; };
-		7C2EB2B929383C4E00DA51D3 /* TSCoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2EB2B829383C4E00DA51D3 /* TSCoreUI */; };
-		7C2EB2BB29383C4E00DA51D3 /* TSLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 7C2EB2BA29383C4E00DA51D3 /* TSLogger */; };
-		7C466F1F2924D3CE0021E8C6 /* AppStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C466F1D2924D1CD0021E8C6 /* AppStep.swift */; };
-		7C466F202924D3CE0021E8C6 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C466F1C2924D1CD0021E8C6 /* AppFlow.swift */; };
-		7C466F212924D3CE0021E8C6 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C466F1E2924D1CD0021E8C6 /* Application.swift */; };
-		7C466F222924D3D20021E8C6 /* SearchSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C466F1A2924D1CD0021E8C6 /* SearchSceneDIContainer.swift */; };
+		7C91CB2D2990E90000899873 /* AppStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91CB2A2990E80900899873 /* AppStep.swift */; };
+		7C91CB2E2990E90000899873 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91CB2B2990E80900899873 /* Application.swift */; };
+		7C91CB2F2990E90000899873 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C91CB292990E80900899873 /* AppFlow.swift */; };
+		7C91CB322990E91700899873 /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = 7C91CB312990E91700899873 /* RxFlow */; };
+		7C91CB352990E94500899873 /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 7C91CB342990E94500899873 /* PresentationLayer */; };
+		7C91CB382990E9AE00899873 /* DILayer in Frameworks */ = {isa = PBXBuildFile; productRef = 7C91CB372990E9AE00899873 /* DILayer */; };
 		7CAA63062925FC5700872B92 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7CAA63052925FC5600872B92 /* .swiftlint.yml */; };
-		7CAB50802924CA5F0050B7FB /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 7CAB507F2924CA5F0050B7FB /* Presentation */; };
-		7CD2375E2924981600F0614C /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 7CD2375D2924981600F0614C /* Data */; };
 		7CD53DF4292286D00018637E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD53DF3292286D00018637E /* AppDelegate.swift */; };
 		7CD53DF6292286D00018637E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD53DF5292286D00018637E /* SceneDelegate.swift */; };
 		7CD53DFD292286D20018637E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD53DFC292286D20018637E /* Assets.xcassets */; };
 		7CD53E00292286D20018637E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CD53DFE292286D20018637E /* LaunchScreen.storyboard */; };
-		7CE6CE532924955600936EEE /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 7CE6CE522924955600936EEE /* Domain */; };
 		7CF178E329234C52002811A4 /* CleanArchitectureMVVMRxFlowMoyaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF178E229234C52002811A4 /* CleanArchitectureMVVMRxFlowMoyaTests.swift */; };
-		7CF1790929248965002811A4 /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = 7CF1790829248965002811A4 /* RxFlow */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,12 +32,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7C04A1EF2924D8310002F7B3 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
-		7C466F1A2924D1CD0021E8C6 /* SearchSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSceneDIContainer.swift; sourceTree = "<group>"; };
-		7C466F1C2924D1CD0021E8C6 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
-		7C466F1D2924D1CD0021E8C6 /* AppStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStep.swift; sourceTree = "<group>"; };
-		7C466F1E2924D1CD0021E8C6 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		7C42DC8E2994E40F00657129 /* ColorSet_Generator.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ColorSet_Generator.sh; sourceTree = "<group>"; };
+		7C91CB292990E80900899873 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
+		7C91CB2A2990E80900899873 /* AppStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStep.swift; sourceTree = "<group>"; };
+		7C91CB2B2990E80900899873 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		7C91CB2C2990E82100899873 /* DILayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DILayer; path = CleanArchitectureMVVMRxFlowMoya/DILayer; sourceTree = "<group>"; };
 		7CAA63052925FC5600872B92 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		7CB121CD2988EC5100FD1620 /* DataLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DataLayer; path = CleanArchitectureMVVMRxFlowMoya/DataLayer; sourceTree = "<group>"; };
+		7CB121CE2988EC5100FD1620 /* PresentationLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PresentationLayer; path = CleanArchitectureMVVMRxFlowMoya/PresentationLayer; sourceTree = "<group>"; };
+		7CB121CF2988EC5100FD1620 /* PlatformLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PlatformLayer; path = CleanArchitectureMVVMRxFlowMoya/PlatformLayer; sourceTree = "<group>"; };
+		7CB121D02988EC5100FD1620 /* DomainLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DomainLayer; path = CleanArchitectureMVVMRxFlowMoya/DomainLayer; sourceTree = "<group>"; };
 		7CD53DF0292286D00018637E /* CleanArchitectureMVVMRxFlowMoya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitectureMVVMRxFlowMoya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD53DF3292286D00018637E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD53DF5292286D00018637E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,10 +50,6 @@
 		7CD53E01292286D20018637E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CF178E029234C52002811A4 /* CleanArchitectureMVVMRxFlowMoyaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanArchitectureMVVMRxFlowMoyaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF178E229234C52002811A4 /* CleanArchitectureMVVMRxFlowMoyaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanArchitectureMVVMRxFlowMoyaTests.swift; sourceTree = "<group>"; };
-		7CFA25A7292DD6C000421E55 /* Platform */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Platform; path = CleanArchitectureMVVMRxFlowMoya/Platform; sourceTree = "<group>"; };
-		7CFA25A9292DD6F000421E55 /* Presentation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Presentation; path = CleanArchitectureMVVMRxFlowMoya/Presentation; sourceTree = "<group>"; };
-		7CFA25AA292DD6FE00421E55 /* Domain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Domain; path = CleanArchitectureMVVMRxFlowMoya/Domain; sourceTree = "<group>"; };
-		7CFA25AB292DD71100421E55 /* Data */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Data; path = CleanArchitectureMVVMRxFlowMoya/Data; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,13 +57,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C2EB2B929383C4E00DA51D3 /* TSCoreUI in Frameworks */,
-				7C2EB2B729383C4E00DA51D3 /* TSCore in Frameworks */,
-				7CAB50802924CA5F0050B7FB /* Presentation in Frameworks */,
-				7CE6CE532924955600936EEE /* Domain in Frameworks */,
-				7CF1790929248965002811A4 /* RxFlow in Frameworks */,
-				7C2EB2BB29383C4E00DA51D3 /* TSLogger in Frameworks */,
-				7CD2375E2924981600F0614C /* Data in Frameworks */,
+				7C91CB382990E9AE00899873 /* DILayer in Frameworks */,
+				7C91CB352990E94500899873 /* PresentationLayer in Frameworks */,
+				7C91CB322990E91700899873 /* RxFlow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,21 +73,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C466F192924D1CD0021E8C6 /* DIContainer */ = {
+		7C42DC8D2994E40F00657129 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				7C04A1EF2924D8310002F7B3 /* AppDIContainer.swift */,
-				7C466F1A2924D1CD0021E8C6 /* SearchSceneDIContainer.swift */,
+				7C42DC8E2994E40F00657129 /* ColorSet_Generator.sh */,
 			);
-			path = DIContainer;
+			path = Scripts;
 			sourceTree = "<group>";
 		};
-		7C466F1B2924D1CD0021E8C6 /* Flows */ = {
+		7C91CB282990E80900899873 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				7C466F1E2924D1CD0021E8C6 /* Application.swift */,
-				7C466F1D2924D1CD0021E8C6 /* AppStep.swift */,
-				7C466F1C2924D1CD0021E8C6 /* AppFlow.swift */,
+				7C91CB2B2990E80900899873 /* Application.swift */,
+				7C91CB292990E80900899873 /* AppFlow.swift */,
+				7C91CB2A2990E80900899873 /* AppStep.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -138,6 +127,7 @@
 				7CD53DFC292286D20018637E /* Assets.xcassets */,
 				7CD53DFE292286D20018637E /* LaunchScreen.storyboard */,
 				7CD53E01292286D20018637E /* Info.plist */,
+				7C42DC8D2994E40F00657129 /* Scripts */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -147,8 +137,7 @@
 			children = (
 				7CD53DF3292286D00018637E /* AppDelegate.swift */,
 				7CD53DF5292286D00018637E /* SceneDelegate.swift */,
-				7C466F1B2924D1CD0021E8C6 /* Flows */,
-				7C466F192924D1CD0021E8C6 /* DIContainer */,
+				7C91CB282990E80900899873 /* Flows */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -171,10 +160,11 @@
 		7CF1791029248FEB002811A4 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				7CFA25A7292DD6C000421E55 /* Platform */,
-				7CFA25A9292DD6F000421E55 /* Presentation */,
-				7CFA25AA292DD6FE00421E55 /* Domain */,
-				7CFA25AB292DD71100421E55 /* Data */,
+				7C91CB2C2990E82100899873 /* DILayer */,
+				7CB121CF2988EC5100FD1620 /* PlatformLayer */,
+				7CB121CE2988EC5100FD1620 /* PresentationLayer */,
+				7CB121D02988EC5100FD1620 /* DomainLayer */,
+				7CB121CD2988EC5100FD1620 /* DataLayer */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -197,13 +187,9 @@
 			);
 			name = CleanArchitectureMVVMRxFlowMoya;
 			packageProductDependencies = (
-				7CF1790829248965002811A4 /* RxFlow */,
-				7CE6CE522924955600936EEE /* Domain */,
-				7CD2375D2924981600F0614C /* Data */,
-				7CAB507F2924CA5F0050B7FB /* Presentation */,
-				7C2EB2B629383C4E00DA51D3 /* TSCore */,
-				7C2EB2B829383C4E00DA51D3 /* TSCoreUI */,
-				7C2EB2BA29383C4E00DA51D3 /* TSLogger */,
+				7C91CB312990E91700899873 /* RxFlow */,
+				7C91CB342990E94500899873 /* PresentationLayer */,
+				7C91CB372990E9AE00899873 /* DILayer */,
 			);
 			productName = BirdviewTest_LTS;
 			productReference = 7CD53DF0292286D00018637E /* CleanArchitectureMVVMRxFlowMoya.app */;
@@ -235,7 +221,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					7CD53DEF292286D00018637E = {
 						CreatedOnToolsVersion = 14.1;
@@ -256,8 +242,8 @@
 			);
 			mainGroup = 7CD53DE7292286D00018637E;
 			packageReferences = (
-				7CF1790729248965002811A4 /* XCRemoteSwiftPackageReference "RxFlow" */,
 				7C4EAF1C292609D400ACF1A5 /* XCRemoteSwiftPackageReference "SwiftLintPlugin" */,
+				7C91CB302990E91700899873 /* XCRemoteSwiftPackageReference "RxFlow" */,
 			);
 			productRefGroup = 7CD53DF1292286D00018637E /* Products */;
 			projectDirPath = "";
@@ -294,12 +280,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C04A1F02924D8310002F7B3 /* AppDIContainer.swift in Sources */,
-				7C466F212924D3CE0021E8C6 /* Application.swift in Sources */,
-				7C466F222924D3D20021E8C6 /* SearchSceneDIContainer.swift in Sources */,
+				7C91CB2E2990E90000899873 /* Application.swift in Sources */,
 				7CD53DF4292286D00018637E /* AppDelegate.swift in Sources */,
-				7C466F202924D3CE0021E8C6 /* AppFlow.swift in Sources */,
-				7C466F1F2924D3CE0021E8C6 /* AppStep.swift in Sources */,
+				7C91CB2D2990E90000899873 /* AppStep.swift in Sources */,
+				7C91CB2F2990E90000899873 /* AppFlow.swift in Sources */,
 				7CD53DF6292286D00018637E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +498,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
@@ -535,6 +520,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
@@ -591,7 +577,7 @@
 				minimumVersion = 0.1.0;
 			};
 		};
-		7CF1790729248965002811A4 /* XCRemoteSwiftPackageReference "RxFlow" */ = {
+		7C91CB302990E91700899873 /* XCRemoteSwiftPackageReference "RxFlow" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow";
 			requirement = {
@@ -602,39 +588,23 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7C2EB2B629383C4E00DA51D3 /* TSCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = TSCore;
-		};
-		7C2EB2B829383C4E00DA51D3 /* TSCoreUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = TSCoreUI;
-		};
-		7C2EB2BA29383C4E00DA51D3 /* TSLogger */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = TSLogger;
-		};
 		7C4EAF1D292609FF00ACF1A5 /* SwiftLint */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7C4EAF1C292609D400ACF1A5 /* XCRemoteSwiftPackageReference "SwiftLintPlugin" */;
 			productName = "plugin:SwiftLint";
 		};
-		7CAB507F2924CA5F0050B7FB /* Presentation */ = {
+		7C91CB312990E91700899873 /* RxFlow */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Presentation;
-		};
-		7CD2375D2924981600F0614C /* Data */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Data;
-		};
-		7CE6CE522924955600936EEE /* Domain */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Domain;
-		};
-		7CF1790829248965002811A4 /* RxFlow */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7CF1790729248965002811A4 /* XCRemoteSwiftPackageReference "RxFlow" */;
+			package = 7C91CB302990E91700899873 /* XCRemoteSwiftPackageReference "RxFlow" */;
 			productName = RxFlow;
+		};
+		7C91CB342990E94500899873 /* PresentationLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PresentationLayer;
+		};
+		7C91CB372990E9AE00899873 /* DILayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DILayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
