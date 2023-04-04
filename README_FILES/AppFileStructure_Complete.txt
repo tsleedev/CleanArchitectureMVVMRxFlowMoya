@@ -1,0 +1,100 @@
+App
+├── Packages
+│   ├── DILayer
+│   │   ├── SceneDIContainers
+│   │   │   ├── HomeSceneDIContainer.swift
+│   │   │   ├── MoreSceneDIContainer.swift
+│   │   │   ├── SearchSceneDIContainer.swift
+│   │   │   └── SettingsSceneDIContainer.swift
+│   │   ├── AppConfiguration.swift
+│   │   └── AppDIContainer.swift
+│   ├── PresentationLayer
+│   │   ├── HomeScene
+│   │   │   ├── Flows
+│   │   │   │   ├── HomeFlow.swift
+│   │   │   │   └── HomeStep.swift
+│   │   │   └── SceneHome
+│   │   │       ├── View
+│   │   │       │   ├── HomeViewController.swift
+│   │   │       │   └── HomeViewController.xib
+│   │   │       └── ViewModel
+│   │   │           └── HomeViewModel.swift
+│   │   └── SearchScene
+│   │       ├── Flows
+│   │       │   ├── SearchFlow.swift
+│   │       │   └── SearchStep.swift
+│   │       └── SceneSearch
+│   │           ├── View
+│   │           │   ├── SearchViewController.swift
+│   │           │   └── SearchViewController.xib
+│   │           └── ViewModel
+│   │               ├── SearchItemViewModel.swift
+│   │               └── SearchViewModel.swift
+│   ├── DomainLayer
+│   │   ├── Entities
+│   │   │   ├── Entities.swift
+│   │   │   ├── Entities+Home.swift
+│   │   │   ├── Entities+Search.swift
+│   │   │   ├── Params.swift
+│   │   │   ├── Params+Home.swift
+│   │   │   └── Params+Search.swift
+│   │   ├── Interfaces
+│   │   │   ├── HomeRepository.swift
+│   │   │   └── SearchRepository.swift
+│   │   └── UseCases
+│   │       ├── HomeUseCase.swift
+│   │       └── SearchUseCase.swift
+│   └── DataLayer
+│       ├── DataSources
+│       │   ├── Firebase
+│       │   │   └── FirebaseService.swift
+│       │   ├── Network
+│       │   │   ├── API
+│       │   │   │   ├── HomeAPI.swift
+│       │   │   │   ├── MoreAPI.swift
+│       │   │   │   ├── SearchAPI.swift
+│       │   │   │   └── SettingsAPI.swift
+│       │   │   ├── Logging
+│       │   │   │   └── NetworkLogPlugin.swift
+│       │   │   ├── JSONLoader.swift
+│       │   │   └── Networking.swift
+│       │   ├── UserDefaults
+│       │   │   └── UserDefaultsService.swift
+│       │   └── Realm
+│       │       └── RealmService.swift
+│       ├── DataMapping
+│       │   ├── RequestModel.swift
+│       │   ├── RequestModel+Home.swift
+│       │   ├── RequestModel+Search.swift
+│       │   ├── ResponseModel.swift
+│       │   ├── ResponseModel+Home.swift
+│       │   └── ResponseModel+Search.swift
+│       ├── Extensions
+│       │   └── StatusCodeSampleDataTargetType.swift
+│       ├── Repositories
+│       │   ├── HomeRepositoryImp.swift
+│       │   ├── MoreRepositoryImp.swift
+│       │   ├── SearchRepositoryImp.swift
+│       │   └── SettingsRepositoryImp.swift
+│       └── Resources
+│           └── SampleData
+│               ├── More
+│               │   ├── MoreSampleDataStatusCode200.json
+│               │   ├── MoreSampleDataStatusCode400.json
+│               │   └── MoreSampleDataStatusCode403.json
+│               ├── Search
+│               │   ├── SearchSampleDataStatusCode200.json
+│               │   ├── SearchSampleDataStatusCode400.json
+│               │   └── SearchSampleDataStatusCode403.json
+│               └── Settings
+│                   ├── SettingsSampleDataStatusCode200.json
+│                   ├── SettingsSampleDataStatusCode400.json
+│                   └── SettingsSampleDataStatusCode403.json
+└── Application
+    ├── AppDelegate.swift
+    ├── SceneDelegate.swift
+    ├── Flows
+    │   ├── Application.swift
+    │   ├── AppFlow.swift
+    │   └── AppStep.swift
+    └── Resources

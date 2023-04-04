@@ -1,0 +1,42 @@
+App
+├── Packages
+│   ├── DILayer
+│   │   ├── SceneDIContainers
+│   │   ├── AppConfiguration.swift
+│   │   └── AppDIContainer.swift
+│   ├── PresentationLayer
+│   │   ├── Scene
+│   │   │   ├── Flows
+│   │   │   │   ├── Flow.swift
+│   │   │   │   └── Step.swift
+│   │   │   └── Scene
+│   │   │       ├── View
+│   │   │       │   ├── ViewController.swift
+│   │   │       │   └── ViewController.xib
+│   │           └── ViewModel
+│   │               ├── ItemViewModel.swift
+│   │               └── ViewModel.swift
+│   ├── DomainLayer
+│   │   ├── Entities
+│   │   ├── Interfaces
+│   │   └── UseCases
+│   └── DataLayer
+│       ├── DataSources
+│       │   ├── Firebase
+│       │   ├── Network
+│       │   ├── UserDefaults
+│       │   └── Realm
+│       ├── DataMapping
+│       │   ├── RequestModel.swift
+│       │   └── ResponseModel.swift
+│       ├── Repositories
+│       └── Resources
+│           └── SampleData
+└── Application
+    ├── AppDelegate.swift
+    ├── SceneDelegate.swift
+    ├── Flows
+    │   ├── Application.swift
+    │   ├── AppFlow.swift
+    │   └── AppStep.swift
+    └── Resources
