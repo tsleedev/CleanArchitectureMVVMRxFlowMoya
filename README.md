@@ -10,7 +10,7 @@ Clean Architecture + MVVM + RxSwift + RxFlow + Moya로 프로젝트를 구성하
 ![Alt text](README_FILES/Architecture.png?raw=true "Modules Dependencie")
 
 ## 간략 File 구성도
-![Alt text](README_FILES/AppFileStructure_Simplified.txt?raw=true "File Structure")
+![Alt text](README_FILES/AppFileStructure_Simplified.png?raw=true "File Structure")
 
 ## 구현
 * xib에서 swiftui로 넘어가는 과정에서 사용하기 적합하게 구현
