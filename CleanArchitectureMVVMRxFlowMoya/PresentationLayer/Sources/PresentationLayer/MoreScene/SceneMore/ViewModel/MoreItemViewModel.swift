@@ -1,6 +1,6 @@
 //  
 //  MoreItemViewModel.swift
-//  CleanArchitectureMVVMRxFlowMoya
+//  
 //
 //  Created by TAE SU LEE on 2023/03/17.
 //
