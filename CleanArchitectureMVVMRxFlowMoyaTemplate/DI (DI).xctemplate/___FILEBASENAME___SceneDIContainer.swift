@@ -5,7 +5,6 @@ import DataLayer
 import UIKit
 
 public final class ___VARIABLE_productName:identifier___SceneDIContainer {
-    
     struct Dependencies {
         let service: ___VARIABLE_productName:identifier___APIService
     }
