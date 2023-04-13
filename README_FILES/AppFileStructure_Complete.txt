@@ -45,23 +45,6 @@ App
 │   │       ├── HomeUseCase.swift
 │   │       └── SearchUseCase.swift
 │   └── DataLayer
-│       ├── DataSources
-│       │   ├── Firebase
-│       │   │   └── FirebaseService.swift
-│       │   ├── Network
-│       │   │   ├── API
-│       │   │   │   ├── HomeAPI.swift
-│       │   │   │   ├── MoreAPI.swift
-│       │   │   │   ├── SearchAPI.swift
-│       │   │   │   └── SettingsAPI.swift
-│       │   │   ├── Logging
-│       │   │   │   └── NetworkLogPlugin.swift
-│       │   │   ├── JSONLoader.swift
-│       │   │   └── Networking.swift
-│       │   ├── UserDefaults
-│       │   │   └── UserDefaultsService.swift
-│       │   └── Realm
-│       │       └── RealmService.swift
 │       ├── DataMapping
 │       │   ├── RequestModel.swift
 │       │   ├── RequestModel+Home.swift
@@ -69,6 +52,23 @@ App
 │       │   ├── ResponseModel.swift
 │       │   ├── ResponseModel+Home.swift
 │       │   └── ResponseModel+Search.swift
+│       ├── DataSources
+│       │   ├── API
+│       │   │   ├── APIEndpoints
+│       │   │   │   ├── HomeAPI.swift
+│       │   │   │   ├── MoreAPI.swift
+│       │   │   │   ├── SearchAPI.swift
+│       │   │   │   └── SettingsAPI.swift
+│       │   │   ├── Log
+│       │   │   │   └── APILogPlugin.swift
+│       │   │   ├── APIService.swift
+│       │   │   └── JSONLoader.swift
+│       │   ├── Firebase
+│       │   │   └── FirebaseService.swift
+│       │   ├── UserDefaults
+│       │   │   └── UserDefaultsService.swift
+│       │   └── Realm
+│       │       └── RealmService.swift
 │       ├── Extensions
 │       │   └── StatusCodeSampleDataTargetType.swift
 │       ├── Repositories

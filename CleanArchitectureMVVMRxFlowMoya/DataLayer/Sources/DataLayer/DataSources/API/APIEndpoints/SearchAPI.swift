@@ -1,49 +1,50 @@
 //
-//  MoreAPI.swift
-//  
+//  SearchAPI.swift
+//  CleanArchitectureMVVMRxFlowMoya
 //
-//  Created by TAE SU LEE on 2023/02/06.
+//  Created by TAE SU LEE on 2022/11/15.
 //
 
+import TSCore
 import Foundation
 import Moya
 
-public typealias MoreNetworking = Networking<MoreAPI>
+public typealias SearchAPIService = APIService<SearchAPI>
 
-public enum MoreAPI {
-    case readItems
+public enum SearchAPI {
+    case readItems(RequestModel.Search)
 }
 
-extension MoreAPI: StatusCodeSampleDataTargetType {
+extension SearchAPI: StatusCodeSampleDataTargetType {
     public var baseURL: URL {
-        return URL(string: "about:blank")! // Not used: baseURL is set directly in Networking's initializer
+        return URL(string: "about:blank")! // Not used: baseURL is set directly in APIService's initializer
     }
-
+    
     public var path: String {
         switch self {
         case .readItems:
-            return "/more/list"
+            return "/search/repositories"
         }
     }
-
+    
     public var method: Moya.Method {
         switch self {
         case .readItems:
             return .get
         }
     }
-
+    
     public var sampleData: Data {
         return Data() // Replaced: Use sampleData(statusCode:) instead
     }
-
+    
     public var task: Moya.Task {
         switch self {
-        case .readItems:
-            return .requestPlain
+        case .readItems(let param):
+            return .requestParameters(parameters: param.toDictionary(), encoding: URLEncoding.default)
         }
     }
-
+    
     public var headers: [String: String]? {
         switch self {
         case .readItems:
@@ -58,7 +59,7 @@ extension MoreAPI: StatusCodeSampleDataTargetType {
         
         switch self {
         case .readItems:
-            return JSONLoader.loadJSONFile(JSONFile.more(statusCode)) ?? Data()
+            return JSONLoader.loadJSONFile(JSONFile.search(statusCode)) ?? Data()
         }
     }
 }

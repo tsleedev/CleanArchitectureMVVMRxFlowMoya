@@ -23,8 +23,8 @@ final class SearchRepositoryImpTests: XCTestCase {
     
     func testSearchShouldReturnSuccess() {
         let expectation = XCTestExpectation(description: "Search API Success Test")
-        let network = SearchNetworking(apiBaseURL: URL(string: "about:blank")!, networkType: .mock(statusCode: 200, mockFile: nil, delay: 1))
-        let searchDAO = SearchRepositoryImp(network: network)
+        let service = SearchAPIService(apiBaseURL: URL(string: "about:blank")!, apiType: .mock(statusCode: 200, mockFile: nil, delay: 1))
+        let searchDAO = SearchRepositoryImp(service: service)
         
         let param = Params.Search(query: "rxswift", page: 1, perPage: 20)
         searchDAO.readItems(param)
@@ -40,8 +40,8 @@ final class SearchRepositoryImpTests: XCTestCase {
     
     func testSearchShouldReturnNoItems() {
         let expectation = XCTestExpectation(description: "Search API No Items Test")
-        let network = SearchNetworking(apiBaseURL: URL(string: "about:blank")!, networkType: .mock(statusCode: 200, mockFile: .searchNoItems, delay: 1))
-        let searchDAO = SearchRepositoryImp(network: network)
+        let service = SearchAPIService(apiBaseURL: URL(string: "about:blank")!, apiType: .mock(statusCode: 200, mockFile: .searchNoItems, delay: 1))
+        let searchDAO = SearchRepositoryImp(service: service)
 
         let param = Params.Search(query: "noresults", page: 1, perPage: 20)
         searchDAO.readItems(param)
@@ -57,8 +57,8 @@ final class SearchRepositoryImpTests: XCTestCase {
     
     func testSearchShouldReturnFailure() {
         let expectation = XCTestExpectation(description: "Search API Failure Test")
-        let network = SearchNetworking(apiBaseURL: URL(string: "about:blank")!, networkType: .mock(statusCode: 403, mockFile: nil, delay: 1))
-        let searchDAO = SearchRepositoryImp(network: network)
+        let service = SearchAPIService(apiBaseURL: URL(string: "about:blank")!, apiType: .mock(statusCode: 403, mockFile: nil, delay: 1))
+        let searchDAO = SearchRepositoryImp(service: service)
         
         let param = Params.Search(query: "rxswift", page: 1, perPage: 20)
         searchDAO.readItems(param)

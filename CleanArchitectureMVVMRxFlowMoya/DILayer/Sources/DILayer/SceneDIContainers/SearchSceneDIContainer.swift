@@ -10,9 +10,8 @@ import DataLayer
 import UIKit
 
 public final class SearchSceneDIContainer {
-    
     struct Dependencies {
-        let networking: SearchNetworking
+        let service: SearchAPIService
     }
     
     private let dependencies: Dependencies
@@ -28,6 +27,6 @@ public final class SearchSceneDIContainer {
     
     // MARK: - Repositories
     private func makeRepository() -> SearchRepository {
-        return SearchRepositoryImp(network: dependencies.networking)
+        return SearchRepositoryImp(service: dependencies.service)
     }
 }

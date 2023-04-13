@@ -11,14 +11,14 @@ import RxSwift
 
 public class MoreRepositoryImp: DetectDeinit, MoreRepository {
     
-    private let network: MoreNetworking
+    private let service: MoreAPIService
     
-    public init(network: MoreNetworking) {
-        self.network = network
+    public init(service: MoreAPIService) {
+        self.service = service
     }
     
     public func readItems() -> Single<[Entities.More]> {
-        return network
+        return service
             .request(.readItems)
             .map(ResponseModel.MoreItems.self)
             .map { $0.items.map { $0.toDomain() } }

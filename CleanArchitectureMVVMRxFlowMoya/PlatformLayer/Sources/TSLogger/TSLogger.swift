@@ -12,7 +12,7 @@ private enum LogFilter: String {
     case debug = "💚 DEBUG"
     case error = "❤️ ERROR"
     case flow = "💙 FLOW"
-    case network = "💜 NETWORK"
+    case api = "💜 API"
     case warning = "🧡 WARNING"
 }
 
@@ -44,13 +44,13 @@ public struct TSLogger {
         log(filter: .flow, items: items, separator: separator, terminator: terminator, file, function, line)
     }
     
-    public static func network(_ items: Any...,
-                               separator: String = " ",
-                               terminator: String = "\n",
-                               _ file: String = #fileID,
-                               _ function: String = #function,
-                               _ line: UInt = #line) {
-        log(filter: .network, items: items, separator: separator, terminator: terminator, file, function, line)
+    public static func api(_ items: Any...,
+                           separator: String = " ",
+                           terminator: String = "\n",
+                           _ file: String = #fileID,
+                           _ function: String = #function,
+                           _ line: UInt = #line) {
+        log(filter: .api, items: items, separator: separator, terminator: terminator, file, function, line)
     }
     
     public static func warning(_ items: Any...,

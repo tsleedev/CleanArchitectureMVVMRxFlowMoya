@@ -1,29 +1,29 @@
-//
-//  SearchAPI.swift
+//  
+//  SettingsAPI.swift
 //  CleanArchitectureMVVMRxFlowMoya
 //
-//  Created by TAE SU LEE on 2022/11/15.
+//  Created by TAE SU LEE on 2023/03/20.
 //
 
 import TSCore
 import Foundation
 import Moya
 
-public typealias SearchNetworking = Networking<SearchAPI>
+public typealias SettingsAPIService = APIService<SettingsAPI>
 
-public enum SearchAPI {
-    case readItems(RequestModel.Search)
+public enum SettingsAPI {
+    case readItems
 }
 
-extension SearchAPI: StatusCodeSampleDataTargetType {
+extension SettingsAPI: StatusCodeSampleDataTargetType {
     public var baseURL: URL {
-        return URL(string: "about:blank")! // Not used: baseURL is set directly in Networking's initializer
+        return URL(string: "about:blank")! // Not used: baseURL is set directly in APIService's initializer
     }
     
     public var path: String {
         switch self {
         case .readItems:
-            return "/search/repositories"
+            return "/items"
         }
     }
     
@@ -40,8 +40,8 @@ extension SearchAPI: StatusCodeSampleDataTargetType {
     
     public var task: Moya.Task {
         switch self {
-        case .readItems(let param):
-            return .requestParameters(parameters: param.toDictionary(), encoding: URLEncoding.default)
+        case .readItems:
+            return .requestPlain
         }
     }
     
@@ -59,7 +59,7 @@ extension SearchAPI: StatusCodeSampleDataTargetType {
         
         switch self {
         case .readItems:
-            return JSONLoader.loadJSONFile(JSONFile.search(statusCode)) ?? Data()
+            return JSONLoader.loadJSONFile(JSONFile.settings(statusCode)) ?? Data()
         }
     }
 }

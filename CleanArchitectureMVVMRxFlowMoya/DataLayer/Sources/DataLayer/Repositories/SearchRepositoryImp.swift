@@ -11,17 +11,17 @@ import RxSwift
 
 public class SearchRepositoryImp: DetectDeinit, SearchRepository {
     
-    private let network: SearchNetworking
+    private let service: SearchAPIService
     
-    public init(network: SearchNetworking) {
-        self.network = network
+    public init(service: SearchAPIService) {
+        self.service = service
     }
     
     public func readItems(_ param: Params.Search) -> Single<Entities.SearchItems> {
         let requestDTO = RequestModel.Search(query: param.query,
                                            page: param.page,
                                            perPage: param.perPage)
-        return network
+        return service
             .request(.readItems(requestDTO))
             .map(ResponseModel.SearchItems.self)
             .map { $0.toDomain() }

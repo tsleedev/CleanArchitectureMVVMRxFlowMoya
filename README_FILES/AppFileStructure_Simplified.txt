@@ -22,14 +22,14 @@ App
 │   │   ├── Interfaces
 │   │   └── UseCases
 │   └── DataLayer
-│       ├── DataSources
-│       │   ├── Firebase
-│       │   ├── Network
-│       │   ├── UserDefaults
-│       │   └── Realm
 │       ├── DataMapping
 │       │   ├── RequestModel.swift
 │       │   └── ResponseModel.swift
+│       ├── DataSources
+│       │   ├── API
+│       │   ├── Firebase
+│       │   ├── UserDefaults
+│       │   └── Realm
 │       ├── Repositories
 │       └── Resources
 │           └── SampleData

@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-public typealias HomeNetworking = Networking<HomeAPI>
+public typealias HomeAPIService = APIService<HomeAPI>
 
 public enum HomeAPI {
 //    case readItems
@@ -17,7 +17,7 @@ public enum HomeAPI {
 
 extension HomeAPI: StatusCodeSampleDataTargetType {
     public var baseURL: URL {
-        return URL(string: "about:blank")! // Not used: baseURL is set directly in Networking's initializer
+        return URL(string: "about:blank")! // Not used: baseURL is set directly in APIService's initializer
     }
     
     public var path: String {

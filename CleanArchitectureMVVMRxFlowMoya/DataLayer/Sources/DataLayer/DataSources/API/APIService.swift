@@ -1,5 +1,5 @@
 //
-//  Networking.swift
+//  APIService.swift
 //  CleanArchitectureMVVMRxFlowMoya
 //
 //  Created by TAE SU LEE on 2022/11/15.
@@ -11,20 +11,20 @@ import Moya
 import RxMoya
 import RxSwift
 
-public enum NetworkType {
+public enum APIType {
     case real
     case mock(statusCode: Int = 200, mockFile: JSONFile?, delay: TimeInterval = 0)
 }
 
-public final class Networking<Target: StatusCodeSampleDataTargetType> {
+public final class APIService<Target: StatusCodeSampleDataTargetType> {
     private let provider: MoyaProvider<Target>
     
-    public init(apiBaseURL: URL, networkType: NetworkType = .real) {
-        let plugin = NetworkLogPlugin()
+    public init(apiBaseURL: URL, apiType: APIType = .real) {
+        let plugin = APILogPlugin()
         let endpointClosure = { (target: Target) -> Endpoint in
             let url = apiBaseURL.appendingPathComponent(target.path).absoluteString
             let sampleResponseClosure: EndpointSampleResponse
-            switch networkType {
+            switch apiType {
             case .real:
                 sampleResponseClosure = .networkResponse(200, target.sampleData)
             case .mock(let statusCode, let mockFile,  _):
@@ -37,7 +37,7 @@ public final class Networking<Target: StatusCodeSampleDataTargetType> {
                             httpHeaderFields: target.headers)
         }
         
-        switch networkType {
+        switch apiType {
         case .real:
             provider = MoyaProvider<Target>(endpointClosure: endpointClosure,
                                             plugins: [plugin])

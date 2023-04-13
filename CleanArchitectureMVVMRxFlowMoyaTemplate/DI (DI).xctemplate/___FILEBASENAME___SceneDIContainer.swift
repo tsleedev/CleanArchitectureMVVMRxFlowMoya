@@ -7,7 +7,7 @@ import UIKit
 public final class ___VARIABLE_productName:identifier___SceneDIContainer {
     
     struct Dependencies {
-        let networking: ___VARIABLE_productName:identifier___Networking
+        let service: ___VARIABLE_productName:identifier___APIService
     }
     
     private let dependencies: Dependencies
@@ -23,6 +23,6 @@ public final class ___VARIABLE_productName:identifier___SceneDIContainer {
     
     // MARK: - Repositories
     private func makeRepository() -> ___VARIABLE_productName:identifier___Repository {
-        return ___VARIABLE_productName:identifier___RepositoryImp(network: dependencies.networking)
+        return ___VARIABLE_productName:identifier___RepositoryImp(service: dependencies.service)
     }
 }

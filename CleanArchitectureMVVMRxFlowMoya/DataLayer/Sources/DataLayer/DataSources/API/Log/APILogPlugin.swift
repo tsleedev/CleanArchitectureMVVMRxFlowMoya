@@ -1,5 +1,5 @@
 //
-//  NetworkLogPlugin.swift
+//  APILogPlugin.swift
 //  CleanArchitectureMVVMRxFlowMoya
 //
 //  Created by TAE SU LEE on 2022/11/15.
@@ -8,7 +8,7 @@
 import TSLogger
 import Moya
 
-struct NetworkLogPlugin: PluginType {
+struct APILogPlugin: PluginType {
     func willSend(_ request: RequestType, target: TargetType) {
         guard let httpRequest = request.request else {
             print("--> invalid request")
@@ -30,7 +30,7 @@ struct NetworkLogPlugin: PluginType {
         }
         
         log.append("--> END \(method)")
-        TSLogger.network(log)
+        TSLogger.api(log)
     }
     
     /// API Response
@@ -60,7 +60,7 @@ struct NetworkLogPlugin: PluginType {
         }
         
         log.append("<-- END HTTP (\(response.data.count)-byte body)")
-        TSLogger.network(log)
+        TSLogger.api(log)
     }
     
     func onFail(_ error: MoyaError, target: TargetType) {
@@ -72,6 +72,6 @@ struct NetworkLogPlugin: PluginType {
         var log = "<-- \(error.errorCode) \(target)\n"
         log.append("\(error.failureReason ?? error.errorDescription ?? "unknown error")\n")
         log.append("<-- END HTTP")
-        TSLogger.network(log)
+        TSLogger.api(log)
     }
 }

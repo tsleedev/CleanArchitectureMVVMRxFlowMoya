@@ -4,7 +4,7 @@ import TSCore
 import Foundation
 import Moya
 
-public typealias ___VARIABLE_productName:identifier___Networking = Networking<___VARIABLE_productName:identifier___API>
+public typealias ___VARIABLE_productName:identifier___APIService = APIService<___VARIABLE_productName:identifier___API>
 
 public enum ___VARIABLE_productName:identifier___API {
 //    case readItems
@@ -13,7 +13,7 @@ public enum ___VARIABLE_productName:identifier___API {
 
 extension ___VARIABLE_productName:identifier___API: StatusCodeSampleDataTargetType {
     public var baseURL: URL {
-        return URL(string: "about:blank")! // Not used: baseURL is set directly in Networking's initializer
+        return URL(string: "about:blank")! // Not used: baseURL is set directly in APIService's initializer
     }
     
     public var path: String {

@@ -1,50 +1,49 @@
-//  
-//  SettingsAPI.swift
-//  CleanArchitectureMVVMRxFlowMoya
 //
-//  Created by TAE SU LEE on 2023/03/20.
+//  MoreAPI.swift
+//  
+//
+//  Created by TAE SU LEE on 2023/02/06.
 //
 
-import TSCore
 import Foundation
 import Moya
 
-public typealias SettingsNetworking = Networking<SettingsAPI>
+public typealias MoreAPIService = APIService<MoreAPI>
 
-public enum SettingsAPI {
+public enum MoreAPI {
     case readItems
 }
 
-extension SettingsAPI: StatusCodeSampleDataTargetType {
+extension MoreAPI: StatusCodeSampleDataTargetType {
     public var baseURL: URL {
-        return URL(string: "about:blank")! // Not used: baseURL is set directly in Networking's initializer
+        return URL(string: "about:blank")! // Not used: baseURL is set directly in APIService's initializer
     }
-    
+
     public var path: String {
         switch self {
         case .readItems:
-            return "/items"
+            return "/more/list"
         }
     }
-    
+
     public var method: Moya.Method {
         switch self {
         case .readItems:
             return .get
         }
     }
-    
+
     public var sampleData: Data {
         return Data() // Replaced: Use sampleData(statusCode:) instead
     }
-    
+
     public var task: Moya.Task {
         switch self {
         case .readItems:
             return .requestPlain
         }
     }
-    
+
     public var headers: [String: String]? {
         switch self {
         case .readItems:
@@ -59,7 +58,7 @@ extension SettingsAPI: StatusCodeSampleDataTargetType {
         
         switch self {
         case .readItems:
-            return JSONLoader.loadJSONFile(JSONFile.settings(statusCode)) ?? Data()
+            return JSONLoader.loadJSONFile(JSONFile.more(statusCode)) ?? Data()
         }
     }
 }

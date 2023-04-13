@@ -16,44 +16,44 @@ public final class AppDIContainer {
     }
     
     public func makeHomeSceneDIContainer() -> HomeSceneDIContainer {
-        let networking = HomeNetworking(apiBaseURL: configuration.apiBaseURL,
-                                        networkType: makeNetworkType(statusCode: 200, delay: 1))
-        let dependencies = HomeSceneDIContainer.Dependencies(networking: networking)
+        let service = HomeAPIService(apiBaseURL: configuration.apiBaseURL,
+                                     apiType: makeAPIType(statusCode: 200, delay: 1))
+        let dependencies = HomeSceneDIContainer.Dependencies(service: service)
         return HomeSceneDIContainer(dependencies: dependencies)
     }
     
     public func makeSearchSceneDIContainer() -> SearchSceneDIContainer {
-        let networking = SearchNetworking(apiBaseURL: configuration.apiBaseURL,
-                                          networkType: makeNetworkType(statusCode: 200, delay: 1))
-        let dependencies = SearchSceneDIContainer.Dependencies(networking: networking)
+        let service = SearchAPIService(apiBaseURL: configuration.apiBaseURL,
+                                       apiType: makeAPIType(statusCode: 200, delay: 1))
+        let dependencies = SearchSceneDIContainer.Dependencies(service: service)
         return SearchSceneDIContainer(dependencies: dependencies)
     }
     
     public func makeMoreSceneDIContainer() -> MoreSceneDIContainer {
-        let networking = MoreNetworking(apiBaseURL: configuration.apiBaseURL,
-                                        networkType: makeNetworkType(statusCode: 200, delay: 1))
-        let dependencies = MoreSceneDIContainer.Dependencies(networking: networking)
+        let service = MoreAPIService(apiBaseURL: configuration.apiBaseURL,
+                                     apiType: makeAPIType(statusCode: 200, delay: 1))
+        let dependencies = MoreSceneDIContainer.Dependencies(service: service)
         return MoreSceneDIContainer(dependencies: dependencies)
     }
     
     public func makeSettingsSceneDIContainer() -> SettingsSceneDIContainer {
-        let networking = SettingsNetworking(apiBaseURL: configuration.apiBaseURL,
-                                            networkType: makeNetworkType(statusCode: 200, delay: 1))
-        let dependencies = SettingsSceneDIContainer.Dependencies(networking: networking)
+        let service = SettingsAPIService(apiBaseURL: configuration.apiBaseURL,
+                                         apiType: makeAPIType(statusCode: 200, delay: 1))
+        let dependencies = SettingsSceneDIContainer.Dependencies(service: service)
         return SettingsSceneDIContainer(dependencies: dependencies)
     }
 }
 
 // MARK: - Helper
 private extension AppDIContainer {
-    func makeNetworkType(statusCode: Int, delay: TimeInterval) -> NetworkType {
-        let networkType: NetworkType
+    func makeAPIType(statusCode: Int, delay: TimeInterval) -> APIType {
+        let apiType: APIType
         switch self.configuration.mode {
         case .useSampleData:
-            networkType = .mock(statusCode: statusCode, mockFile: nil, delay: 1)
+            apiType = .mock(statusCode: statusCode, mockFile: nil, delay: 1)
         case .useRealData:
-            networkType = .real
+            apiType = .real
         }
-        return networkType
+        return apiType
     }
 }

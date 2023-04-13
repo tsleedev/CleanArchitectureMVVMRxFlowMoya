@@ -11,15 +11,15 @@ import RxSwift
 
 public class HomeRepositoryImp: DetectDeinit, HomeRepository {
     
-    private let network: HomeNetworking
+    private let service: HomeAPIService
     
-    public init(network: HomeNetworking) {
-        self.network = network
+    public init(service: HomeAPIService) {
+        self.service = service
     }
     
 //    public func readItems(_ params: Params.Home) -> Single<[Entities.Home]> {
 //        let requestDTO = RequestModel.Home()
-//        return network
+//        return service
 //            .request(.readItems(requestDTO))
 //            .map(ResponseModel.HomeItems.self)
 //            .map { $0.items.map { $0.toDomain() } }
@@ -27,7 +27,7 @@ public class HomeRepositoryImp: DetectDeinit, HomeRepository {
 //
 //    public func readItem(_ params: Params.Home) -> Single<Entities.Home> {
 //        let requestDTO = RequestDTO.Home()
-//        return network
+//        return service
 //            .request(.readItem(requestDTO))
 //            .map(ResponseDTO.HomeItem.self)
 //            .map { $0.toDomain() }

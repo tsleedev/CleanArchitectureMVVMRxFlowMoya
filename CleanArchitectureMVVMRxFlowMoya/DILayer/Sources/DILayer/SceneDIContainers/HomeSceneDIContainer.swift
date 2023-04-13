@@ -10,9 +10,8 @@ import DataLayer
 import UIKit
 
 public final class HomeSceneDIContainer {
-    
     struct Dependencies {
-        let networking: HomeNetworking
+        let service: HomeAPIService
     }
     
     private let dependencies: Dependencies
@@ -28,6 +27,6 @@ public final class HomeSceneDIContainer {
     
     // MARK: - Repositories
     private func makeRepository() -> HomeRepository {
-        return HomeRepositoryImp(network: dependencies.networking)
+        return HomeRepositoryImp(service: dependencies.service)
     }
 }
