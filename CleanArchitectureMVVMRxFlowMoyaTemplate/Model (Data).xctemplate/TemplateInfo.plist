@@ -27,9 +27,9 @@
 			<key>Required</key>
 			<string>true</string>
 			<key>Name</key>
-			<string>DTO Name:</string>
+			<string>Model Name:</string>
 			<key>Description</key>
-			<string>The name of the DTO to create</string>
+			<string>The name of the Model to create</string>
 			<key>Type</key>
 			<string>text</string>
 			<key>NotPersisted</key>

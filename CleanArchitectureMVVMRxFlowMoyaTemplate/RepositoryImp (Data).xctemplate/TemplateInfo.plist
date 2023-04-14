@@ -27,9 +27,9 @@
 			<key>Required</key>
 			<string>true</string>
 			<key>Name</key>
-			<string>DAO Name:</string>
+			<string>RepositoryImp Name:</string>
 			<key>Description</key>
-			<string>The name of the DAO to create</string>
+			<string>The name of the RepositoryImp to create</string>
 			<key>Type</key>
 			<string>text</string>
 			<key>NotPersisted</key>
