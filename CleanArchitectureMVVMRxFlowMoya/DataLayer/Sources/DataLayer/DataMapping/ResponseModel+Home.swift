@@ -9,15 +9,15 @@ import DomainLayer
 import RxSwift
 
 extension ResponseModel {
-    struct HomeItems {
+    struct HomeItems: Decodable {
         let items: [Home]
     }
     
-    struct HomeItem {
-        let item: [Home]
+    struct HomeItem: Decodable {
+        let item: Home
     }
     
-    struct Home {
+    struct Home: Decodable {
         public let title: String
 
         public init(title: String) {

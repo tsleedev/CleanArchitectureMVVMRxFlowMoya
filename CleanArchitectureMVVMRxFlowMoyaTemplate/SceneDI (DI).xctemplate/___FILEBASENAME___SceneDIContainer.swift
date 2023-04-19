@@ -14,14 +14,18 @@ public final class ___VARIABLE_productName:identifier___SceneDIContainer {
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }
-    
-    // MARK: - UseCases
-    public func makeUseCase() -> ___VARIABLE_productName:identifier___UseCaseProtocol {
+}
+
+// MARK: - UseCases
+public extension ___VARIABLE_productName:identifier___SceneDIContainer {
+    func makeUseCase() -> ___VARIABLE_productName:identifier___UseCaseProtocol {
         return ___VARIABLE_productName:identifier___UseCase(repository: makeRepository())
     }
-    
-    // MARK: - Repositories
-    private func makeRepository() -> ___VARIABLE_productName:identifier___Repository {
+}
+
+// MARK: - Repositories
+private extension ___VARIABLE_productName:identifier___SceneDIContainer {
+    func makeRepository() -> ___VARIABLE_productName:identifier___Repository {
         return ___VARIABLE_productName:identifier___RepositoryImp(service: dependencies.service)
     }
 }

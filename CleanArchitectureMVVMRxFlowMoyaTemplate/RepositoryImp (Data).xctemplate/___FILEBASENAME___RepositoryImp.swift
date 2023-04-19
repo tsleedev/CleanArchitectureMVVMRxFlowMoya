@@ -14,7 +14,7 @@ public class ___VARIABLE_productName:identifier___RepositoryImp: DetectDeinit, _
 //    public func readItems(_ param: Params.___VARIABLE_productName___) -> Single<[Entities.___VARIABLE_productName___]> {
 //        let requestModel = RequestModel.___VARIABLE_productName___()
 //        return service
-//            .request(.readItems(requestDTO))
+//            .request(.readItems(requestModel))
 //            .map(ResponseModel.___VARIABLE_productName___Items.self)
 //            .map { $0.items.map { $0.toDomain() } }
 //    }
@@ -24,6 +24,6 @@ public class ___VARIABLE_productName:identifier___RepositoryImp: DetectDeinit, _
 //        return service
 //            .request(.readItem(requestModel))
 //            .map(ResponseModel.___VARIABLE_productName___Item.self)
-//            .map { $0.toDomain() }
+//            .map { $0.item.toDomain() }
 //    }
 }

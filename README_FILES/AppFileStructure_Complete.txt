@@ -11,8 +11,13 @@ App
 │   │   │   ├── MoreSceneDIContainer.swift
 │   │   │   ├── SearchSceneDIContainer.swift
 │   │   │   └── SettingsSceneDIContainer.swift
+│   │   ├── ServiceDIContainers
+│   │   │   ├── AppServiceDIContainer.swift
+│   │   │   └── DeviceServiceDIContainer.swift
 │   │   ├── AppConfiguration.swift
-│   │   └── AppDIContainer.swift
+│   │   ├── AppDIContainer.swift
+│   │   ├── SceneDIContainer.swift
+│   │   └── ServiceDIContainer.swift
 │   ├── PresentationLayer
 │   │   ├── HomeScene
 │   │   │   ├── Flows
@@ -43,7 +48,7 @@ App
 │   │   │   ├── Params.swift
 │   │   │   ├── Params+Home.swift
 │   │   │   └── Params+Search.swift
-│   │   ├── Interfaces
+│   │   ├── Repositories
 │   │   │   ├── HomeRepository.swift
 │   │   │   └── SearchRepository.swift
 │   │   └── UseCases

@@ -16,7 +16,7 @@ public enum APIType {
     case mock(statusCode: Int = 200, mockFile: JSONFile?, delay: TimeInterval = 0)
 }
 
-public final class APIService<Target: StatusCodeSampleDataTargetType> {
+public final class APIService<Target: StatusCodeSampleDataTargetType>: DetectDeinit {
     private let provider: MoyaProvider<Target>
     
     public init(apiBaseURL: URL, apiType: APIType = .real) {
@@ -27,7 +27,7 @@ public final class APIService<Target: StatusCodeSampleDataTargetType> {
             switch apiType {
             case .real:
                 sampleResponseClosure = .networkResponse(200, target.sampleData)
-            case .mock(let statusCode, let mockFile,  _):
+            case .mock(let statusCode, let mockFile, _):
                 sampleResponseClosure = .networkResponse(statusCode, target.sampleData(statusCode: statusCode, mockFile: mockFile))
             }
             return Endpoint(url: url,

@@ -9,12 +9,13 @@ import TSCore
 import RxSwift
 
 public protocol AppInfoUseCaseProtocol {
-    func appBundleID() -> Single<String?>
-    func appVersion() -> Single<String?>
-    func appOSVersion() -> Single<String?>
-    func buildVersion() -> Single<String?>
-    func deviceType() -> Single<String?>
-    func osType() -> Single<String?>
+    func appBundleID() -> String
+    func appVersion() -> String
+    func buildVersion() -> String
+    func deviceModel() -> String
+    func deviceType() -> String
+    func osType() -> String
+    func osVersion() -> String
 }
 
 public class AppInfoUseCase: DetectDeinit, AppInfoUseCaseProtocol {
@@ -24,27 +25,31 @@ public class AppInfoUseCase: DetectDeinit, AppInfoUseCaseProtocol {
         self.repository = repository
     }
     
-    public func appBundleID() -> Single<String?> {
+    public func appBundleID() -> String {
         return repository.appBundleID()
     }
     
-    public func appVersion() -> Single<String?> {
+    public func appVersion() -> String {
         return repository.appVersion()
     }
     
-    public func appOSVersion() -> Single<String?> {
-        return repository.appOSVersion()
-    }
-    
-    public func buildVersion() -> Single<String?> {
+    public func buildVersion() -> String {
         return repository.buildVersion()
     }
     
-    public func deviceType() -> Single<String?> {
+    public func deviceModel() -> String {
+        return repository.deviceModel()
+    }
+    
+    public func deviceType() -> String {
         return repository.deviceType()
     }
     
-    public func osType() -> Single<String?> {
+    public func osType() -> String {
         return repository.osType()
+    }
+    
+    public func osVersion() -> String {
+        return repository.osVersion()
     }
 }

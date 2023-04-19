@@ -16,27 +16,33 @@ public class UserDefaultsRepositoryImp: DetectDeinit, UserDefaultsRepository {
         self.service = service
     }
     
-    public func uniqueAppInstanceID() -> Single<String?> {
-        return .just(service.uniqueAppInstanceID)
-    }
-    
-    public func appVersion() -> Single<String?> {
-        return .just(service.appVersion)
-    }
-    
-    public func deviceName() -> Single<String?> {
-        return .just(service.deviceName)
-    }
-    
-    public func deviceToken() -> Single<String?> {
-        return .just(service.deviceToken)
-    }
-    
-    public func osVersion() -> Single<String?> {
-        return .just(service.osVersion)
-    }
-    
-    public func vendorId() -> Single<String?> {
-        return .just(service.vendorId)
-    }
+    public var uniqueAppInstanceID: String? {
+         get { return service.uniqueAppInstanceID }
+         set { service.uniqueAppInstanceID = newValue }
+     }
+     
+     public var appVersion: String? {
+         get { return service.appVersion }
+         set { service.appVersion = newValue }
+     }
+     
+     public var deviceModel: String? {
+         get { return service.deviceModel }
+         set { service.deviceModel = newValue }
+     }
+     
+     public var deviceToken: String? {
+         get { return service.deviceToken }
+         set { service.deviceToken = newValue }
+     }
+     
+     public var osVersion: String? {
+         get { return service.osVersion }
+         set { service.osVersion = newValue }
+     }
+     
+     public var vendorId: String? {
+         get { return service.vendorId }
+         set { service.vendorId = newValue }
+     }
 }

@@ -9,10 +9,10 @@ extension ResponseModel {
     }
     
     struct ___VARIABLE_productName:identifier___Item: Decodable {
-        let item: [___VARIABLE_productName:identifier___]
+        let item: ___VARIABLE_productName:identifier___
     }
     
-    struct ___VARIABLE_productName___ {
+    struct ___VARIABLE_productName___: Decodable {
 //        public let title: String
 //
 //        public init(title: String) {

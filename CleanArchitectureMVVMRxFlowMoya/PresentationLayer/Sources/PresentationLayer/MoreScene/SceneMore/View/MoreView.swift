@@ -37,7 +37,7 @@ struct MoreView: View {
 struct MoreView_Previews: PreviewProvider {
     static var previews: some View {
         let appConfiguration = AppConfiguration(mode: .useSampleData, target: .dev)
-        let diContainer = AppDIContainer(configuration: appConfiguration)
+        let diContainer = AppDIContainer(configuration: appConfiguration).makeSceneDIContainer()
         let viewModel = MoreViewModel(useCase: diContainer.makeMoreSceneDIContainer().makeUseCase())
         return MoreView(viewModel: viewModel)
     }

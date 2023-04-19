@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  ResponseModel+More.swift
 //  
 //
 //  Created by TAE SU LEE on 2023/03/13.
@@ -14,7 +14,7 @@ extension ResponseModel {
     }
     
     struct MoreItem: Decodable {
-        let item: [More]
+        let item: More
     }
     
     struct More: Decodable {

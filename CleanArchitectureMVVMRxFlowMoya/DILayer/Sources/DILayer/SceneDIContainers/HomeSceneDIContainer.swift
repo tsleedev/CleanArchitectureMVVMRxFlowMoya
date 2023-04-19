@@ -19,14 +19,18 @@ public final class HomeSceneDIContainer {
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }
-    
-    // MARK: - UseCases
-    public func makeUseCase() -> HomeUseCaseProtocol {
+}
+
+// MARK: - UseCases
+public extension HomeSceneDIContainer {
+    func makeUseCase() -> HomeUseCaseProtocol {
         return HomeUseCase(repository: makeRepository())
     }
-    
-    // MARK: - Repositories
-    private func makeRepository() -> HomeRepository {
+}
+
+// MARK: - Repositories
+private extension HomeSceneDIContainer {
+    func makeRepository() -> HomeRepository {
         return HomeRepositoryImp(service: dependencies.service)
     }
 }

@@ -42,14 +42,15 @@ public class TabBarFlow: DetectDeinit, Flow {
 // MARK: - Helper
 private extension TabBarFlow {
     func navigateToMain() -> FlowContributors {
-        let homeFlow = HomeFlow(homeSceneDIContainer: appDIContainer.makeHomeSceneDIContainer(),
-                                searchSceneDIContainer: appDIContainer.makeSearchSceneDIContainer(),
-                                settingsSceneDIContainer: appDIContainer.makeSettingsSceneDIContainer(),
+        let sceneDIContainer = appDIContainer.makeSceneDIContainer()
+        let homeFlow = HomeFlow(homeSceneDIContainer: sceneDIContainer.makeHomeSceneDIContainer(),
+                                searchSceneDIContainer: sceneDIContainer.makeSearchSceneDIContainer(),
+                                settingsSceneDIContainer: sceneDIContainer.makeSettingsSceneDIContainer(),
                                 rootViewController: UINavigationController())
-        let searchFlow = SearchFlow(diContainer: appDIContainer.makeSearchSceneDIContainer(),
+        let searchFlow = SearchFlow(diContainer: sceneDIContainer.makeSearchSceneDIContainer(),
                                     rootViewController: UINavigationController())
-        let moreFlow = MoreFlow(moreSceneDIContainer: appDIContainer.makeMoreSceneDIContainer(),
-                                settingsSceneDIContainer: appDIContainer.makeSettingsSceneDIContainer(),
+        let moreFlow = MoreFlow(moreSceneDIContainer: sceneDIContainer.makeMoreSceneDIContainer(),
+                                settingsSceneDIContainer: sceneDIContainer.makeSettingsSceneDIContainer(),
                                 rootViewController: UINavigationController())
         
         Flows.use(homeFlow, searchFlow, moreFlow, when: .created) { [unowned self] flow0Root, flow1Root, flow2Root in

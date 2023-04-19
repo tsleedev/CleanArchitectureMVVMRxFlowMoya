@@ -7,6 +7,7 @@
 
 import TSLogger
 import DILayer
+import DomainLayer
 import UIKit
 import RxFlow
 import RxSwift
@@ -14,6 +15,8 @@ import RxSwift
 final class Application {
     static let shared = Application()
     private let appConfiguration: AppConfiguration
+    private let appDIContainer: AppDIContainer
+    private let deviceService: DeviceService
     
     private var coordinator: FlowCoordinator?
     private var disposeBag = DisposeBag()
@@ -25,10 +28,18 @@ final class Application {
         #else
         appConfiguration = AppConfiguration(mode: .useRealData, target: .prod)
         #endif
+        
+        appDIContainer = AppDIContainer(configuration: appConfiguration)
+        let deviceServiceDIContainer = appDIContainer.makeServiceDIContainer().makeDeviceServiceDIContainer()
+        deviceService = DeviceService(appInfoUseCase: deviceServiceDIContainer.makeAppInfoUseCase(),
+                                      userDefaultsUseCase: deviceServiceDIContainer.makeUserDefaultsUseCase(),
+                                      deviceUseCase: deviceServiceDIContainer.makeDeviceUseCase())
     }
-    
+          
     func start(scene: UIScene) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        deviceService.registOrUpdate()
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.windowScene = windowScene
@@ -44,7 +55,7 @@ final class Application {
             TSLogger.flow("did navigate to flow=\(String(describing: type(of: flow))) and step=\(step)")
         }).disposed(by: disposeBag)
         
-        let appFlow = AppFlow(window: window, appDIContainer: AppDIContainer(configuration: appConfiguration))
+        let appFlow = AppFlow(window: window, appDIContainer: appDIContainer)
         coordinator.coordinate(flow: appFlow, with: AppStepper())
         self.coordinator = coordinator
         self.window = window

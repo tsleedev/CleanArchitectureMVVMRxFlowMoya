@@ -33,7 +33,7 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         let appConfiguration = AppConfiguration(mode: .useSampleData, target: .dev)
-        let diContainer = AppDIContainer(configuration: appConfiguration)
+        let diContainer = AppDIContainer(configuration: appConfiguration).makeSceneDIContainer()
         let viewModel = SettingsViewModel(useCase: diContainer.makeSettingsSceneDIContainer().makeUseCase())
         return SettingsView(viewModel: viewModel)
     }

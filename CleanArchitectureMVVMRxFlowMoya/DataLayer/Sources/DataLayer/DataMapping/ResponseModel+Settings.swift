@@ -14,7 +14,7 @@ extension ResponseModel {
     }
     
     struct SettingsItem: Decodable {
-        let item: [Settings]
+        let item: Settings
     }
     
     struct Settings: Decodable {

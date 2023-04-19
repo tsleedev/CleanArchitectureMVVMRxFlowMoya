@@ -16,27 +16,31 @@ public class AppInfoRepositoryImp: DetectDeinit, AppInfoRepository {
         self.service = service
     }
     
-    public func appBundleID() -> Single<String?> {
-        return .just(service.appBundleID)
+    public func appBundleID() -> String {
+        return service.appBundleID
     }
     
-    public func appVersion() -> Single<String?> {
-        return .just(service.appVersion)
+    public func appVersion() -> String {
+        return service.appVersion
     }
     
-    public func appOSVersion() -> Single<String?> {
-        return .just(service.appOSVersion)
+    public func buildVersion() -> String {
+        return service.buildVersion
     }
     
-    public func buildVersion() -> Single<String?> {
-        return .just(service.buildVersion)
+    public func deviceModel() -> String {
+        return service.deviceModelIdentifier
     }
     
-    public func deviceType() -> Single<String?> {
-        return .just(service.deviceType)
+    public func deviceType() -> String {
+        return service.deviceType
     }
     
-    public func osType() -> Single<String?> {
-        return .just(service.osType)
+    public func osType() -> String {
+        return service.osType
+    }
+    
+    public func osVersion() -> String {
+        return service.osVersion
     }
 }

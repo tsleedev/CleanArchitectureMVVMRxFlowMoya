@@ -9,42 +9,48 @@ import TSCore
 import RxSwift
 
 public protocol UserDefaultsUseCaseProtocol {
-    func uniqueAppInstanceID() -> Single<String?>
-    func appVersion() -> Single<String?>
-    func deviceName() -> Single<String?>
-    func deviceToken() -> Single<String?>
-    func osVersion() -> Single<String?>
-    func vendorId() -> Single<String?>
+    var uniqueAppInstanceID: String? { get set }
+    var appVersion: String? { get set }
+    var deviceModel: String? { get set }
+    var deviceToken: String? { get set }
+    var osVersion: String? { get set }
+    var vendorId: String? { get set }
 }
 
-public class UserDefatulsUseCase: DetectDeinit, UserDefaultsUseCaseProtocol {
-    private let repository: UserDefaultsRepository
+public class UserDefaultsUseCase: DetectDeinit, UserDefaultsUseCaseProtocol {
+    private var repository: UserDefaultsRepository
     
     public init(repository: UserDefaultsRepository) {
         self.repository = repository
     }
     
-    public func uniqueAppInstanceID() -> Single<String?> {
-        return repository.uniqueAppInstanceID()
-    }
-    
-    public func appVersion() -> Single<String?> {
-        return repository.appVersion()
-    }
-    
-    public func deviceName() -> Single<String?> {
-        return repository.deviceName()
-    }
-    
-    public func deviceToken() -> Single<String?> {
-        return repository.deviceToken()
-    }
-    
-    public func osVersion() -> Single<String?> {
-        return repository.osVersion()
-    }
-    
-    public func vendorId() -> Single<String?> {
-        return repository.vendorId()
-    }
+    public var uniqueAppInstanceID: String? {
+         get { return repository.uniqueAppInstanceID }
+         set { repository.uniqueAppInstanceID = newValue }
+     }
+     
+     public var appVersion: String? {
+         get { return repository.appVersion }
+         set { repository.appVersion = newValue }
+     }
+     
+     public var deviceModel: String? {
+         get { return repository.deviceModel }
+         set { repository.deviceModel = newValue }
+     }
+     
+     public var deviceToken: String? {
+         get { return repository.deviceToken }
+         set { repository.deviceToken = newValue }
+     }
+     
+     public var osVersion: String? {
+         get { return repository.osVersion }
+         set { repository.osVersion = newValue }
+     }
+     
+     public var vendorId: String? {
+         get { return repository.vendorId }
+         set { repository.vendorId = newValue }
+     }
 }

@@ -9,6 +9,9 @@ import TSLogger
 import Foundation
 
 public enum JSONFile {
+    case deviceRegist(Int)
+    case deviceUpdate(Int)
+    case deviceDeviceToken(Int)
     case home(Int)
     case more(Int)
     case search(Int)
@@ -19,6 +22,21 @@ public enum JSONFile {
 extension JSONFile {
     var resource: String? {
         switch self {
+        case .deviceRegist(let statusCode):
+            switch statusCode {
+            case 200:   return "DeviceRegistSampleDataStatusCode200"
+            default:    return nil
+            }
+        case .deviceUpdate(let statusCode):
+            switch statusCode {
+            case 200:   return "DeviceUpdateSampleDataStatusCode200"
+            default:    return nil
+            }
+        case .deviceDeviceToken(let statusCode):
+            switch statusCode {
+            case 200:   return "DeviceTokenSampleDataStatusCode200"
+            default:    return nil
+            }
         case .home(let statusCode):
             switch statusCode {
             case 200:   return "HomeSampleDataStatusCode200"

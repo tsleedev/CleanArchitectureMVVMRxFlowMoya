@@ -5,13 +5,15 @@
 //  Created by TAE SU LEE on 2023/04/13.
 //
 
+import TSCore
 import Foundation
 
-public final class UserDefaultsService {
+public final class UserDefaultsService: DetectDeinit {
     private let userDefaults: UserDefaults
     
-    init(userDefaults: UserDefaults = .standard) {
+    public init(userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults
+        super.init()
         setupUserDefaultsWrappers()
     }
     
@@ -21,8 +23,8 @@ public final class UserDefaultsService {
     @UserDefaultsWrapper(key: "appVersion", defaultValue: nil)
     var appVersion: String?
     
-    @UserDefaultsWrapper(key: "deviceName", defaultValue: nil)
-    var deviceName: String?
+    @UserDefaultsWrapper(key: "deviceModel", defaultValue: nil)
+    var deviceModel: String?
     
     @UserDefaultsWrapper(key: "deviceToken", defaultValue: nil)
     var deviceToken: String?
@@ -36,7 +38,7 @@ public final class UserDefaultsService {
     private func setupUserDefaultsWrappers() {
         _uniqueAppInstanceID.setUserDefaults(userDefaults)
         _appVersion.setUserDefaults(userDefaults)
-        _deviceName.setUserDefaults(userDefaults)
+        _deviceModel.setUserDefaults(userDefaults)
         _deviceToken.setUserDefaults(userDefaults)
         _osVersion.setUserDefaults(userDefaults)
         _vendorId.setUserDefaults(userDefaults)

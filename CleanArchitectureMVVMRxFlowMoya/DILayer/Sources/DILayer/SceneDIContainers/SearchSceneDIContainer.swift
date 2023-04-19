@@ -19,14 +19,18 @@ public final class SearchSceneDIContainer {
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }
-    
-    // MARK: - UseCases
-    public func makeUseCase() -> SearchUseCaseProtocol {
+}
+
+// MARK: - UseCases
+public extension SearchSceneDIContainer {
+    func makeUseCase() -> SearchUseCaseProtocol {
         return SearchUseCase(repository: makeRepository())
     }
-    
-    // MARK: - Repositories
-    private func makeRepository() -> SearchRepository {
+}
+
+// MARK: - Repositories
+private extension SearchSceneDIContainer {
+    func makeRepository() -> SearchRepository {
         return SearchRepositoryImp(service: dependencies.service)
     }
 }

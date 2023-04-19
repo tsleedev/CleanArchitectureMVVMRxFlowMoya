@@ -19,14 +19,18 @@ public final class SettingsSceneDIContainer {
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }
-    
-    // MARK: - UseCases
-    public func makeUseCase() -> SettingsUseCaseProtocol {
+}
+
+// MARK: - UseCases
+public extension SettingsSceneDIContainer {
+    func makeUseCase() -> SettingsUseCaseProtocol {
         return SettingsUseCase(repository: makeRepository())
     }
-    
-    // MARK: - Repositories
-    private func makeRepository() -> SettingsRepository {
+}
+
+// MARK: - Repositories
+private extension SettingsSceneDIContainer {
+    func makeRepository() -> SettingsRepository {
         return SettingsRepositoryImp(service: dependencies.service)
     }
 }

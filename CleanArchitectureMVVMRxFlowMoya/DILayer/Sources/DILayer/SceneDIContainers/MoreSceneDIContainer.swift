@@ -19,14 +19,18 @@ public final class MoreSceneDIContainer {
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
     }
-    
-    // MARK: - UseCases
-    public func makeUseCase() -> MoreUseCaseProtocol {
+}
+
+// MARK: - UseCases
+public extension MoreSceneDIContainer {
+    func makeUseCase() -> MoreUseCaseProtocol {
         return MoreUseCase(repository: makeRepository())
     }
-    
-    // MARK: - Repositories
-    private func makeRepository() -> MoreRepository {
+}
+
+// MARK: - Repositories
+private extension MoreSceneDIContainer {
+    func makeRepository() -> MoreRepository {
         return MoreRepositoryImp(service: dependencies.service)
     }
 }
