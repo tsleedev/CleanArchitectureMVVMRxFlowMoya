@@ -34,7 +34,7 @@ extension JSONFile {
             }
         case .deviceDeviceToken(let statusCode):
             switch statusCode {
-            case 200:   return "DeviceTokenSampleDataStatusCode200"
+            case 200:   return "DeviceDeviceTokenSampleDataStatusCode200"
             default:    return nil
             }
         case .home(let statusCode):

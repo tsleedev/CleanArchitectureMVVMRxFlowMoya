@@ -11,7 +11,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        NotificationManager.shared.initialize()
+        NotificationManager.shared.registerForRemoteNotifications()
+        
         return true
     }
     
@@ -29,4 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
+    // MARK: - DeviceToken
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenString = deviceToken.map { String(format: "%02x", $0) }.joined()
+//        let tokenString = "test1"
+        Application.shared.updateDeviceToken(tokenString)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register for remote notifications: \(error)")
+    }
 }

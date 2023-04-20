@@ -14,16 +14,23 @@ public final class DeviceService: DetectDeinit {
     
     // MARK: - Property
     private var uniqueAppInstanceIDPublishSubject = BehaviorSubject<String?>(value: nil)
-    var uniqueAppInstanceID: String? {
+    private var uniqueAppInstanceID: String? {
         didSet {
             uniqueAppInstanceIDPublishSubject.onNext(uniqueAppInstanceID)
         }
     }
     
     private var deviceTokenPublishSubject = BehaviorSubject<String?>(value: nil)
-    var deviceToken: String? {
+    public var deviceToken: String? {
         didSet {
             deviceTokenPublishSubject.onNext(deviceToken)
+        }
+    }
+    
+    private var previousDeviceTokenPublishSubject = BehaviorSubject<String?>(value: nil)
+    public var previousDeviceToken: String? {
+        didSet {
+            previousDeviceTokenPublishSubject.onNext(previousDeviceToken)
         }
     }
     
@@ -57,7 +64,7 @@ public final class DeviceService: DetectDeinit {
 private extension DeviceService {
     func setup() {
         uniqueAppInstanceID = userDefaultsUseCase.uniqueAppInstanceID
-        deviceToken = userDefaultsUseCase.deviceToken
+        previousDeviceToken = userDefaultsUseCase.deviceToken
     }
 }
 
@@ -110,10 +117,13 @@ private extension DeviceService {
             .disposed(by: disposeBag)
         
         Observable.combineLatest(uniqueAppInstanceIDPublishSubject.distinctUntilChanged(),
-                                 deviceTokenPublishSubject.distinctUntilChanged())
+                                 deviceTokenPublishSubject.distinctUntilChanged(),
+                                 previousDeviceTokenPublishSubject.distinctUntilChanged())
             .debug("DeviceService deviceTokenPublishSubject")
-            .filter { $0.0 != nil && !$0.0!.isEmpty && $0.1 != nil && !$0.1!.isEmpty }
-            .map { ($0.0!, $0.1!) }
+            .filter { ($0.0 != nil && !$0.0!.isEmpty) && ($0.1 != nil && !$0.1!.isEmpty) }
+            .map { ($0.0!, $0.1!, $0.2) }
+            .filter { $0.2 == nil || ($0.1 != $0.2!) }
+            .map { ($0.0, $0.1) }
             .subscribe(onNext: { [weak self] uniqueAppInstanceID, deviceToken in
                 guard let self = self else { return }
                 self.deviceToken(uniqueAppInstanceID, deviceToken)

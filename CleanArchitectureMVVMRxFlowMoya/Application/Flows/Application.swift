@@ -60,4 +60,8 @@ final class Application {
         self.coordinator = coordinator
         self.window = window
     }
+    
+    func updateDeviceToken(_ deviceToken: String) {
+        deviceService.deviceToken = deviceToken
+    }
 }
