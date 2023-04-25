@@ -13,12 +13,14 @@ Clean Architecture + MVVM + RxSwift + RxFlow + Moya로 프로젝트를 구성하
 ![Alt text](README_FILES/AppFileStructure_Simplified.png?raw=true "File Structure")
 
 ## 구현
+* 최소 지원 버전 iOS 13.0 
 * xib에서 swiftui로 넘어가는 과정에서 사용하기 적합하게 구현
+* RxFlow를 이용해 Coordinator 구현
 * MVVM 패턴에서 Input, Output을 이용해서 RxSwift로 구현
 * SwiftUI에서는 MVVM 패턴에서 Input, Published를 이용해서 RxSwift로 구현
+* RxSwift로 테이블 구현
 * RxSwiftExt를 이용해서 TableView의 마지막까지 스크롤하게 될 경우 다음 페이지 로드 구현
 * RxMoya를 통해 API Network 구현
-* RxSwift로 테이블 구현
 * Code-base UI의 경우 SnapKit, Then을 사용
 * Kingfisher를 이용해서 이미지 비동기 로드 및 TableViewCell이 재사용되면서 이전 이미지가 로드 될 수 있는 경우에 대해 처리
 * SwiftLint를 이용해서 코드 컨벤션 유지
@@ -57,12 +59,14 @@ Clean Architecture + MVVM + RxSwift + RxFlow + Moya로 프로젝트를 구성하
 * SceneDIContainer로 ViewModel에 UseCase를 만들어서 주입
 * UINavigationController로 화면 이동은 push로만 처리
 * 해당 Scene이 끝나는 경우 RxFlow의 .end(forwardToParentFlowWithStep:)가 호출되게 하여 해당 Scene의 Flow가 종료되게 처리
+* DeepLink를 처리를 위해 DeepLinkStep를 추가해 FlowCoordinator의 navigate(to:)를 이용해서 전체 Flow가 호출될때 알맞는 DeepLink 처리를 하도록 구현  
 
 
 ## Built With
 - [RxSwift](https://github.com/ReactiveX/RxSwift) - Reactive Programming in Swift
 - [RxCocoa](https://github.com/ReactiveX/RxSwift) - library allows us to use Cocoa APIs used in iOS and OS X with reactive technics.
 - [RxSwiftExt](https://github.com/RxSwiftCommunity/RxSwiftExt) - A collection of Rx operators & tools not found in the core RxSwift distribution
+- [RxFlow](https://github.com/RxSwiftCommunity/RxFlow) - RxFlow is a navigation framework for iOS applications based on a Reactive Flow Coordinator pattern
 - [Moya](https://github.com/Moya/Moya) - Network abstraction layer written in Swift.
 - [Kingfisher](https://github.com/onevcat/Kingfisher) - A lightweight, pure-Swift library for downloading and caching images from the web.
 - [SnapKit](https://github.com/SnapKit/SnapKit) - SnapKit is a DSL to make Auto Layout easy on both iOS and OS X.
@@ -71,5 +75,4 @@ Clean Architecture + MVVM + RxSwift + RxFlow + Moya로 프로젝트를 구성하
 
 
 ## TO-DO
-- Deep Link가 가능하도록 구현 필요
-- Firebase, Realm, Userdefaults 처리 구현 필요
+- Firebase, Realm 처리 구현 필요
