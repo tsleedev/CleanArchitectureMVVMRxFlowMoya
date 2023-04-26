@@ -53,10 +53,7 @@ private extension SettingsFlow {
     }
     
     func navigate(to step: DeepLinkStep) -> FlowContributors {
-        switch step {
-        case .settings:
-            return navigateToDeepLink(to: step)
-        }
+        return navigateToDeepLink(to: step)
     }
 }
 
@@ -77,6 +74,8 @@ private extension SettingsFlow {
 private extension SettingsFlow {
     func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
         switch step {
+        case .restartApp:
+            return .one(flowContributor: .forwardToParentFlow(withStep: step))
         case .settings:
             return .none
         }

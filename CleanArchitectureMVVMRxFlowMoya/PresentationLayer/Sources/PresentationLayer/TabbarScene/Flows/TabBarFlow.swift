@@ -54,10 +54,7 @@ private extension TabBarFlow {
     }
     
     func navigate(to step: DeepLinkStep) -> FlowContributors {
-        switch step {
-        case .settings:
-            return navigateToDeepLink(to: step)
-        }
+        return navigateToDeepLink(to: step)
     }
 }
 
@@ -98,6 +95,8 @@ private extension TabBarFlow {
 private extension TabBarFlow {
     func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
         switch step {
+        case .restartApp:
+            return .one(flowContributor: .forwardToParentFlow(withStep: step))
         case .settings:
             // If the tab bar moves before the other view is closed, the following error occurs:
             // "Unbalanced calls to begin/end appearance transitions for"

@@ -57,10 +57,7 @@ private extension HomeFlow {
     }
     
     func navigate(to step: DeepLinkStep) -> FlowContributors {
-        switch step {
-        case .settings:
-            return navigateToDeepLink(to: step)
-        }
+        return navigateToDeepLink(to: step)
     }
 }
 
@@ -84,6 +81,8 @@ private extension HomeFlow {
 private extension HomeFlow {
     func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
         switch step {
+        case .restartApp:
+            return .one(flowContributor: .forwardToParentFlow(withStep: step))
         case .settings:
             if rootViewController.viewControllers.contains(where: { $0 is SettingsViewController }) {
                 return .none

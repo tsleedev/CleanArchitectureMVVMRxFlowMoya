@@ -45,10 +45,7 @@ private extension ___VARIABLE_productName:identifier___Flow {
     }
     
     func navigate(to step: DeepLinkStep) -> FlowContributors {
-        switch step {
-        case .settings:
-            return navigateToDeepLink(to: step)
-        }
+        return navigateToDeepLink(to: step)
     }
 }
 
@@ -67,10 +64,11 @@ private extension ___VARIABLE_productName:identifier___Flow {
 // MARK: - DeepLink
 private extension ___VARIABLE_productName:identifier___Flow {
     func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
-//        switch step {
-//        case .settings:
-//            return .none
-//        }
-        return .none
+        switch step {
+        case .restartApp:
+            return .one(flowContributor: .forwardToParentFlow(withStep: step))
+        case .settings:
+            return .none
+        }
     }
 }

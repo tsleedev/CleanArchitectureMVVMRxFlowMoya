@@ -56,10 +56,7 @@ private extension MoreFlow {
     }
     
     func navigate(to step: DeepLinkStep) -> FlowContributors {
-        switch step {
-        case .settings:
-            return navigateToDeepLink(to: step)
-        }
+        return navigateToDeepLink(to: step)
     }
 }
 
@@ -99,6 +96,8 @@ private extension MoreFlow {
 private extension MoreFlow {
     func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
         switch step {
+        case .restartApp:
+            return .one(flowContributor: .forwardToParentFlow(withStep: step))
         case .settings:
             rootViewController.presentedViewController?.dismiss(animated: false)
             return .none

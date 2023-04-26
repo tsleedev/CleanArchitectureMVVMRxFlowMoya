@@ -32,6 +32,7 @@ extension MoreViewModel: ViewModelSwiftUIType {
         let trigger = PublishSubject<Void>()
         let didSelect = PublishSubject<MoreItemViewModel>()
         let clickSettings = PublishSubject<Void>()
+        let restartApp = PublishSubject<Void>()
     }
     
     public func transform(input: Input) {
@@ -61,9 +62,18 @@ extension MoreViewModel: ViewModelSwiftUIType {
             })
             .disposed(by: disposeBag)
         
-        input.clickSettings.asDriver(onErrorJustReturn: ())
+        input.clickSettings
+            .asDriver(onErrorJustReturn: ())
             .drive(onNext: { [weak self] _ in
                 self?.steps.accept(MoreStep.settingsAreRequired)
+            })
+            .disposed(by: disposeBag)
+        
+        input.restartApp
+            .asDriver(onErrorJustReturn: ())
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.steps.accept(DeepLinkStep.restartApp)
             })
             .disposed(by: disposeBag)
     }

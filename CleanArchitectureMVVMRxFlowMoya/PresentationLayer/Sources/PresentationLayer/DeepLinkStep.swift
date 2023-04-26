@@ -8,5 +8,6 @@
 import RxFlow
 
 public enum DeepLinkStep: Step {
+    case restartApp
     case settings
 }

@@ -28,6 +28,11 @@ struct MoreView: View {
                 Text(item.title)
             }
         }
+        Button(action: {
+            input.restartApp.onNext(())
+        }, label: {
+            Text("RESTART APP")
+        })
         .onAppear {
             input.trigger.onNext(())
         }

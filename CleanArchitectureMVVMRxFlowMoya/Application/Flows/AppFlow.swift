@@ -30,13 +30,28 @@ final class AppFlow: DetectDeinit, Flow {
     }
     
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? AppStep else { return .none }
+        if let step = step as? AppStep {
+            return navigate(to: step)
+        } else if let step = step as? DeepLinkStep {
+            return navigate(to: step)
+        }
+        return .none
+    }
+}
+
+// MARK: - Navigations
+private extension AppFlow {
+    func navigate(to step: AppStep) -> FlowContributors {
         switch step {
         case .mainIsRequired:
             return navigateToMain()
         case .splashIsRequired:
             return navigateToSplash()
         }
+    }
+    
+    func navigate(to step: DeepLinkStep) -> FlowContributors {
+        return navigateToDeepLink(to: step)
     }
 }
 
@@ -63,6 +78,19 @@ private extension AppFlow {
             self.window.makeKeyAndVisible()
         }
         return .one(flowContributor: .contribute(withNextPresentable: tabBarFlow, withNextStepper: OneStepper(withSingleStep: TabBarStep.mainIsRequired)))
+    }
+}
+
+// MARK: - DeepLink
+private extension AppFlow {
+    func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
+        switch step {
+        case .restartApp:
+            Application.shared.restart()
+            return .none
+        case .settings:
+            return .none
+        }
     }
 }
 

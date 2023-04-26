@@ -27,7 +27,7 @@ struct SettingsView: View {
         Button(action: {
             input.popViewController.onNext(())
         }, label: {
-            Text("닫기")
+            Text("POP")
         })
         .onAppear {
             input.trigger.onNext(())

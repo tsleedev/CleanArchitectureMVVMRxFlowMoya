@@ -5,6 +5,7 @@
 //  Created by TAE SU LEE on 2022/11/16.
 //
 
+import TSCore
 import TSLogger
 import DILayer
 import PresentationLayer
@@ -13,15 +14,22 @@ import UIKit
 import RxFlow
 import RxSwift
 
-final class Application {
+final class Application: BackgroundControllable, ForegroundControllable {
+    // MARK: - Singleton
     static let shared = Application()
+    
+    // MARK: - Properties
     private let appConfiguration: AppConfiguration
     private let appDIContainer: AppDIContainer
     private let deviceService: DeviceService
     
     private var coordinator: FlowCoordinator?
     private var disposeBag = DisposeBag()
+    private var windowScene: UIWindowScene?
     private var window: UIWindow?
+    
+    private var isDidEnterBackground: Bool = false
+    private var backgroundEntryTime: TimeInterval = Date().timeIntervalSince1970
     
     private init() {
         #if DEBUG
@@ -39,13 +47,12 @@ final class Application {
     
     public func initialize(with scene: UIScene) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.windowScene = windowScene
-        let storyboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
-        window.rootViewController = storyboard.instantiateInitialViewController()
-        self.window = window
+        self.windowScene = windowScene
         
+        createWindow()
         deviceService.registOrUpdate()
+        addBackgroundObserver()
+        addForegroundObserver()
     }
     
     func start() {
@@ -69,6 +76,19 @@ final class Application {
         self.coordinator = coordinator
     }
     
+    func restart() {
+        reset()
+        createWindow()
+        start()
+    }
+    
+    func exitApp() {
+        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            Darwin.exit(0)
+        }
+    }
+    
     func navigate(to step: Step, closeAllViewController: Bool = false) {
         if closeAllViewController {
             if let rootViewController = window?.rootViewController {
@@ -85,5 +105,45 @@ final class Application {
     
     func updateDeviceToken(_ deviceToken: String) {
         deviceService.deviceToken = deviceToken
+    }
+    
+    // MARK: - BackgroundControllable
+    func didEnterBackground(_ notification: Notification) {
+        backgroundEntryTime = Date().timeIntervalSince1970
+        isDidEnterBackground = true
+    }
+    
+    // MARK: - ForegroundControllable
+    func willEnterForeground(_ notification: Notification) {
+        if isDidEnterBackground == false { return }
+        isDidEnterBackground = false
+        
+        let timeSinceBackgroundEntry = Date().timeIntervalSince1970 - backgroundEntryTime
+        backgroundEntryTime = Date().timeIntervalSince1970
+        
+        // If the app is re-entered within 1 hour, restart the app from the beginning
+        if timeSinceBackgroundEntry >= 60 * 60 * 1 { // 1 hour
+            restart()
+        }
+    }
+}
+
+// MARK: - Helper
+private extension Application {
+    func createWindow() {
+        guard let windowScene = windowScene else { return }
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.windowScene = windowScene
+        let storyboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
+        window.rootViewController = storyboard.instantiateInitialViewController()
+        self.windowScene = windowScene
+        self.window = window
+    }
+    
+    func reset() {
+        window?.rootViewController = nil
+        window?.resignKey()
+        window?.removeFromSuperview()
+        window = nil
     }
 }

@@ -48,10 +48,7 @@ private extension SearchFlow {
     }
     
     func navigate(to step: DeepLinkStep) -> FlowContributors {
-        switch step {
-        case .settings:
-            return navigateToDeepLink(to: step)
-        }
+        return navigateToDeepLink(to: step)
     }
 }
 
@@ -76,6 +73,8 @@ private extension SearchFlow {
 private extension SearchFlow {
     func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
         switch step {
+        case .restartApp:
+            return .one(flowContributor: .forwardToParentFlow(withStep: step))
         case .settings:
             rootViewController.popToRootViewController(animated: false)
             return .none
