@@ -12,10 +12,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "PresentationLayer",
-            targets: ["PresentationLayer"]),
-        .library(
-            name: "Utils",
-            targets: ["Utils"])
+            targets: ["PresentationLayer"])
     ],
     dependencies: [
         .package(path: "../DILayer"),
@@ -34,7 +31,6 @@ let package = Package(
         .target(
             name: "PresentationLayer",
             dependencies: [
-                "Utils",
                 .product(name: "DILayer", package: "DILayer"),
                 .product(name: "TSCore", package: "PlatformLayer"),
                 .product(name: "TSCoreUI", package: "PlatformLayer"),
@@ -47,10 +43,6 @@ let package = Package(
                 .product(name: "Then", package: "Then"),
                 .product(name: "Kingfisher", package: "Kingfisher")
             ]
-        ),
-        .target(
-            name: "Utils",
-            dependencies: []
         ),
         .testTarget(
             name: "PresentationTests",
