@@ -5,16 +5,14 @@
 //  Created by TAE SU LEE on 2022/11/14.
 //
 
+import TSLogger
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        NotificationManager.shared.initialize()
-        NotificationManager.shared.registerForRemoteNotifications()
-        
+        // Override point for customization after application launch.
         return true
     }
     
@@ -40,6 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register for remote notifications: \(error)")
+        TSLogger.error("Failed to register for remote notifications: \(error)")
     }
 }

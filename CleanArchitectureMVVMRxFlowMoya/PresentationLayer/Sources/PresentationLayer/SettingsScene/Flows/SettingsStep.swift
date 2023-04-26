@@ -10,5 +10,6 @@ import RxFlow
 public enum SettingsStep: Step {
     case mainIsRequired
     case mainIsComplete
+    case mainIsCompleteModal
     case flowCompleted
 }

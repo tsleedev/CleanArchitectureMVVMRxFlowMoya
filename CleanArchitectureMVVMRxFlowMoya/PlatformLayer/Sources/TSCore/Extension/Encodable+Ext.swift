@@ -5,6 +5,7 @@
 //  Created by TAE SU LEE on 2023/03/14.
 //
 
+import TSLogger
 import Foundation
 
 public extension Encodable {
@@ -14,7 +15,7 @@ public extension Encodable {
             let jsonData = try JSONSerialization.jsonObject(with: data)
             return (jsonData as? [String: Any]) ?? [:]
         } catch {
-            print("error: ", error)
+            TSLogger.error("error: ", error)
             return [:]
         }
     }

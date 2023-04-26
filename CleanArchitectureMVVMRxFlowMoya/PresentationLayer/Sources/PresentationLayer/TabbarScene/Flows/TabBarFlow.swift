@@ -10,6 +10,12 @@ import TSCore
 import UIKit
 import RxFlow
 
+private enum TabBarIndex: Int {
+    case home = 0
+    case search
+    case more
+}
+
 public class TabBarFlow: DetectDeinit, Flow {
     // MARK: - Initialize with DIContainer
     private let appDIContainer: AppDIContainer
@@ -23,18 +29,34 @@ public class TabBarFlow: DetectDeinit, Flow {
         return tabBarController
     }()
     
-    // MARK: - Flow
+    // MARK: - Flow implementation
     public var root: Presentable {
         return self.rootViewController
     }
     
     public func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? TabBarStep else {
-            return .one(flowContributor: .forwardToParentFlow(withStep: step))
+        if let step = step as? TabBarStep {
+            return navigate(to: step)
+        } else if let step = step as? DeepLinkStep {
+            return navigate(to: step)
         }
+        return .none
+    }
+}
+
+// MARK: - Navigations
+private extension TabBarFlow {
+    func navigate(to step: TabBarStep) -> FlowContributors {
         switch step {
         case .mainIsRequired:
             return navigateToMain()
+        }
+    }
+    
+    func navigate(to step: DeepLinkStep) -> FlowContributors {
+        switch step {
+        case .settings:
+            return navigateToDeepLink(to: step)
         }
     }
 }
@@ -69,5 +91,21 @@ private extension TabBarFlow {
             .contribute(withNextPresentable: searchFlow, withNextStepper: OneStepper(withSingleStep: SearchStep.mainIsRequired)),
             .contribute(withNextPresentable: moreFlow, withNextStepper: OneStepper(withSingleStep: MoreStep.mainIsRequired))
         ])
+    }
+}
+
+// MARK: - DeepLink
+private extension TabBarFlow {
+    func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
+        switch step {
+        case .settings:
+            // If the tab bar moves before the other view is closed, the following error occurs:
+            // "Unbalanced calls to begin/end appearance transitions for"
+            // To ensure that the other view is closed before moving, use DispatchQueue.main.async to delay the execution order.
+            DispatchQueue.main.async {
+                self.rootViewController.selectedIndex = 0
+            }
+            return .none
+        }
     }
 }

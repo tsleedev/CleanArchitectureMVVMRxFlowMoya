@@ -11,7 +11,7 @@ import Moya
 struct APILogPlugin: PluginType {
     func willSend(_ request: RequestType, target: TargetType) {
         guard let httpRequest = request.request else {
-            print("--> invalid request")
+            TSLogger.api("--> invalid request")
             return
         }
         

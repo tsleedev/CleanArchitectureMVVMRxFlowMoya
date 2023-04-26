@@ -15,21 +15,39 @@ public final class ___VARIABLE_productName:identifier___Flow: DetectDeinit, Flow
         self.rootViewController = rootViewController
     }
     
-    // MARK: - Flow
+    // MARK: - Flow implementation
     public var root: Presentable {
         return self.rootViewController
     }
     
     public func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? ___VARIABLE_productName:identifier___Step else { return .none }
+        if let step = step as? ___VARIABLE_productName:identifier___Step {
+            return navigate(to: step)
+        } else if let step = step as? DeepLinkStep {
+            return navigate(to: step)
+        }
+        return .none
+    }
+}
+
+// MARK: - Navigations
+private extension ___VARIABLE_productName:identifier___Flow {
+    func navigate(to step: WebStep) -> FlowContributors {
         switch step {
         case .mainIsRequired:
             return navigateToMain()
         case .mainIsComplete:
             rootViewController.popViewController(animated: true)
-            return .none
+            return .end(forwardToParentFlowWithStep: step)
         case .flowCompleted:
             return .end(forwardToParentFlowWithStep: step)
+        }
+    }
+    
+    func navigate(to step: DeepLinkStep) -> FlowContributors {
+        switch step {
+        case .settings:
+            return navigateToDeepLink(to: step)
         }
     }
 }
@@ -43,5 +61,16 @@ private extension ___VARIABLE_productName:identifier___Flow {
         let viewControllers = rootViewController.viewControllers + [viewController]
         rootViewController.setViewControllers(viewControllers, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: rootViewController, withNextStepper: viewModel))
+    }
+}
+
+// MARK: - DeepLink
+private extension ___VARIABLE_productName:identifier___Flow {
+    func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
+//        switch step {
+//        case .settings:
+//            return .none
+//        }
+        return .none
     }
 }

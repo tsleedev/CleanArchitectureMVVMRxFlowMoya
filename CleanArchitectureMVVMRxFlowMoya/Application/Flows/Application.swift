@@ -7,6 +7,7 @@
 
 import TSLogger
 import DILayer
+import PresentationLayer
 import DomainLayer
 import UIKit
 import RxFlow
@@ -35,30 +36,51 @@ final class Application {
                                       userDefaultsUseCase: deviceServiceDIContainer.makeUserDefaultsUseCase(),
                                       deviceUseCase: deviceServiceDIContainer.makeDeviceUseCase())
     }
-          
-    func start(scene: UIScene) {
+    
+    public func initialize(with scene: UIScene) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        deviceService.registOrUpdate()
-        
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.windowScene = windowScene
         let storyboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
         window.rootViewController = storyboard.instantiateInitialViewController()
-        let coordinator = FlowCoordinator()
+        self.window = window
         
+        deviceService.registOrUpdate()
+    }
+    
+    func start() {
+        guard let window = window else { return }
+        
+        let coordinator = FlowCoordinator()
         coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
-            TSLogger.flow("will navigate to flow=\(String(describing: type(of: flow))) and step=\(step)")
+            let flowTypeName = String(describing: type(of: flow))
+            let stepTypeName = String(describing: type(of: step))
+            TSLogger.flow("will navigate to flow=\(flowTypeName) and step=\(stepTypeName).\(step)")
         }).disposed(by: disposeBag)
         
         coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
-            TSLogger.flow("did navigate to flow=\(String(describing: type(of: flow))) and step=\(step)")
+            let flowTypeName = String(describing: type(of: flow))
+            let stepTypeName = String(describing: type(of: step))
+            TSLogger.flow("did navigate to flow=\(flowTypeName) and step=\(stepTypeName).\(step)")
         }).disposed(by: disposeBag)
         
         let appFlow = AppFlow(window: window, appDIContainer: appDIContainer)
         coordinator.coordinate(flow: appFlow, with: AppStepper())
         self.coordinator = coordinator
-        self.window = window
+    }
+    
+    func navigate(to step: Step, closeAllViewController: Bool = false) {
+        if closeAllViewController {
+            if let rootViewController = window?.rootViewController {
+                if rootViewController.presentedViewController != nil {
+                    rootViewController.dismiss(animated: false) { [unowned self] in
+                        self.coordinator?.navigate(to: step)
+                    }
+                    return
+                }
+            }
+        }
+        coordinator?.navigate(to: step)
     }
     
     func updateDeviceToken(_ deviceToken: String) {

@@ -24,6 +24,11 @@ struct SettingsView: View {
         List(viewModel.items) { item in
             Text(item.title)
         }
+        Button(action: {
+            input.popViewController.onNext(())
+        }, label: {
+            Text("닫기")
+        })
         .onAppear {
             input.trigger.onNext(())
         }

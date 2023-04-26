@@ -5,6 +5,7 @@
 //  Created by TAE SU LEE on 2023/02/14.
 //
 
+import TSLogger
 import UIKit
 
 // MARK: - HTML
@@ -18,7 +19,7 @@ public extension Data {
                 documentAttributes: nil
             )
         } catch {
-            print("error:", error)
+            TSLogger.error("error:", error)
             return  nil
         }
     }

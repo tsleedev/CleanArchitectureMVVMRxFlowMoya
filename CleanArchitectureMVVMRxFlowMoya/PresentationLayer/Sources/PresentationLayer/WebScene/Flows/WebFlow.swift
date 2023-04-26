@@ -23,12 +23,30 @@ public class WebFlow: DetectDeinit, Flow {
     public var root: Presentable {
         return self.rootViewController
     }
-    
+
     public func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? WebStep else { return .none }
+        if let step = step as? WebStep {
+            return navigate(to: step)
+        } else if let step = step as? DeepLinkStep {
+            return navigate(to: step)
+        }
+        return .none
+    }
+}
+
+// MARK: - Navigations
+private extension WebFlow {
+    func navigate(to step: WebStep) -> FlowContributors {
         switch step {
         case .mainIsRequired:
             return navigateToMain()
+        }
+    }
+    
+    func navigate(to step: DeepLinkStep) -> FlowContributors {
+        switch step {
+        case .settings:
+            return navigateToDeepLink(to: step)
         }
     }
 }
@@ -41,5 +59,15 @@ private extension WebFlow {
         let viewControllers = rootViewController.viewControllers + [viewController]
         rootViewController.setViewControllers(viewControllers, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewModel))
+    }
+}
+
+// MARK: - DeepLink
+private extension WebFlow {
+    func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
+        switch step {
+        case .settings:
+            return .none
+        }
     }
 }

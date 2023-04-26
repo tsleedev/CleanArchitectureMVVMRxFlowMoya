@@ -53,6 +53,17 @@ class SettingsViewController: BaseViewController {
 private extension SettingsViewController {
     func setupViews() {
         view.addSubview(hostingView)
+        if navigationController?.viewControllers.count == 1 {
+            let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: nil, action: nil)
+            navigationItem.rightBarButtonItem = rightBarButtonItem
+            rightBarButtonItem.rx.tap.asDriver()
+                .drive(onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    let rootView = hostingController.rootView as SettingsView
+                    rootView.input.dismissModal.onNext(())
+                })
+                .disposed(by: disposeBag)
+        }
     }
     
     func setupConstraints() {

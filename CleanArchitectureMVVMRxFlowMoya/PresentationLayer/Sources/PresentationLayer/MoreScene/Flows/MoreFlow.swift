@@ -28,7 +28,18 @@ public final class MoreFlow: DetectDeinit, Flow {
     }
     
     public func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? MoreStep else { return .none }
+        if let step = step as? MoreStep {
+            return navigate(to: step)
+        } else if let step = step as? DeepLinkStep {
+            return navigate(to: step)
+        }
+        return .none
+    }
+}
+
+// MARK: - Navigations
+private extension MoreFlow {
+    func navigate(to step: MoreStep) -> FlowContributors {
         switch step {
         case .mainIsRequired:
             return navigateToMain()
@@ -41,6 +52,13 @@ public final class MoreFlow: DetectDeinit, Flow {
             return navigateToDetail()
         case .settingsAreRequired:
             return navigateToSettings()
+        }
+    }
+    
+    func navigate(to step: DeepLinkStep) -> FlowContributors {
+        switch step {
+        case .settings:
+            return navigateToDeepLink(to: step)
         }
     }
 }
@@ -65,7 +83,25 @@ private extension MoreFlow {
     }
     
     func navigateToSettings() -> FlowContributors {
-        let flow = SettingsFlow(diContainer: settingsSceneDIContainer, rootViewController: rootViewController)
+//        let flow = SettingsFlow(diContainer: settingsSceneDIContainer, rootViewController: rootViewController)
+//        return .one(flowContributor: .contribute(withNextPresentable: flow, withNextStepper: OneStepper(withSingleStep: SettingsStep.mainIsRequired)))
+        let flow = SettingsFlow(diContainer: settingsSceneDIContainer, rootViewController: UINavigationController())
+        Flows.use(flow, when: .created) { root in
+            root.view.backgroundColor = .systemBackground
+            root.modalPresentationStyle = .fullScreen
+            self.rootViewController.present(root, animated: true)
+        }
         return .one(flowContributor: .contribute(withNextPresentable: flow, withNextStepper: OneStepper(withSingleStep: SettingsStep.mainIsRequired)))
+    }
+}
+
+// MARK: - DeepLink
+private extension MoreFlow {
+    func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
+        switch step {
+        case .settings:
+            rootViewController.presentedViewController?.dismiss(animated: false)
+            return .none
+        }
     }
 }

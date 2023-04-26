@@ -8,12 +8,53 @@
 import Foundation
 import os
 
-private enum LogFilter: String {
-    case debug = "💚 DEBUG"
-    case error = "❤️ ERROR"
-    case flow = "💙 FLOW"
-    case api = "💜 API"
-    case warning = "🧡 WARNING"
+private enum LogFilter {
+    case debug
+    case error
+    case flow
+    case api
+    case warning
+}
+
+private extension LogFilter {
+    var icon: String {
+        switch self {
+        case .debug:    return "💚"
+        case .error:    return "❤️"
+        case .flow:     return "💙"
+        case .api:      return "💜"
+        case .warning:  return "🧡"
+        }
+    }
+    
+    var name: String {
+        switch self {
+        case .debug:    return "DEBUG"
+        case .error:    return "ERROR"
+        case .flow:     return "FLOW"
+        case .api:      return "API"
+        case .warning:  return "WARNING"
+        }
+    }
+    
+    var type: OSLogType {
+        switch self {
+        case .debug:    return .default
+        case .error:    return .error
+        case .flow:     return .default
+        case .api:      return .default
+        case .warning:  return .default
+        }
+    }
+    
+    var osLog: OSLog {
+        return OSLog(subsystem: Bundle.main.bundleIdentifier!, category: name)
+    }
+    
+    @available(iOS 14.0, *)
+    var logger: Logger {
+        return Logger(subsystem: Bundle.main.bundleIdentifier!, category: name)
+    }
 }
 
 public struct TSLogger {
@@ -70,21 +111,19 @@ public struct TSLogger {
                             _ function: String = #function,
                             _ line: UInt = #line) {
 #if DEBUG
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss:SSS"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "HH:mm:ss:SSS"
         let fileName = file.components(separatedBy: "/").last?.components(separatedBy: ".").first ?? ""
-        let prefix = "\(filter.rawValue)(\(dateFormatter.string(from: Date())) \(fileName) \(function) \(line)) :"
+//        let prefix = "\(filter.icon) \(filter.name)(\(dateFormatter.string(from: Date())) \(fileName) \(function) \(line)) :"
+        let prefix = "\(filter.icon) \(filter.name) (\(fileName) \(function) \(line)) :"
         let output = items.map { "\($0)" }.joined(separator: separator)
         
-//        if #available(iOS 14.0, *) {
-//            let logger = Logger(subsystem: "com.tsleedev.CleanArchitectureMVVMRxFlowMoya", category: "category")
-//            logger.debug("This is a debug message: \(output)")
-//        } else {
-            print(prefix, output, separator: separator, terminator: terminator)
-//        }
-        
-//        os_log(<#T##message: OSLogMessage##OSLogMessage#>)
-//        os_log(prefix)
+        if #available(iOS 14.0, *) {
+            filter.logger.log(level: filter.type, "\(prefix) \(output)")
+        } else {
+            let message = "\(prefix) \(output)"
+            os_log(filter.type, log: filter.osLog, "%@", message)
+        }
 #endif
     }
 }

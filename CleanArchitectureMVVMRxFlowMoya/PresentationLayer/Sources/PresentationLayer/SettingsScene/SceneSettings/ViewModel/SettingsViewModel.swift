@@ -30,6 +30,8 @@ public final class SettingsViewModel: DetectDeinit, Stepper, ObservableObject {
 extension SettingsViewModel: ViewModelSwiftUIType {
     public struct Input {
         let trigger = PublishSubject<Void>()
+        let popViewController = PublishSubject<Void>()
+        let dismissModal = PublishSubject<Void>()
         let flowCompleted = PublishSubject<Void>()
     }
     
@@ -52,10 +54,24 @@ extension SettingsViewModel: ViewModelSwiftUIType {
             })
             .disposed(by: disposeBag)
         
-        input.flowCompleted
+        input.popViewController
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.steps.accept(SettingsStep.mainIsComplete)
+            })
+            .disposed(by: disposeBag)
+        
+        input.dismissModal
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.steps.accept(SettingsStep.mainIsCompleteModal)
+            })
+            .disposed(by: disposeBag)
+        
+        input.flowCompleted
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.steps.accept(SettingsStep.flowCompleted)
             })
             .disposed(by: disposeBag)
     }

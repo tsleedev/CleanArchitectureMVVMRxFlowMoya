@@ -24,15 +24,33 @@ public class SearchFlow: DetectDeinit, Flow {
     public var root: Presentable {
         return self.rootViewController
     }
-    
+
     public func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? SearchStep else { return .none }
+        if let step = step as? SearchStep {
+            return navigate(to: step)
+        } else if let step = step as? DeepLinkStep {
+            return navigate(to: step)
+        }
+        return .none
+    }
+}
+
+// MARK: - Navigations
+private extension SearchFlow {
+    func navigate(to step: SearchStep) -> FlowContributors {
         switch step {
         case .mainIsRequired:
             return navigateToMain()
         case .detailIsRequired(let viewModel):
             let webItemViewModel = WebItemViewModel(title: viewModel.fullName, startUrl: viewModel.htmlUrl)
             return navigateToWeb(webItemViewModel)
+        }
+    }
+    
+    func navigate(to step: DeepLinkStep) -> FlowContributors {
+        switch step {
+        case .settings:
+            return navigateToDeepLink(to: step)
         }
     }
 }
@@ -51,5 +69,16 @@ private extension SearchFlow {
         let viewModel = WebViewModel(itemViewModel: itemViewModel)
         let flow = WebFlow(viewModel: viewModel, rootViewController: rootViewController)
         return .one(flowContributor: .contribute(withNextPresentable: flow, withNextStepper: OneStepper(withSingleStep: WebStep.mainIsRequired)))
+    }
+}
+
+// MARK: - DeepLink
+private extension SearchFlow {
+    func navigateToDeepLink(to step: DeepLinkStep) -> FlowContributors {
+        switch step {
+        case .settings:
+            rootViewController.popToRootViewController(animated: false)
+            return .none
+        }
     }
 }

@@ -6,6 +6,8 @@
 //
 
 import TSCore
+import TSLogger
+import PresentationLayer
 import UIKit
 import UserNotifications
 
@@ -14,21 +16,20 @@ public class NotificationManager: DetectDeinit { // , NotificationRepository {
     
     private override init() {
         super.init()
-        UNUserNotificationCenter.current().delegate = self
     }
     
     public func initialize() {
         UNUserNotificationCenter.current().delegate = self
     }
     
-    public func requestNotificationAuthorization(completion: @escaping (Bool) -> Void) {
+    public func requestNotificationAuthorization(completion: ((Bool) -> Void)? = nil) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if let error = error {
-                print("Error requesting notification authorization: \(error)")
-                completion(false)
+                TSLogger.debug("Error requesting notification authorization: \(error)")
+                completion?(false)
             } else {
-                print("Notification authorization granted: \(granted)")
-                completion(granted)
+                TSLogger.debug("Notification authorization granted: \(granted)")
+                completion?(granted)
             }
         }
     }
@@ -38,6 +39,7 @@ public class NotificationManager: DetectDeinit { // , NotificationRepository {
     }
 }
 
+// MARK: - UNUserNotificationCenterDelegate
 extension NotificationManager: UNUserNotificationCenterDelegate {
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
         if #available(iOS 14.0, *) {
@@ -48,6 +50,24 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     }
     
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+        let notification = response.notification
+        let userInfo = notification.request.content.userInfo
+        let actionIdentifier = response.actionIdentifier
         
+        switch actionIdentifier {
+        case UNNotificationDefaultActionIdentifier: // Handling when the user taps on a notification
+            DispatchQueue.main.async {
+                self.handleNotification(userInfo: userInfo)
+            }
+        default:
+            TSLogger.error("Unknown action")
+        }
+    }
+}
+
+// MARK: - Helper
+private extension NotificationManager {
+    func handleNotification(userInfo: [AnyHashable: Any]) {
+        Application.shared.navigate(to: DeepLinkStep.settings, closeAllViewController: false)
     }
 }

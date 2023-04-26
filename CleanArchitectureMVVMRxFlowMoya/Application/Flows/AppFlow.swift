@@ -15,23 +15,24 @@ import RxSwift
 import RxCocoa
 
 final class AppFlow: DetectDeinit, Flow {
+    // MARK: - Initialize with Window and DIContainer
     private let window: UIWindow
     private let appDIContainer: AppDIContainer
-    private var rootViewController: UINavigationController!
-    
-    var root: Presentable {
-        return self.window
-    }
     
     init(window: UIWindow, appDIContainer: AppDIContainer) {
         self.window = window
         self.appDIContainer = appDIContainer
     }
     
+    // MARK: - Flow implementation
+    var root: Presentable {
+        return self.window
+    }
+    
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? AppStep else { return .none }
         switch step {
-        case .isRequired:
+        case .mainIsRequired:
             return navigateToMain()
         case .splashIsRequired:
             return navigateToSplash()
@@ -44,7 +45,7 @@ private extension AppFlow {
     func navigateToSplash() -> FlowContributors {
         let splashFlow = SplashFlow()
         TSWindowManager.shared.add(splashFlow.window)
-        let flowContributors = navigate(to: AppStep.isRequired)
+        let flowContributors = navigate(to: AppStep.mainIsRequired)
         if case let .one(flowContributor) = flowContributors {
             return .multiple(flowContributors: [
                 flowContributor,
@@ -65,6 +66,7 @@ private extension AppFlow {
     }
 }
 
+// MARK: - Stepper
 class AppStepper: Stepper {
     let steps = PublishRelay<Step>()
 

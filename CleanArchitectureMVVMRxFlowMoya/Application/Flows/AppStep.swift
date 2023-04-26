@@ -9,6 +9,6 @@ import PresentationLayer
 import RxFlow
 
 enum AppStep: Step {
-    case isRequired
+    case mainIsRequired
     case splashIsRequired
 }

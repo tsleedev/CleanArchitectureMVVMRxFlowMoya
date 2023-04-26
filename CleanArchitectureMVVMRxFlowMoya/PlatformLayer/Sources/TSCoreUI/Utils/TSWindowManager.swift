@@ -12,7 +12,7 @@ public final class TSWindowManager {
     private var scene: UIScene?
     private var windows: [UIWindow] = []
     
-    public func configure(with scene: UIScene) {
+    public func initialize(with scene: UIScene) {
         if self.scene == nil {
             self.scene = scene
         } else {
