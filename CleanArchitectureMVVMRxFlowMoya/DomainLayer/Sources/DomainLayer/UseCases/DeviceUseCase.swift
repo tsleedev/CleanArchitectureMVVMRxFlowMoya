@@ -1,6 +1,6 @@
 //  
 //  DeviceUseCase.swift
-//  CleanArchitectureMVVMRxFlowMoya
+//  
 //
 //  Created by TAE SU LEE on 2023/04/18.
 //
