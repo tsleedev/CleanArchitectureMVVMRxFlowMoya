@@ -18,11 +18,7 @@ extension ResponseModel {
     }
     
     struct Settings: Decodable {
-        public let title: String
-
-        public init(title: String) {
-            self.title = title
-        }
+        let title: String
     }
 }
 

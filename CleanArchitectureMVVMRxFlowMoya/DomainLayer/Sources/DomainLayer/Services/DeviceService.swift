@@ -12,7 +12,7 @@ import RxSwift
 public final class DeviceService: DetectDeinit {
     public var disposeBag = DisposeBag()
     
-    // MARK: - Property
+    // MARK: - Properties
     private var uniqueAppInstanceIDPublishSubject = BehaviorSubject<String?>(value: nil)
     private var uniqueAppInstanceID: String? {
         didSet {

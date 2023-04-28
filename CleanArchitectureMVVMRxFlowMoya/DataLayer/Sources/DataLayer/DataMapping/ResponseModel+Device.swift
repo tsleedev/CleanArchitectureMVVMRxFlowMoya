@@ -18,11 +18,7 @@ extension ResponseModel {
     }
     
     struct Device: Decodable {
-        public let uniqueAppInstanceID: String
-
-        public init(uniqueAppInstanceID: String) {
-            self.uniqueAppInstanceID = uniqueAppInstanceID
-        }
+        let uniqueAppInstanceID: String
     }
 }
 

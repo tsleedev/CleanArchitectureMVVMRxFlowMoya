@@ -14,7 +14,6 @@
 		7C91CB352990E94500899873 /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 7C91CB342990E94500899873 /* PresentationLayer */; };
 		7C91CB382990E9AE00899873 /* DILayer in Frameworks */ = {isa = PBXBuildFile; productRef = 7C91CB372990E9AE00899873 /* DILayer */; };
 		7CAA63062925FC5700872B92 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7CAA63052925FC5600872B92 /* .swiftlint.yml */; };
-		7CCA967B29F1095000A9BEFA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCA967A29F1095000A9BEFA /* NotificationManager.swift */; };
 		7CD53DF4292286D00018637E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD53DF3292286D00018637E /* AppDelegate.swift */; };
 		7CD53DF6292286D00018637E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD53DF5292286D00018637E /* SceneDelegate.swift */; };
 		7CD53DFD292286D20018637E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD53DFC292286D20018637E /* Assets.xcassets */; };
@@ -44,7 +43,6 @@
 		7CB121CF2988EC5100FD1620 /* PlatformLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PlatformLayer; path = CleanArchitectureMVVMRxFlowMoya/PlatformLayer; sourceTree = "<group>"; };
 		7CB121D02988EC5100FD1620 /* DomainLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DomainLayer; path = CleanArchitectureMVVMRxFlowMoya/DomainLayer; sourceTree = "<group>"; };
 		7CCA967729F0FC5300A9BEFA /* CleanArchitectureMVVMRxFlowMoya.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CleanArchitectureMVVMRxFlowMoya.entitlements; sourceTree = "<group>"; };
-		7CCA967A29F1095000A9BEFA /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		7CD53DF0292286D00018637E /* CleanArchitectureMVVMRxFlowMoya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitectureMVVMRxFlowMoya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD53DF3292286D00018637E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD53DF5292286D00018637E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,14 +90,6 @@
 				7C91CB2A2990E80900899873 /* AppStep.swift */,
 			);
 			path = Flows;
-			sourceTree = "<group>";
-		};
-		7CCA967929F108E400A9BEFA /* FrameworksAndDrivers */ = {
-			isa = PBXGroup;
-			children = (
-				7CCA967A29F1095000A9BEFA /* NotificationManager.swift */,
-			);
-			path = FrameworksAndDrivers;
 			sourceTree = "<group>";
 		};
 		7CD53DE7292286D00018637E = {
@@ -150,7 +140,6 @@
 				7CD53DF3292286D00018637E /* AppDelegate.swift */,
 				7CD53DF5292286D00018637E /* SceneDelegate.swift */,
 				7C91CB282990E80900899873 /* Flows */,
-				7CCA967929F108E400A9BEFA /* FrameworksAndDrivers */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -293,7 +282,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CCA967B29F1095000A9BEFA /* NotificationManager.swift in Sources */,
 				7C91CB2E2990E90000899873 /* Application.swift in Sources */,
 				7CD53DF4292286D00018637E /* AppDelegate.swift in Sources */,
 				7C91CB2D2990E90000899873 /* AppStep.swift in Sources */,

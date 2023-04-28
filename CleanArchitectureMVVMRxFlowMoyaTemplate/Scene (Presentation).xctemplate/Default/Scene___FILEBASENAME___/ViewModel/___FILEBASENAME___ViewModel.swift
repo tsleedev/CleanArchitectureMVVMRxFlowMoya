@@ -7,7 +7,7 @@ import RxSwift
 import RxCocoa
 import RxFlow
 
-public final class ___VARIABLE_productName:identifier___ViewModel:  DetectDeinit, Stepper {
+public final class ___VARIABLE_productName:identifier___ViewModel: DetectDeinit, Stepper {
     public let steps = PublishRelay<Step>()
     public var disposeBag = DisposeBag()
     

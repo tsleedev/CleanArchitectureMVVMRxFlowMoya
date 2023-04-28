@@ -18,10 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         TSWindowManager.shared.initialize(with: scene)
         Application.shared.initialize(with: scene)
         Application.shared.start()
-        
-        NotificationManager.shared.initialize()
-        NotificationManager.shared.registerForRemoteNotifications()
-        NotificationManager.shared.requestNotificationAuthorization()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -22,6 +22,7 @@ final class Application: BackgroundControllable, ForegroundControllable {
     private let appConfiguration: AppConfiguration
     private let appDIContainer: AppDIContainer
     private let deviceService: DeviceService
+    private let notificationService: NotificationService
     
     private var coordinator: FlowCoordinator?
     private var disposeBag = DisposeBag()
@@ -43,6 +44,12 @@ final class Application: BackgroundControllable, ForegroundControllable {
         deviceService = DeviceService(appInfoUseCase: deviceServiceDIContainer.makeAppInfoUseCase(),
                                       userDefaultsUseCase: deviceServiceDIContainer.makeUserDefaultsUseCase(),
                                       deviceUseCase: deviceServiceDIContainer.makeDeviceUseCase())
+        
+        let notificationServiceDIContainer = appDIContainer.makeServiceDIContainer().makeNotificationServiceDIContainer()
+        notificationService = NotificationService(useCase: notificationServiceDIContainer.makeUseCase())
+        notificationService.registerForRemoteNotifications()
+        requestNotificationAuthorization()
+        bindNotification()
     }
     
     public func initialize(with scene: UIScene) {
@@ -145,5 +152,26 @@ private extension Application {
         window?.resignKey()
         window?.removeFromSuperview()
         window = nil
+    }
+}
+
+// MARK: - Notification
+private extension Application {
+    func requestNotificationAuthorization() {
+        notificationService.requestNotificationAuthorization()
+            .subscribe(onSuccess: { granted in
+                TSLogger.debug("Notification authorization granted: \(granted)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func bindNotification() {
+        notificationService.syncNotification()
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(onNext: { notification in
+                TSLogger.debug(notification)
+                Application.shared.navigate(to: DeepLinkStep.settings, closeAllViewController: false)
+            })
+            .disposed(by: disposeBag)
     }
 }

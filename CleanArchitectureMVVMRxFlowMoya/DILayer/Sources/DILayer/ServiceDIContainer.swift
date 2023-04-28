@@ -28,6 +28,11 @@ public extension ServiceDIContainer {
                                                                 deviceAPIService: deviceAPIService)
        return DeviceServiceDIContainer(dependencies: dependencies)
    }
+    
+    func makeNotificationServiceDIContainer() -> NotificationServiceDIContainer {
+       let dependencies = NotificationServiceDIContainer.Dependencies()
+       return NotificationServiceDIContainer(dependencies: dependencies)
+    }
 }
 
 // MARK: - Helper

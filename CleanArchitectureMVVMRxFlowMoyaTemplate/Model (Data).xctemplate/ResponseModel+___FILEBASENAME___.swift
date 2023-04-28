@@ -13,11 +13,7 @@ extension ResponseModel {
     }
     
     struct ___VARIABLE_productName___: Decodable {
-//        public let title: String
-//
-//        public init(title: String) {
-//            self.title = title
-//        }
+//        let title: String
     }
 }
 
