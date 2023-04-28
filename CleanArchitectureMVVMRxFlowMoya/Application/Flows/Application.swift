@@ -84,7 +84,7 @@ final class Application: BackgroundControllable, ForegroundControllable {
     }
     
     func restart() {
-        reset()
+        resetWindow()
         createWindow()
         start()
     }
@@ -147,7 +147,7 @@ private extension Application {
         self.window = window
     }
     
-    func reset() {
+    func resetWindow() {
         window?.rootViewController = nil
         window?.resignKey()
         window?.removeFromSuperview()
