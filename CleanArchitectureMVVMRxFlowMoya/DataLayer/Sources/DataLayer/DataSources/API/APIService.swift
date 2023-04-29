@@ -18,6 +18,13 @@ public enum APIType {
 
 public final class APIService<Target: StatusCodeSampleDataTargetType>: DetectDeinit {
     private let provider: MoyaProvider<Target>
+    private let session: Session = {
+        let configuration = URLSessionConfiguration.default
+        configuration.headers = .default
+        configuration.timeoutIntervalForRequest = 20
+        configuration.timeoutIntervalForResource = 20
+        return Session(configuration: configuration, startRequestsImmediately: false)
+    }()
     
     public init(apiBaseURL: URL, apiType: APIType = .real) {
         let plugin = APILogPlugin()

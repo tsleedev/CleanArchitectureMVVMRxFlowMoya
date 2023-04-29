@@ -10,7 +10,6 @@ import DomainLayer
 import RxSwift
 
 public class SearchRepositoryImp: DetectDeinit, SearchRepository {
-    
     private let service: SearchAPIService
     
     public init(service: SearchAPIService) {

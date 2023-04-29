@@ -143,7 +143,7 @@ private extension Application {
         window.windowScene = windowScene
         let storyboard = UIStoryboard(name: "LaunchScreen", bundle: nil)
         window.rootViewController = storyboard.instantiateInitialViewController()
-        self.windowScene = windowScene
+        window.makeKeyAndVisible()
         self.window = window
     }
     

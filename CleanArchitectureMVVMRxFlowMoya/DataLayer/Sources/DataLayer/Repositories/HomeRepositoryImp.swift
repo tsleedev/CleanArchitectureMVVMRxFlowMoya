@@ -10,7 +10,6 @@ import DomainLayer
 import RxSwift
 
 public class HomeRepositoryImp: DetectDeinit, HomeRepository {
-    
     private let service: HomeAPIService
     
     public init(service: HomeAPIService) {

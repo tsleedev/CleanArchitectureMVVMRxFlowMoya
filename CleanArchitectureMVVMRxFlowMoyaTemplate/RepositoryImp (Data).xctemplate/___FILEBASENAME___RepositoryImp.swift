@@ -5,12 +5,12 @@ import DomainLayer
 import RxSwift
 
 public class ___VARIABLE_productName:identifier___RepositoryImp: DetectDeinit, ___VARIABLE_productName___Repository {
-    private let service: ___VARIABLE_productName:identifier___APIService
-    
-    public init(service: ___VARIABLE_productName:identifier___APIService) {
-        self.service = service
-    }
-    
+//    private let service: ___VARIABLE_productName:identifier___Service
+//
+//    public init(service: ___VARIABLE_productName:identifier___Service) {
+//        self.service = service
+//    }
+//    
 //    public func readItems(_ param: Params.___VARIABLE_productName___) -> Single<[Entities.___VARIABLE_productName___]> {
 //        let requestModel = RequestModel.___VARIABLE_productName___()
 //        return service

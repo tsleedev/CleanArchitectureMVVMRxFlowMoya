@@ -32,7 +32,7 @@ public final class ___VARIABLE_productName:identifier___Flow: DetectDeinit, Flow
 
 // MARK: - Navigations
 private extension ___VARIABLE_productName:identifier___Flow {
-    func navigate(to step: WebStep) -> FlowContributors {
+    func navigate(to step: ___VARIABLE_productName:identifier___Step) -> FlowContributors {
         switch step {
         case .mainIsRequired:
             return navigateToMain()
