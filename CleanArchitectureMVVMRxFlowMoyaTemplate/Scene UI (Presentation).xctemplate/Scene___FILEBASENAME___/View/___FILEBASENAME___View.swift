@@ -23,7 +23,7 @@ struct ___VARIABLE_productName:identifier___View: View {
 // MARK: - Previews
 struct ___VARIABLE_productName:identifier___View_Previews: PreviewProvider {
     static var previews: some View {
-        let diContainer = AppDIContainer()
+        let diContainer = AppDIContainer(mode: .useSampleData, target: .dev)
         let viewModel = ___VARIABLE_productName:identifier___ViewModel(useCase: diContainer.make___VARIABLE_productName:identifier___SceneDIContainer().makeUseCase())
         return ___VARIABLE_productName:identifier___View(viewModel: viewModel)
     }
