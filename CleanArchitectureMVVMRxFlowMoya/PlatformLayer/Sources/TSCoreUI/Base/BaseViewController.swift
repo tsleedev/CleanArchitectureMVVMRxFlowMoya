@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 
 open class BaseViewController: UIViewController {
-    
     lazy private(set) var className: String = {
         return type(of: self).description().components(separatedBy: ".").last ?? ""
     }()
@@ -19,6 +18,6 @@ open class BaseViewController: UIViewController {
         TSLogger.flow("DEINIT: \(self.className)")
     }
     
-    // MARK: Rx
+    // MARK: - Rx
     public var disposeBag = DisposeBag()
 }

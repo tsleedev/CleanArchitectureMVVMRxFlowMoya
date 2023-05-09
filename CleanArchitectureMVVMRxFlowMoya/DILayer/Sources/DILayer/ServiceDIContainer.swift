@@ -19,12 +19,12 @@ public final class ServiceDIContainer {
 // MARK: - MakeDIContainer
 public extension ServiceDIContainer {
     func makeDeviceServiceDIContainer() -> DeviceServiceDIContainer {
-       let appInfoUseCase = AppInfoService()
-       let userDefaultsUseCase = UserDefaultsService()
+       let appInfoService = AppInfoService()
+       let userDefaultsService = UserDefaultsService()
        let deviceAPIService = DeviceAPIService(apiBaseURL: configuration.apiBaseURL,
                                                apiType: makeAPIType(statusCode: 200, delay: 1))
-       let dependencies = DeviceServiceDIContainer.Dependencies(appInfoUseCase: appInfoUseCase,
-                                                                userDefaultsUseCase: userDefaultsUseCase,
+       let dependencies = DeviceServiceDIContainer.Dependencies(appInfoService: appInfoService,
+                                                                userDefaultsService: userDefaultsService,
                                                                 deviceAPIService: deviceAPIService)
        return DeviceServiceDIContainer(dependencies: dependencies)
    }
@@ -41,7 +41,7 @@ private extension ServiceDIContainer {
         let apiType: APIType
         switch self.configuration.mode {
         case .useSampleData:
-            apiType = .mock(statusCode: statusCode, mockFile: nil, delay: 1)
+            apiType = .mock(statusCode: statusCode, mockFile: nil, delay: delay)
         case .useRealData:
             apiType = .real
         }

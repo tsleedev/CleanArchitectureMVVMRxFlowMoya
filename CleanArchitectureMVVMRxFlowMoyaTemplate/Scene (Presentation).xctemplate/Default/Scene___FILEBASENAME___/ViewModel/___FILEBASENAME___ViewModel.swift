@@ -38,20 +38,17 @@ extension ___VARIABLE_productName:identifier___ViewModel: ViewModelType {
         let activityIndicator = ActivityIndicator()
         let errorTracker = ErrorTracker()
         
-        input.trigger
-            .observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
-            .flatMapLatest { [weak self] _ -> Observable<[___VARIABLE_productName:identifier__ItemViewModel]> in
-                guard let self = self else { return .empty() }
-                return self.useCase.readItems()
-                    .trackActivity(activityIndicator)
-                    .trackError(errorTracker)
-                    .map { $0.map { ___VARIABLE_productName:identifier__ItemViewModel(title: $0.title) } }
-            }
-            .subscribe(onNext: { [weak self] items in
-                guard let self = self else { return }
-                self.items = items
-            })
-            .disposed(by: disposeBag)
+//        input.trigger
+//            .observe(on: ConcurrentDispatchQueueScheduler(qos: .background))
+//            .flatMapLatest { [weak self] _ -> Observable<[___VARIABLE_productName:identifier___ItemViewModel]> in
+//                guard let self = self else { return .empty() }
+//                return self.useCase.readItems()
+//                    .trackActivity(activityIndicator)
+//                    .trackError(errorTracker)
+//                    .map { $0.map { ___VARIABLE_productName:identifier___ItemViewModel(title: $0.title) } }
+//            }
+//            .bind(to: items)
+//            .disposed(by: disposeBag)
         
         input.flowCompleted
             .subscribe(onNext: { [weak self] _ in

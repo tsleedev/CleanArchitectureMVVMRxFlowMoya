@@ -53,7 +53,7 @@ private extension SceneDIContainer {
         let apiType: APIType
         switch self.configuration.mode {
         case .useSampleData:
-            apiType = .mock(statusCode: statusCode, mockFile: nil, delay: 1)
+            apiType = .mock(statusCode: statusCode, mockFile: nil, delay: delay)
         case .useRealData:
             apiType = .real
         }

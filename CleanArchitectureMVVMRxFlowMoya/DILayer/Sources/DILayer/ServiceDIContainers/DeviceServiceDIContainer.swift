@@ -11,8 +11,8 @@ import UIKit
 
 public final class DeviceServiceDIContainer {
     struct Dependencies {
-        let appInfoUseCase: AppInfoService
-        let userDefaultsUseCase: UserDefaultsService
+        let appInfoService: AppInfoService
+        let userDefaultsService: UserDefaultsService
         let deviceAPIService: DeviceAPIService
     }
     
@@ -41,11 +41,11 @@ public extension DeviceServiceDIContainer {
 // MARK: - Repositories
 private extension DeviceServiceDIContainer {
     func makeAppInfoRepository() -> AppInfoRepository {
-        return AppInfoRepositoryImp(service: dependencies.appInfoUseCase)
+        return AppInfoRepositoryImp(service: dependencies.appInfoService)
     }
     
     func makeUserDefaultsRepository() -> UserDefaultsRepository {
-        return UserDefaultsRepositoryImp(service: dependencies.userDefaultsUseCase)
+        return UserDefaultsRepositoryImp(service: dependencies.userDefaultsService)
     }
     
     func makeDeviceRepository() -> DeviceRepository {
