@@ -171,7 +171,7 @@
 				7CD53DEC292286D00018637E /* Sources */,
 				7CD53DED292286D00018637E /* Frameworks */,
 				7CD53DEE292286D00018637E /* Resources */,
-				7CF1407A2A0B4EDD00DDA576 /* ShellScript */,
+				7CF1407A2A0B4EDD00DDA576 /* SwiftGen Script */,
 			);
 			buildRules = (
 			);
@@ -269,7 +269,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7CF1407A2A0B4EDD00DDA576 /* ShellScript */ = {
+		7CF1407A2A0B4EDD00DDA576 /* SwiftGen Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -278,6 +278,7 @@
 			);
 			inputPaths = (
 			);
+			name = "SwiftGen Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
