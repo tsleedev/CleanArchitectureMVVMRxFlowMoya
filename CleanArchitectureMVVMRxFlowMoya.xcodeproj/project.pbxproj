@@ -32,7 +32,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7C42DC8E2994E40F00657129 /* ColorSet_Generator.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ColorSet_Generator.sh; sourceTree = "<group>"; };
 		7C91CB292990E80900899873 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		7C91CB2A2990E80900899873 /* AppStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStep.swift; sourceTree = "<group>"; };
 		7C91CB2B2990E80900899873 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
@@ -74,14 +73,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C42DC8D2994E40F00657129 /* Scripts */ = {
-			isa = PBXGroup;
-			children = (
-				7C42DC8E2994E40F00657129 /* ColorSet_Generator.sh */,
-			);
-			path = Scripts;
-			sourceTree = "<group>";
-		};
 		7C91CB282990E80900899873 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,7 +120,6 @@
 				7CD53DFC292286D20018637E /* Assets.xcassets */,
 				7CD53DFE292286D20018637E /* LaunchScreen.storyboard */,
 				7CD53E01292286D20018637E /* Info.plist */,
-				7C42DC8D2994E40F00657129 /* Scripts */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -181,6 +171,7 @@
 				7CD53DEC292286D00018637E /* Sources */,
 				7CD53DED292286D00018637E /* Frameworks */,
 				7CD53DEE292286D00018637E /* Resources */,
+				7CF1407A2A0B4EDD00DDA576 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -276,6 +267,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7CF1407A2A0B4EDD00DDA576 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd CleanArchitectureMVVMRxFlowMoya/PlatformLayer && env -i PATH=\"$PATH\" HOME=\"$HOME\" swift package --allow-writing-to-package-directory generate-code-for-resources\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7CD53DEC292286D00018637E /* Sources */ = {
