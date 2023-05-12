@@ -21,14 +21,16 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        List(viewModel.items) { item in
-            Text(item.title)
+        VStack {
+            List(viewModel.items) { item in
+                Text(item.title)
+            }
+            Button(action: {
+                input.popViewController.onNext(())
+            }, label: {
+                Text("POP")
+            })
         }
-        Button(action: {
-            input.popViewController.onNext(())
-        }, label: {
-            Text("POP")
-        })
         .onAppear {
             input.trigger.onNext(())
         }

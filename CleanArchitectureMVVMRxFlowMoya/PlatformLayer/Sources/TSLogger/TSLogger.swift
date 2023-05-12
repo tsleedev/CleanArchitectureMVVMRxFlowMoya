@@ -111,19 +111,24 @@ public struct TSLogger {
                             _ function: String = #function,
                             _ line: UInt = #line) {
 #if DEBUG
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "HH:mm:ss:SSS"
+        //        let fileName = file.components(separatedBy: "/").last?.components(separatedBy: ".").first ?? ""
+        //        let prefix = "\(filter.icon) \(filter.name) (\(fileName) \(function) \(line)) :"
+        //        let output = items.map { "\($0)" }.joined(separator: separator)
+        //
+        //        if #available(iOS 14.0, *) {
+        //            filter.logger.log(level: filter.type, "\(prefix) \(output)")
+        //        } else {
+        //            let message = "\(prefix) \(output)"
+        //            os_log(filter.type, log: filter.osLog, "%@", message)
+        //        }
+                
+        // MARK: - For Previews
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss:SSS"
         let fileName = file.components(separatedBy: "/").last?.components(separatedBy: ".").first ?? ""
-//        let prefix = "\(filter.icon) \(filter.name)(\(dateFormatter.string(from: Date())) \(fileName) \(function) \(line)) :"
-        let prefix = "\(filter.icon) \(filter.name) (\(fileName) \(function) \(line)) :"
+        let prefix = "\(filter.icon) \(filter.name)(\(dateFormatter.string(from: Date())) \(fileName) \(function) \(line)) :"
         let output = items.map { "\($0)" }.joined(separator: separator)
-        
-        if #available(iOS 14.0, *) {
-            filter.logger.log(level: filter.type, "\(prefix) \(output)")
-        } else {
-            let message = "\(prefix) \(output)"
-            os_log(filter.type, log: filter.osLog, "%@", message)
-        }
+        print("\(prefix) \(output)")
 #endif
     }
 }

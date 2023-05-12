@@ -21,18 +21,20 @@ struct MoreView: View {
     }
     
     var body: some View {
-        List(viewModel.items) { item in
-            Button {
-                input.didSelect.onNext(item)
-            } label: {
-                Text(item.title)
+        VStack {
+            List(viewModel.items) { item in
+                Button {
+                    input.didSelect.onNext(item)
+                } label: {
+                    Text(item.title)
+                }
             }
+            Button(action: {
+                input.restartApp.onNext(())
+            }, label: {
+                Text("RESTART APP")
+            })
         }
-        Button(action: {
-            input.restartApp.onNext(())
-        }, label: {
-            Text("RESTART APP")
-        })
         .onAppear {
             input.trigger.onNext(())
         }
