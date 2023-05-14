@@ -8,7 +8,6 @@
 import UIKit
 
 public class TSButton: UIButton {
-    
     // MARK: - IBInspectable
     @IBInspectable private var IBTypography: String? {
         didSet {
@@ -52,7 +51,7 @@ public class TSButton: UIButton {
     @IBInspectable public var highlightedBgColor: UIColor?
     @IBInspectable public var disabledBgColor: UIColor = .lightGray
     
-    // MARK: - Property
+    // MARK: - Properties
     private var overlayview: UIView = UIView()
     private var overlayAlpha = 1 - 0.16
     

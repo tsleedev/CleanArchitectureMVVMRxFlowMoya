@@ -32,6 +32,7 @@ class ___VARIABLE_productName:identifier___ViewController: BaseViewController {
         
         setupViews()
         setupConstraints()
+        configureUI()
         bindViewModel()
     }
     
@@ -58,7 +59,9 @@ private extension ___VARIABLE_productName:identifier___ViewController {
     }
     
     func configureUI() {
-        // Set values for other UI elements
+        // Set initial values for other UI elements
+        
+        // Set localization for UI elements
     }
     
     func bindViewModel() {

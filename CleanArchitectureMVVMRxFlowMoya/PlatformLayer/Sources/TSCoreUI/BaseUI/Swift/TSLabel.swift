@@ -9,6 +9,7 @@ import TSCore
 import UIKit
 
 public class TSLabel: UILabel {
+    // MARK: - IBInspectable
     @IBInspectable private var IBTypography: String? {
         didSet {
             if let ibtypography = IBTypography, !ibtypography.isEmpty {
@@ -33,6 +34,7 @@ public class TSLabel: UILabel {
         }
     }
     
+    // MARK: - Properties
     public var typography: TSStyle.Typography? {
         didSet {
             configureLabel()
@@ -69,37 +71,12 @@ public class TSLabel: UILabel {
             let mutableAttributedText = NSMutableAttributedString(attributedString: attributedText)
             mutableAttributedText.with(attributes: typographyAttributes)
             super.attributedText = mutableAttributedText
-            addUnderline()
         }
     }
     
     public var html: String? {
         didSet {
             configureLabel()
-        }
-    }
-    
-//    public override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        contentMode = .center
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        contentMode = .center
-//    }
-    
-    func addUnderline() {
-        if let attributedText = attributedText {
-            let mutableAttributedText = NSMutableAttributedString(attributedString: attributedText)
-            let range = NSRange(location: 0, length: mutableAttributedText.length)
-            
-            mutableAttributedText.addAttributes([
-                .underlineStyle: NSUnderlineStyle.single.rawValue,
-                .underlineColor: UIColor.red // 밑줄 색상을 선택합니다.
-            ], range: range)
-            
-            super.attributedText = mutableAttributedText
         }
     }
 }
@@ -125,7 +102,6 @@ private extension TSLabel {
             }
         } else if let text = text, !text.isEmpty {
             super.attributedText = NSAttributedString(string: text, attributes: typographyAttributes)
-            addUnderline()
         } else {
             super.attributedText = nil
         }
