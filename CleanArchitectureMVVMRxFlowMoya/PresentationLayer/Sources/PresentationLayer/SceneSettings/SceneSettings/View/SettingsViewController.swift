@@ -59,7 +59,7 @@ private extension SettingsViewController {
             rightBarButtonItem.rx.tap.asDriver()
                 .drive(onNext: { [weak self] _ in
                     guard let self = self else { return }
-                    let rootView = hostingController.rootView as SettingsView
+                    let rootView = self.hostingController.rootView as SettingsView
                     rootView.input.dismissModal.onNext(())
                 })
                 .disposed(by: disposeBag)
