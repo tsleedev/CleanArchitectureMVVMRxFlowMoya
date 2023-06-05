@@ -52,3 +52,18 @@ private extension DeviceServiceDIContainer {
         return DeviceRepositoryImp(service: dependencies.deviceAPIService)
     }
 }
+
+// MARK: - SampleDataProviding
+struct DeviceSampleDataProviding: SampleDataProviding {
+    func provideSampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> SampleData? {
+        guard let endpoint = endpoint as? DeviceAPI else { return nil }
+        switch endpoint {
+        case .regist:
+            return SampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Device.deviceRegist200)
+        case .update:
+            return SampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Device.deviceRegist200)
+        case .deviceToken:
+            return SampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Device.deviceRegist200)
+        }
+    }
+}

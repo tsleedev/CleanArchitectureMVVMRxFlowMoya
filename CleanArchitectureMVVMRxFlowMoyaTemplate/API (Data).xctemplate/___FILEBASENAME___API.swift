@@ -11,7 +11,7 @@ public enum ___VARIABLE_productName:identifier___API {
 //    case readItem
 }
 
-extension ___VARIABLE_productName:identifier___API: StatusCodeSampleDataTargetType {
+extension ___VARIABLE_productName:identifier___API: MoyaTargetTypeWrapper {
     public var baseURL: URL {
         return URL(string: "about:blank")! // Not used: baseURL is set directly in APIService's initializer
     }
@@ -35,7 +35,7 @@ extension ___VARIABLE_productName:identifier___API: StatusCodeSampleDataTargetTy
     }
     
     public var sampleData: Data {
-        return Data() // Replaced: Use sampleData(statusCode:) instead
+        return Data()
     }
     
     public var task: Moya.Task {
@@ -52,13 +52,5 @@ extension ___VARIABLE_productName:identifier___API: StatusCodeSampleDataTargetTy
 //            return nil
 //        }
         return nil
-    }
-    
-    public func sampleData(statusCode: Int, mockFile: JSONFile?) -> Data {
-        if let mockFile = mockFile {
-            return JSONLoader.loadJSONFile(mockFile) ?? Data()
-        }
-        
-        return JSONLoader.loadJSONFile(JSONFile./* Input JSONFile Enum */(statusCode)) ?? Data()
     }
 }
