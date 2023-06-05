@@ -7,16 +7,7 @@
 
 import Foundation
 
-public enum JSONFile {
-    case deviceRegist(Int)
-    case deviceUpdate(Int)
-    case deviceDeviceToken(Int)
-    case home(Int)
-    case more(Int)
-    case search(Int)
-    case searchNoItems
-    case settings(Int)
-}
+public enum JSONFile { }
 
 public extension JSONFile {
     enum Device {
