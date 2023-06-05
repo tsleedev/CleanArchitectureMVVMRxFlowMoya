@@ -15,7 +15,7 @@ public enum HomeAPI {
 //    case readItem
 }
 
-extension HomeAPI: StatusCodeSampleDataTargetType {
+extension HomeAPI: MoyaTargetTypeWrapper {
     public var baseURL: URL {
         return URL(string: "about:blank")! // Not used: baseURL is set directly in APIService's initializer
     }
@@ -39,7 +39,7 @@ extension HomeAPI: StatusCodeSampleDataTargetType {
     }
     
     public var sampleData: Data {
-        return Data() // Replaced: Use sampleData(statusCode:) instead
+        return Data()
     }
     
     public var task: Moya.Task {
@@ -56,13 +56,5 @@ extension HomeAPI: StatusCodeSampleDataTargetType {
 //            return .nil
 //        }
         return nil
-    }
-    
-    public func sampleData(statusCode: Int, mockFile: JSONFile?) -> Data {
-        if let mockFile = mockFile {
-            return JSONLoader.loadJSONFile(mockFile) ?? Data()
-        }
-        
-        return JSONLoader.loadJSONFile(JSONFile.home(statusCode)) ?? Data()
     }
 }

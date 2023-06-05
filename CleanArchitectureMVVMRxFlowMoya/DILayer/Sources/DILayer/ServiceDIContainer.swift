@@ -22,7 +22,7 @@ public extension ServiceDIContainer {
        let appInfoService = AppInfoService()
        let userDefaultsService = UserDefaultsService()
        let deviceAPIService = DeviceAPIService(apiBaseURL: configuration.apiBaseURL,
-                                               apiType: makeAPIType(statusCode: 200, delay: 1))
+                                               sampleData: makeSampleDataProviding { DeviceSampleDataProviding() })
        let dependencies = DeviceServiceDIContainer.Dependencies(appInfoService: appInfoService,
                                                                 userDefaultsService: userDefaultsService,
                                                                 deviceAPIService: deviceAPIService)
@@ -37,14 +37,12 @@ public extension ServiceDIContainer {
 
 // MARK: - Helper
 private extension ServiceDIContainer {
-    func makeAPIType(statusCode: Int, delay: TimeInterval) -> APIType {
-        let apiType: APIType
+    func makeSampleDataProviding(_ makeSampleData: () -> SampleDataProviding) -> SampleDataProviding? {
         switch self.configuration.mode {
         case .useSampleData:
-            apiType = .mock(statusCode: statusCode, mockFile: nil, delay: delay)
+            return makeSampleData()
         case .useRealData:
-            apiType = .real
+            return nil
         }
-        return apiType
     }
 }

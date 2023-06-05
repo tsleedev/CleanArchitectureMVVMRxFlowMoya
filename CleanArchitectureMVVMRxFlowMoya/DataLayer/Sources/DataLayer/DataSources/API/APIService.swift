@@ -11,12 +11,7 @@ import Moya
 import RxMoya
 import RxSwift
 
-public enum APIType {
-    case real
-    case mock(statusCode: Int = 200, mockFile: JSONFile?, delay: TimeInterval = 0)
-}
-
-public final class APIService<Target: StatusCodeSampleDataTargetType>: DetectDeinit {
+public final class APIService<Target: MoyaTargetTypeWrapper>: DetectDeinit {
     private let provider: MoyaProvider<Target>
     private let session: Session = {
         let configuration = URLSessionConfiguration.default
@@ -26,16 +21,15 @@ public final class APIService<Target: StatusCodeSampleDataTargetType>: DetectDei
         return Session(configuration: configuration, startRequestsImmediately: false)
     }()
     
-    public init(apiBaseURL: URL, apiType: APIType = .real) {
+    public init(apiBaseURL: URL, sampleData: SampleDataProviding?) {
         let plugin = APILogPlugin()
         let endpointClosure = { (target: Target) -> Endpoint in
             let url = apiBaseURL.appendingPathComponent(target.path).absoluteString
             let sampleResponseClosure: EndpointSampleResponse
-            switch apiType {
-            case .real:
+            if let sampleData = sampleData?.provideSampleData(forEndpoint: target) {
+                sampleResponseClosure = .networkResponse(sampleData.statusCode, sampleData.getSampleData(sampleData.jsonLoader) ?? target.sampleData)
+            } else {
                 sampleResponseClosure = .networkResponse(200, target.sampleData)
-            case .mock(let statusCode, let mockFile, _):
-                sampleResponseClosure = .networkResponse(statusCode, target.sampleData(statusCode: statusCode, mockFile: mockFile))
             }
             return Endpoint(url: url,
                             sampleResponseClosure: { sampleResponseClosure },
@@ -44,15 +38,17 @@ public final class APIService<Target: StatusCodeSampleDataTargetType>: DetectDei
                             httpHeaderFields: target.headers)
         }
         
-        switch apiType {
-        case .real:
-            provider = MoyaProvider<Target>(endpointClosure: endpointClosure,
-                                            plugins: [plugin])
-        case .mock(_, _, let delay):
-            provider = MoyaProvider<Target>(endpointClosure: endpointClosure,
-                                            stubClosure: delay == 0 ? MoyaProvider.immediatelyStub : MoyaProvider.delayedStub(delay),
-                                            plugins: [plugin])
+        let stubClosure: MoyaProvider<Target>.StubClosure = { (target: Target) in
+            if let sampleData = sampleData?.provideSampleData(forEndpoint: target) {
+                return sampleData.delay > 0 ? .delayed(seconds: sampleData.delay) : .immediate
+            } else {
+                return .never
+            }
         }
+        
+        provider = MoyaProvider<Target>(endpointClosure: endpointClosure,
+                                        stubClosure: stubClosure,
+                                        plugins: [plugin])
     }
     
     public func request(_ target: Target) -> Single<Response> {

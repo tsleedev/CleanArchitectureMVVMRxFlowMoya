@@ -19,7 +19,7 @@ App
 │   │               └── ViewModel.swift
 │   ├── DomainLayer
 │   │   ├── Entities
-│   │   ├── Interfaces
+│   │   ├── Repositories
 │   │   └── UseCases
 │   └── DataLayer
 │       ├── DataMapping
@@ -30,6 +30,8 @@ App
 │       │   ├── Firebase
 │       │   ├── UserDefaults
 │       │   └── Realm
+│       ├── MockData
+│       ├── Protocols
 │       ├── Repositories
 │       └── Resources
 │           └── SampleData

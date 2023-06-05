@@ -17,7 +17,7 @@ public enum DeviceAPI {
     case deviceToken(uniqueAppInstanceID: String, param: RequestModel.Device.DeviceToken)
 }
 
-extension DeviceAPI: StatusCodeSampleDataTargetType {
+extension DeviceAPI: MoyaTargetTypeWrapper {
     public var baseURL: URL {
         return URL(string: "about:blank")! // Not used: baseURL is set directly in APIService's initializer
     }
@@ -42,7 +42,7 @@ extension DeviceAPI: StatusCodeSampleDataTargetType {
     }
     
     public var sampleData: Data {
-        return Data() // Replaced: Use sampleData(statusCode:) instead
+        return Data()
     }
     
     public var task: Moya.Task {
@@ -62,20 +62,5 @@ extension DeviceAPI: StatusCodeSampleDataTargetType {
 //            return nil
 //        }
         return nil
-    }
-    
-    public func sampleData(statusCode: Int, mockFile: JSONFile?) -> Data {
-        if let mockFile = mockFile {
-            return JSONLoader.loadJSONFile(mockFile) ?? Data()
-        }
-        
-        switch self {
-        case .regist:
-            return JSONLoader.loadJSONFile(JSONFile.deviceRegist(statusCode)) ?? Data()
-        case .update:
-            return JSONLoader.loadJSONFile(JSONFile.deviceUpdate(statusCode)) ?? Data()
-        case .deviceToken:
-            return JSONLoader.loadJSONFile(JSONFile.deviceDeviceToken(statusCode)) ?? Data()
-        }
     }
 }

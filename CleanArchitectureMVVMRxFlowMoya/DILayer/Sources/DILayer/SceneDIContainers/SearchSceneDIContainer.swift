@@ -34,3 +34,14 @@ private extension SearchSceneDIContainer {
         return SearchRepositoryImp(service: dependencies.service)
     }
 }
+
+// MARK: - SampleDataProviding
+struct SearchSampleDataProviding: SampleDataProviding {
+    func provideSampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> SampleData? {
+        guard let endpoint = endpoint as? SearchAPI else { return nil }
+        switch endpoint {
+        case .readItems:
+            return SampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Search.readItems200)
+        }
+    }
+}

@@ -34,3 +34,15 @@ private extension HomeSceneDIContainer {
         return HomeRepositoryImp(service: dependencies.service)
     }
 }
+
+// MARK: - SampleDataProviding
+struct HomeSampleDataProviding: SampleDataProviding {
+    func provideSampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> SampleData? {
+        return nil
+//        guard let endpoint = endpoint as? HomeAPI else { return nil }
+//        switch endpoint {
+//        case .readItems:
+//            return SampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Home.readItems200)
+//        }
+    }
+}

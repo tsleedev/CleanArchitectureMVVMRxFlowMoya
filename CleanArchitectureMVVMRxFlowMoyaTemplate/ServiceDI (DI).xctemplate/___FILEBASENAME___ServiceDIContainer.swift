@@ -29,3 +29,15 @@ private extension ___VARIABLE_productName:identifier___ServiceDIContainer {
         return ___VARIABLE_productName:identifier___RepositoryImp(service: dependencies.service)
     }
 }
+
+// MARK: - SampleDataProviding
+struct ___VARIABLE_productName:identifier___SampleDataProviding: SampleDataProviding {
+    func provideSampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> SampleData? {
+        return nil
+//        guard let endpoint = endpoint as? ___VARIABLE_productName:identifier___API else { return nil }
+//        switch endpoint {
+//        case .readItems:
+//            return SampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.___VARIABLE_productName:identifier___.readItems200)
+//        }
+    }
+}

@@ -34,3 +34,14 @@ private extension MoreSceneDIContainer {
         return MoreRepositoryImp(service: dependencies.service)
     }
 }
+
+// MARK: - SampleDataProviding
+struct MoreSampleDataProviding: SampleDataProviding {
+    func provideSampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> SampleData? {
+        guard let endpoint = endpoint as? MoreAPI else { return nil }
+        switch endpoint {
+        case .readItems:
+            return SampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.More.readItems200)
+        }
+    }
+}

@@ -20,28 +20,28 @@ public final class SceneDIContainer {
 public extension SceneDIContainer {
     func makeHomeSceneDIContainer() -> HomeSceneDIContainer {
         let service = HomeAPIService(apiBaseURL: configuration.apiBaseURL,
-                                     apiType: makeAPIType(statusCode: 200, delay: 1))
+                                     sampleData: nil)
         let dependencies = HomeSceneDIContainer.Dependencies(service: service)
         return HomeSceneDIContainer(dependencies: dependencies)
     }
     
     func makeSearchSceneDIContainer() -> SearchSceneDIContainer {
         let service = SearchAPIService(apiBaseURL: configuration.apiBaseURL,
-                                       apiType: makeAPIType(statusCode: 200, delay: 1))
+                                       sampleData: makeSampleDataProviding { SearchSampleDataProviding() })
         let dependencies = SearchSceneDIContainer.Dependencies(service: service)
         return SearchSceneDIContainer(dependencies: dependencies)
     }
     
     func makeMoreSceneDIContainer() -> MoreSceneDIContainer {
         let service = MoreAPIService(apiBaseURL: configuration.apiBaseURL,
-                                     apiType: makeAPIType(statusCode: 200, delay: 1))
+                                     sampleData: makeSampleDataProviding { MoreSampleDataProviding() })
         let dependencies = MoreSceneDIContainer.Dependencies(service: service)
         return MoreSceneDIContainer(dependencies: dependencies)
     }
     
     func makeSettingsSceneDIContainer() -> SettingsSceneDIContainer {
         let service = SettingsAPIService(apiBaseURL: configuration.apiBaseURL,
-                                         apiType: makeAPIType(statusCode: 200, delay: 1))
+                                         sampleData: makeSampleDataProviding { SettingsSampleDataProviding() })
         let dependencies = SettingsSceneDIContainer.Dependencies(service: service)
         return SettingsSceneDIContainer(dependencies: dependencies)
     }
@@ -49,14 +49,12 @@ public extension SceneDIContainer {
 
 // MARK: - Helper
 private extension SceneDIContainer {
-    func makeAPIType(statusCode: Int, delay: TimeInterval) -> APIType {
-        let apiType: APIType
+    func makeSampleDataProviding(_ makeSampleData: () -> SampleDataProviding) -> SampleDataProviding? {
         switch self.configuration.mode {
         case .useSampleData:
-            apiType = .mock(statusCode: statusCode, mockFile: nil, delay: delay)
+            return makeSampleData()
         case .useRealData:
-            apiType = .real
+            return nil
         }
-        return apiType
     }
 }

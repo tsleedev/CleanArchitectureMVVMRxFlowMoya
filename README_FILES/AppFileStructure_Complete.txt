@@ -2,6 +2,10 @@ App
 ├── Packages
 │   ├── PlatformLayer
 │   │   ├── TSCore
+│   │   │   ├── Common
+│   │   │   ├── Extension
+│   │   │   ├── Rx
+│   │   │   └── Utilities
 │   │   ├── TSCoreUI
 │   │   ├── TSLogger
 │   │   └── TSTestUtility
@@ -29,17 +33,18 @@ App
 │   │   │       │   └── HomeViewController.xib
 │   │   │       └── ViewModel
 │   │   │           └── HomeViewModel.swift
-│   │   └── SearchScene
-│   │       ├── Flows
-│   │       │   ├── SearchFlow.swift
-│   │       │   └── SearchStep.swift
-│   │       └── SceneSearch
-│   │           ├── View
-│   │           │   ├── SearchViewController.swift
-│   │           │   └── SearchViewController.xib
-│   │           └── ViewModel
-│   │               ├── SearchItemViewModel.swift
-│   │               └── SearchViewModel.swift
+│   │   ├── SearchScene
+│   │   │   ├── Flows
+│   │   │   │   ├── SearchFlow.swift
+│   │   │   │   └── SearchStep.swift
+│   │   │   └── SceneSearch
+│   │   │       ├── View
+│   │   │       │   ├── SearchViewController.swift
+│   │   │       │   └── SearchViewController.xib
+│   │   │       └── ViewModel
+│   │   │           ├── SearchItemViewModel.swift
+│   │   │           └── SearchViewModel.swift
+│   │   └── DeepLinkStep.swift
 │   ├── DomainLayer
 │   │   ├── Entities
 │   │   │   ├── Entities.swift
@@ -51,6 +56,9 @@ App
 │   │   ├── Repositories
 │   │   │   ├── HomeRepository.swift
 │   │   │   └── SearchRepository.swift
+│   │   ├── Services
+│   │   │   ├── AppService.swift
+│   │   │   └── DeviceService.swift
 │   │   └── UseCases
 │   │       ├── HomeUseCase.swift
 │   │       └── SearchUseCase.swift
@@ -82,8 +90,12 @@ App
 │       │   │   └── UserDefaultsWrapper.swift
 │       │   └── Realm
 │       │       └── RealmService.swift
-│       ├── Extensions
-│       │   └── StatusCodeSampleDataTargetType.swift
+│       ├── MockData
+│       │   ├── JSONFile.swift
+│       │   └── JSONLoader.swift
+│       ├── Protocols
+│       │   ├── MoyaTargetTypeWrapper.swift
+│       │   └── SampleDataProviding.swift
 │       ├── Repositories
 │       │   ├── HomeRepositoryImp.swift
 │       │   ├── MoreRepositoryImp.swift
@@ -111,3 +123,62 @@ App
     │   ├── AppFlow.swift
     │   └── AppStep.swift
     └── Resources
+
+
+│   └── DataLayer
+│       ├── DataMapping
+│       │   ├── RequestModel.swift
+│       │   ├── RequestModel+Home.swift
+│       │   ├── RequestModel+Search.swift
+│       │   ├── ResponseModel.swift
+│       │   ├── ResponseModel+Home.swift
+│       │   └── ResponseModel+Search.swift
+│       ├── Extensions
+│       │   └── StatusCodeSampleDataTargetType.swift
+│       ├── Repositories
+│       │   ├── HomeRepositoryImp.swift
+│       │   ├── MoreRepositoryImp.swift
+│       │   ├── SearchRepositoryImp.swift
+│       │   └── SettingsRepositoryImp.swift
+│   └── FrameworksAndDriversLayer
+│       ├── DataMapping
+│       │   ├── RequestModel.swift
+│       │   ├── RequestModel+Home.swift
+│       │   ├── RequestModel+Search.swift
+│       │   ├── ResponseModel.swift
+│       │   ├── ResponseModel+Home.swift
+│       │   └── ResponseModel+Search.swift
+│       ├── DataSources
+│       │   ├── API
+│       │   │   ├── APIEndpoints
+│       │   │   │   ├── HomeAPI.swift
+│       │   │   │   ├── MoreAPI.swift
+│       │   │   │   ├── SearchAPI.swift
+│       │   │   │   └── SettingsAPI.swift
+│       │   │   ├── Log
+│       │   │   │   └── APILogPlugin.swift
+│       │   │   ├── APIService.swift
+│       │   │   └── JSONLoader.swift
+│       │   ├── AppInfo
+│       │   │   └── AppInfoService.swift
+│       │   ├── Firebase
+│       │   │   └── FirebaseService.swift
+│       │   ├── UserDefaults
+│       │   │   ├── UserDefaultsService.swift
+│       │   │   └── UserDefaultsWrapper.swift
+│       │   └── Realm
+│       │       └── RealmService.swift
+│       └── Resources
+│           └── SampleData
+│               ├── More
+│               │   ├── MoreSampleDataStatusCode200.json
+│               │   ├── MoreSampleDataStatusCode400.json
+│               │   └── MoreSampleDataStatusCode403.json
+│               ├── Search
+│               │   ├── SearchSampleDataStatusCode200.json
+│               │   ├── SearchSampleDataStatusCode400.json
+│               │   └── SearchSampleDataStatusCode403.json
+│               └── Settings
+│                   ├── SettingsSampleDataStatusCode200.json
+│                   ├── SettingsSampleDataStatusCode400.json
+│                   └── SettingsSampleDataStatusCode403.json
