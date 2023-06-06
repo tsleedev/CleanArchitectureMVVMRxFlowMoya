@@ -5,9 +5,9 @@ import DomainLayer
 import RxSwift
 
 public class ___VARIABLE_productName:identifier___RepositoryImp: DetectDeinit, ___VARIABLE_productName___Repository {
-//    private let service: ___VARIABLE_productName:identifier___Service
+//    private let service: ___VARIABLE_productName:identifier___QueryService
 //
-//    public init(service: ___VARIABLE_productName:identifier___Service) {
+//    public init(service: ___VARIABLE_productName:identifier___QueryService) {
 //        self.service = service
 //    }
 //    

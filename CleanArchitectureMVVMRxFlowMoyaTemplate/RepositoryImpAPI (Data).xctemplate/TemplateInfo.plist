@@ -27,9 +27,9 @@
 			<key>Required</key>
 			<string>true</string>
 			<key>Name</key>
-			<string>RepositoryImp Name:</string>
+			<string>RepositoryImp API Name:</string>
 			<key>Description</key>
-			<string>The name of the RepositoryImp to create</string>
+			<string>The name of the RepositoryImp API to create</string>
 			<key>Type</key>
 			<string>text</string>
 			<key>NotPersisted</key>

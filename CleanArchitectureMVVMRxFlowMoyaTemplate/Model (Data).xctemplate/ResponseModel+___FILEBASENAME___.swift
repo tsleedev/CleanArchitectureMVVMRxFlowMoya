@@ -17,7 +17,8 @@ extension ResponseModel {
     }
 }
 
-extension ResponseModel.___VARIABLE_productName:identifier___ {
+// MARK: - DomainConvertible
+extension ResponseModel.___VARIABLE_productName:identifier___: DomainConvertible {
     func toDomain() -> Entities.___VARIABLE_productName:identifier___ {
         return .init()
     }
