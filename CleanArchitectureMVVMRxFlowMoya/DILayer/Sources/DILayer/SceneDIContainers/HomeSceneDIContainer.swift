@@ -36,13 +36,13 @@ private extension HomeSceneDIContainer {
 }
 
 // MARK: - SampleDataProviding
-struct HomeSampleDataProviding: SampleDataProviding {
-    func provideSampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> SampleData? {
+struct HomeSampleDataProviding: APISampleDataProviding {
+    func provideAPISampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> APISampleData? {
         return nil
 //        guard let endpoint = endpoint as? HomeAPI else { return nil }
 //        switch endpoint {
 //        case .readItems:
-//            return SampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Home.readItems200)
+//            return APISampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Home.readItems200)
 //        }
     }
 }

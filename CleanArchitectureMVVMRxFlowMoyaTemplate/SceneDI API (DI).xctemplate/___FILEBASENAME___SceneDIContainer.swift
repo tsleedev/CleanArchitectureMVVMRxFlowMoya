@@ -32,13 +32,13 @@ private extension ___VARIABLE_productName:identifier___SceneDIContainer {
 }
 
 // MARK: - SampleDataProviding
-struct ___VARIABLE_productName:identifier___SampleDataProviding: SampleDataProviding {
-    func provideSampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> SampleData? {
+struct ___VARIABLE_productName:identifier___APISampleDataProviding: APISampleDataProviding {
+    func provideAPISampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> APISampleData? {
         return nil
 //        guard let endpoint = endpoint as? ___VARIABLE_productName:identifier___API else { return nil }
 //        switch endpoint {
 //        case .readItems:
-//            return SampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.___VARIABLE_productName:identifier___.readItems200)
+//            return APISampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.___VARIABLE_productName:identifier___.readItems200)
 //        }
     }
 }

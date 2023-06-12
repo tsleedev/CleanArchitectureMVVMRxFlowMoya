@@ -21,12 +21,12 @@ public final class APIService<Target: MoyaTargetTypeWrapper>: DetectDeinit {
         return Session(configuration: configuration, startRequestsImmediately: false)
     }()
     
-    public init(apiBaseURL: URL, sampleData: SampleDataProviding?) {
+    public init(apiBaseURL: URL, sampleData: APISampleDataProviding?) {
         let plugin = APILogPlugin()
         let endpointClosure = { (target: Target) -> Endpoint in
             let url = apiBaseURL.appendingPathComponent(target.path).absoluteString
             let sampleResponseClosure: EndpointSampleResponse
-            if let sampleData = sampleData?.provideSampleData(forEndpoint: target) {
+            if let sampleData = sampleData?.provideAPISampleData(forEndpoint: target) {
                 sampleResponseClosure = .networkResponse(sampleData.statusCode, sampleData.getSampleData(sampleData.jsonLoader) ?? target.sampleData)
             } else {
                 sampleResponseClosure = .networkResponse(200, target.sampleData)
@@ -39,7 +39,7 @@ public final class APIService<Target: MoyaTargetTypeWrapper>: DetectDeinit {
         }
         
         let stubClosure: MoyaProvider<Target>.StubClosure = { (target: Target) in
-            if let sampleData = sampleData?.provideSampleData(forEndpoint: target) {
+            if let sampleData = sampleData?.provideAPISampleData(forEndpoint: target) {
                 return sampleData.delay > 0 ? .delayed(seconds: sampleData.delay) : .immediate
             } else {
                 return .never

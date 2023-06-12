@@ -27,21 +27,21 @@ public extension SceneDIContainer {
     
     func makeSearchSceneDIContainer() -> SearchSceneDIContainer {
         let service = SearchAPIService(apiBaseURL: configuration.apiBaseURL,
-                                       sampleData: makeSampleDataProviding { SearchSampleDataProviding() })
+                                       sampleData: makeAPISampleDataProviding { SearchSampleDataProviding() })
         let dependencies = SearchSceneDIContainer.Dependencies(service: service)
         return SearchSceneDIContainer(dependencies: dependencies)
     }
     
     func makeMoreSceneDIContainer() -> MoreSceneDIContainer {
         let service = MoreAPIService(apiBaseURL: configuration.apiBaseURL,
-                                     sampleData: makeSampleDataProviding { MoreSampleDataProviding() })
+                                     sampleData: makeAPISampleDataProviding { MoreSampleDataProviding() })
         let dependencies = MoreSceneDIContainer.Dependencies(service: service)
         return MoreSceneDIContainer(dependencies: dependencies)
     }
     
     func makeSettingsSceneDIContainer() -> SettingsSceneDIContainer {
         let service = SettingsAPIService(apiBaseURL: configuration.apiBaseURL,
-                                         sampleData: makeSampleDataProviding { SettingsSampleDataProviding() })
+                                         sampleData: makeAPISampleDataProviding { SettingsSampleDataProviding() })
         let dependencies = SettingsSceneDIContainer.Dependencies(service: service)
         return SettingsSceneDIContainer(dependencies: dependencies)
     }
@@ -49,7 +49,7 @@ public extension SceneDIContainer {
 
 // MARK: - Helper
 private extension SceneDIContainer {
-    func makeSampleDataProviding(_ makeSampleData: () -> SampleDataProviding) -> SampleDataProviding? {
+    func makeAPISampleDataProviding(_ makeSampleData: () -> APISampleDataProviding) -> APISampleDataProviding? {
         switch self.configuration.mode {
         case .useSampleData:
             return makeSampleData()

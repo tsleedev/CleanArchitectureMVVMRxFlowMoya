@@ -14,11 +14,12 @@ class ___VARIABLE_productName:identifier___ViewController: BaseViewController {
     }()
     
     // MARK: - Properties
-    private let hostingController: UIHostingController<___VARIABLE_productName:identifier___View>
+    private let hostingController: UIHostingController<AnyView>
     
     // MARK: - Initialize with ViewModel
     init(viewModel: ___VARIABLE_productName:identifier___ViewModel) {
-        self.hostingController = UIHostingController(rootView: ___VARIABLE_productName:identifier___View(viewModel: viewModel))
+        let view = ___VARIABLE_productName:identifier___View(viewModel: viewModel)
+        self.hostingController = UIHostingController(rootView: AnyView(view))
         super.init(nibName: nil, bundle: nil)
     }
     

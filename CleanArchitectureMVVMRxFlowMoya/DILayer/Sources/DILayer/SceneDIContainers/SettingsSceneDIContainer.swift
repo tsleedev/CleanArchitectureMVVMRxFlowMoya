@@ -36,12 +36,12 @@ private extension SettingsSceneDIContainer {
 }
 
 // MARK: - SampleDataProviding
-struct SettingsSampleDataProviding: SampleDataProviding {
-    func provideSampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> SampleData? {
+struct SettingsSampleDataProviding: APISampleDataProviding {
+    func provideAPISampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> APISampleData? {
         guard let endpoint = endpoint as? SettingsAPI else { return nil }
         switch endpoint {
         case .readItems:
-            return SampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Settings.readItems200)
+            return APISampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Settings.readItems200)
         }
     }
 }

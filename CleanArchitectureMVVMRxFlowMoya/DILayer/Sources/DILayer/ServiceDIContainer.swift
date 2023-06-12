@@ -37,7 +37,7 @@ public extension ServiceDIContainer {
 
 // MARK: - Helper
 private extension ServiceDIContainer {
-    func makeSampleDataProviding(_ makeSampleData: () -> SampleDataProviding) -> SampleDataProviding? {
+    func makeSampleDataProviding(_ makeSampleData: () -> APISampleDataProviding) -> APISampleDataProviding? {
         switch self.configuration.mode {
         case .useSampleData:
             return makeSampleData()

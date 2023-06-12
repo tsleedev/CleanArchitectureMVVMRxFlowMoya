@@ -36,12 +36,12 @@ private extension MoreSceneDIContainer {
 }
 
 // MARK: - SampleDataProviding
-struct MoreSampleDataProviding: SampleDataProviding {
-    func provideSampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> SampleData? {
+struct MoreSampleDataProviding: APISampleDataProviding {
+    func provideAPISampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> APISampleData? {
         guard let endpoint = endpoint as? MoreAPI else { return nil }
         switch endpoint {
         case .readItems:
-            return SampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.More.readItems200)
+            return APISampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.More.readItems200)
         }
     }
 }
