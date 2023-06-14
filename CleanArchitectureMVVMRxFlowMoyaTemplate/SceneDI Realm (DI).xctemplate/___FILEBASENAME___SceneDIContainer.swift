@@ -42,3 +42,14 @@ struct ___VARIABLE_productName:identifier___APISampleDataProviding: APISampleDat
 //        }
     }
 }
+
+// MARK: - RealmSampleDataProviding
+struct ___VARIABLE_productName:identifier___RealmSampleDataProviding: RealmSampleDataProviding {
+    let mockData: [String : Data?]?
+    
+    func provideRealmSampleData() -> Data? {
+        return nil
+//        let sampleData = mockData?[JSONFile.___VARIABLE_productName:identifier___.data.fileName] ?? JSONFile.___VARIABLE_productName:identifier___.data.sampleData
+//        return sampleData
+    }
+}

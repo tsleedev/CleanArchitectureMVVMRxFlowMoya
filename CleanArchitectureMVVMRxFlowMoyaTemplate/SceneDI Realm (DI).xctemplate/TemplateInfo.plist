@@ -5,7 +5,7 @@
 	<key>Kind</key>
 	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
 	<key>SortOrder</key>
-	<string>31</string>
+	<string>33</string>
 	<key>AllowedTypes</key>
 	<dict>
 		<key>Item 0</key>
@@ -27,9 +27,9 @@
 			<key>Required</key>
 			<string>true</string>
 			<key>Name</key>
-			<string>SceneDI Name:</string>
+			<string>SceneDI Realm Name:</string>
 			<key>Description</key>
-			<string>The name of the SceneDI to create</string>
+			<string>The name of the SceneDI Realm to create</string>
 			<key>Type</key>
 			<string>text</string>
 			<key>NotPersisted</key>
