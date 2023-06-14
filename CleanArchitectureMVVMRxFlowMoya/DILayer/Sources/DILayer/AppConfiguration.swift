@@ -5,6 +5,7 @@
 //  Created by TAE SU LEE on 2023/03/24.
 //
 
+import DataLayer
 import Foundation
 
 public enum EnvironmentMode {
@@ -31,9 +32,18 @@ public enum EnvironmentTarget {
 public struct AppConfiguration {
     let mode: EnvironmentMode
     let apiBaseURL: URL
+    let mockData: [String: Data?]?
     
     public init(mode: EnvironmentMode, target: EnvironmentTarget) {
         self.mode = mode
         self.apiBaseURL = URL(string: target.apiBaseURL)!
+        self.mockData = nil
+    }
+    
+    // 미리보기용 초기화 메서드
+    public init(forPreviewWithTarget target: EnvironmentTarget, mockData: [String: Data?]? = nil) {
+        self.mode = .useSampleData
+        self.apiBaseURL = URL(string: target.apiBaseURL)!
+        self.mockData = mockData
     }
 }

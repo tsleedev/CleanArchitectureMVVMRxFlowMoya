@@ -37,11 +37,14 @@ private extension SearchSceneDIContainer {
 
 // MARK: - SampleDataProviding
 struct SearchSampleDataProviding: APISampleDataProviding {
+    let mockData: [String: Data?]?
+    
     func provideAPISampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> APISampleData? {
         guard let endpoint = endpoint as? SearchAPI else { return nil }
         switch endpoint {
         case .readItems:
-            return APISampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Search.readItems200)
+            let sampleData = mockData?[JSONFile.Search.readItems200.fileName] ?? JSONFile.Search.readItems200.sampleData
+            return APISampleData(statusCode: 200, delay: 1, sampleData: sampleData)
         }
     }
 }

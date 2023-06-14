@@ -55,15 +55,20 @@ private extension DeviceServiceDIContainer {
 
 // MARK: - SampleDataProviding
 struct DeviceSampleDataProviding: APISampleDataProviding {
+    let mockData: [String: Data?]?
+    
     func provideAPISampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> APISampleData? {
         guard let endpoint = endpoint as? DeviceAPI else { return nil }
         switch endpoint {
         case .regist:
-            return APISampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Device.deviceRegist200)
+            let sampleData = mockData?[JSONFile.Device.deviceRegist200.fileName] ?? JSONFile.Device.deviceRegist200.sampleData
+            return APISampleData(statusCode: 200, delay: 1, sampleData: sampleData)
         case .update:
-            return APISampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Device.deviceRegist200)
+            let sampleData = mockData?[JSONFile.Settings.readItems200.fileName] ?? JSONFile.Settings.readItems200.sampleData
+            return APISampleData(statusCode: 200, delay: 1, sampleData: sampleData)
         case .deviceToken:
-            return APISampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Device.deviceRegist200)
+            let sampleData = mockData?[JSONFile.Settings.readItems200.fileName] ?? JSONFile.Settings.readItems200.sampleData
+            return APISampleData(statusCode: 200, delay: 1, sampleData: sampleData)
         }
     }
 }

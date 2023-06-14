@@ -22,7 +22,7 @@ public extension ServiceDIContainer {
        let appInfoService = AppInfoService()
        let userDefaultsService = UserDefaultsService()
        let deviceAPIService = DeviceAPIService(apiBaseURL: configuration.apiBaseURL,
-                                               sampleData: makeSampleDataProviding { DeviceSampleDataProviding() })
+                                               sampleData: makeSampleDataProviding { DeviceSampleDataProviding(mockData: configuration.mockData) })
        let dependencies = DeviceServiceDIContainer.Dependencies(appInfoService: appInfoService,
                                                                 userDefaultsService: userDefaultsService,
                                                                 deviceAPIService: deviceAPIService)

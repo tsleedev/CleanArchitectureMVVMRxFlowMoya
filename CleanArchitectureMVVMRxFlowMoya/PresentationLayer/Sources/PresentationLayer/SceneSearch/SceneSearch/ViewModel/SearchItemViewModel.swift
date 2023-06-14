@@ -16,15 +16,6 @@ public struct SearchItemViewModel: Equatable {
     public let htmlUrl: String?
 }
 
-extension SearchItemViewModel {
-    init(with search: Entities.Search) {
-        fullName = search.fullName
-        avatarUrl = search.avatarUrl
-        description = search.description
-        htmlUrl = search.htmlUrl
-    }
-}
-
 // MARK: - Convert
 extension SearchItemViewModel {
     func toThumbnailItemViewModel() -> ThumbnailItemViewModel {

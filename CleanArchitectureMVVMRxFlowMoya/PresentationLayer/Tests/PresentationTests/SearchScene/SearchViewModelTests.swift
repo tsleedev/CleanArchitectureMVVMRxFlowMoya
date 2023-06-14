@@ -55,8 +55,8 @@ class SearchViewModelTests: XCTestCase {
         let items = scheduler.createObserver([SearchItemViewModel].self)
         let expectedItems = [
             [],
-            searchItems[0].items.compactMap { SearchItemViewModel(with: $0) },
-            searchItems[1].items.compactMap { SearchItemViewModel(with: $0) }
+            searchItems[0].items.compactMap { $0.toItem() },
+            searchItems[1].items.compactMap { $0.toItem() }
         ]
         
         scheduler.createColdObservable([
@@ -179,7 +179,7 @@ class SearchViewModelTests: XCTestCase {
         
         setupTest(searchItems: searchItems, shouldReturnError: false)
 
-        let expectedViewModel = SearchItemViewModel(with: searchItems[0].items[0])
+        let expectedViewModel = searchItems[0].items[0].toItem()
 
         // Record steps
         let steps = scheduler.createObserver(Step.self)
@@ -237,8 +237,8 @@ class SearchViewModelTests: XCTestCase {
         let items = scheduler.createObserver([SearchItemViewModel].self)
         let expectedItems: [[SearchItemViewModel]] = [
             [],
-            searchItems[0].items.compactMap { SearchItemViewModel(with: $0) },
-            searchItems[0].items.compactMap { SearchItemViewModel(with: $0) }.filter { $0.fullName == "title1" }
+            searchItems[0].items.compactMap { $0.toItem() },
+            searchItems[0].items.compactMap { $0.toItem() }.filter { $0.fullName == "title1" }
         ]
 
         // Perform search with initial query

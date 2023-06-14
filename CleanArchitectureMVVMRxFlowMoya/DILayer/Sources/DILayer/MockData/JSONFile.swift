@@ -7,6 +7,11 @@
 
 import Foundation
 
+public protocol JSONFileRepresentable {
+    var fileName: String { get }
+    var sampleData: Data? { get }
+}
+
 public enum JSONFile { }
 
 public extension JSONFile {
@@ -22,6 +27,7 @@ public extension JSONFile {
     
     enum More {
         case readItems200
+        case readNoItem200
     }
     
     enum Settings {
@@ -29,17 +35,21 @@ public extension JSONFile {
     }
 }
 
-extension JSONFile.Device: JSONLoader {
-    public var resource: String {
+extension JSONFile.Device: JSONFileRepresentable {
+    public var fileName: String {
         switch self {
         case .deviceRegist200:
             return "DeviceRegistSampleDataStatusCode200"
         }
     }
+    
+    public var sampleData: Data? {
+        return JSONLoader.load(fileName)
+    }
 }
 
-extension JSONFile.Search: JSONLoader {
-    public var resource: String {
+extension JSONFile.Search: JSONFileRepresentable {
+    public var fileName: String {
         switch self {
         case .readItemsNoItems:
             return "SearchSampleDataNoItemsStatusCode200"
@@ -49,22 +59,36 @@ extension JSONFile.Search: JSONLoader {
             return "SearchSampleDataStatusCode403"
         }
     }
-}
-
-extension JSONFile.More: JSONLoader {
-    public var resource: String {
-        switch self {
-        case .readItems200:
-            return "MoreSampleDataStatusCode200"
-        }
+    
+    public var sampleData: Data? {
+        return JSONLoader.load(fileName)
     }
 }
 
-extension JSONFile.Settings: JSONLoader {
-    public var resource: String {
+extension JSONFile.More: JSONFileRepresentable {
+    public var fileName: String {
+        switch self {
+        case .readItems200:
+            return "MoreSampleDataStatusCode200"
+        case .readNoItem200:
+            return "MoreSampleDataNoItemStatusCode200"
+        }
+    }
+    
+    public var sampleData: Data? {
+        return JSONLoader.load(fileName)
+    }
+}
+
+extension JSONFile.Settings: JSONFileRepresentable {
+    public var fileName: String {
         switch self {
         case .readItems200:
             return "SettingsSampleDataStatusCode200"
         }
+    }
+    
+    public var sampleData: Data? {
+        return JSONLoader.load(fileName)
     }
 }

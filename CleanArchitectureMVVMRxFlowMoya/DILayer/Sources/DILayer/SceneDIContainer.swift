@@ -27,21 +27,21 @@ public extension SceneDIContainer {
     
     func makeSearchSceneDIContainer() -> SearchSceneDIContainer {
         let service = SearchAPIService(apiBaseURL: configuration.apiBaseURL,
-                                       sampleData: makeAPISampleDataProviding { SearchSampleDataProviding() })
+                                       sampleData: makeAPISampleDataProviding { SearchSampleDataProviding(mockData: configuration.mockData) })
         let dependencies = SearchSceneDIContainer.Dependencies(service: service)
         return SearchSceneDIContainer(dependencies: dependencies)
     }
     
     func makeMoreSceneDIContainer() -> MoreSceneDIContainer {
         let service = MoreAPIService(apiBaseURL: configuration.apiBaseURL,
-                                     sampleData: makeAPISampleDataProviding { MoreSampleDataProviding() })
+                                     sampleData: makeAPISampleDataProviding { MoreSampleDataProviding(mockData: configuration.mockData) })
         let dependencies = MoreSceneDIContainer.Dependencies(service: service)
         return MoreSceneDIContainer(dependencies: dependencies)
     }
     
     func makeSettingsSceneDIContainer() -> SettingsSceneDIContainer {
         let service = SettingsAPIService(apiBaseURL: configuration.apiBaseURL,
-                                         sampleData: makeAPISampleDataProviding { SettingsSampleDataProviding() })
+                                         sampleData: makeAPISampleDataProviding { SettingsSampleDataProviding(mockData: configuration.mockData) })
         let dependencies = SettingsSceneDIContainer.Dependencies(service: service)
         return SettingsSceneDIContainer(dependencies: dependencies)
     }

@@ -27,7 +27,7 @@ public final class APIService<Target: MoyaTargetTypeWrapper>: DetectDeinit {
             let url = apiBaseURL.appendingPathComponent(target.path).absoluteString
             let sampleResponseClosure: EndpointSampleResponse
             if let sampleData = sampleData?.provideAPISampleData(forEndpoint: target) {
-                sampleResponseClosure = .networkResponse(sampleData.statusCode, sampleData.getSampleData(sampleData.jsonLoader) ?? target.sampleData)
+                sampleResponseClosure = .networkResponse(sampleData.statusCode, sampleData.sampleData ?? target.sampleData)
             } else {
                 sampleResponseClosure = .networkResponse(200, target.sampleData)
             }

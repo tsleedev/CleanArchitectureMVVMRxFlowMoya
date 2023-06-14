@@ -98,7 +98,7 @@ extension SearchViewModel: ViewModelType {
                     .trackActivity(activityIndicator)
                     .trackError(errorTracker)
                     .catchAndReturn(Entities.SearchItems(totalCount: 0, items: []))
-                    .map { $0.items.compactMap { SearchItemViewModel(with: $0) } }
+                    .map { $0.items.compactMap { $0.toItem() } }
             }
         }
             .share(replay: 1)

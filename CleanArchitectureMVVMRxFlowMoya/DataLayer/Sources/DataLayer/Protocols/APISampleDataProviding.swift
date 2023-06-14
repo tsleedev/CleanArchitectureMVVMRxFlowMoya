@@ -8,17 +8,18 @@
 import Foundation
 
 public protocol APISampleDataProviding {
-    func provideAPISampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> APISampleData?
+    var mockData: [String: Data?]? { get }
+    func provideAPISampleData(forEndpoint endpoint: any MoyaTargetTypeWrapper) -> APISampleData?
 }
 
-public struct APISampleData: SampleDataUsable {
+public struct APISampleData {
     let statusCode: Int
     let delay: TimeInterval
-    let jsonLoader: JSONLoader?
+    let sampleData: Data?
     
-    public init(statusCode: Int, delay: TimeInterval, jsonLoader: JSONLoader?) {
+    public init(statusCode: Int, delay: TimeInterval, sampleData: Data?) {
         self.statusCode = statusCode
         self.delay = delay
-        self.jsonLoader = jsonLoader
+        self.sampleData = sampleData
     }
 }

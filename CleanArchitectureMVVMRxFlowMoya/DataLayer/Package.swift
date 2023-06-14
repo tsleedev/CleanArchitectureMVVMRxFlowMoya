@@ -31,9 +31,6 @@ let package = Package(
                 .product(name: "RxSwift", package: "RxSwift"),
                 .product(name: "Moya", package: "Moya"),
                 .product(name: "RxMoya", package: "Moya")
-            ],
-            resources: [
-                .process("Resources")
             ]
         ),
         .testTarget(

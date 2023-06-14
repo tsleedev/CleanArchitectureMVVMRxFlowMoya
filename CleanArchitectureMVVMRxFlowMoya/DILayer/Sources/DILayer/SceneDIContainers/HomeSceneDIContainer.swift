@@ -37,12 +37,14 @@ private extension HomeSceneDIContainer {
 
 // MARK: - SampleDataProviding
 struct HomeSampleDataProviding: APISampleDataProviding {
+    let mockData: [String: Data?]?
+    
     func provideAPISampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> APISampleData? {
         return nil
 //        guard let endpoint = endpoint as? HomeAPI else { return nil }
 //        switch endpoint {
 //        case .readItems:
-//            return APISampleData(statusCode: 200, delay: 1, jsonLoader: JSONFile.Home.readItems200)
+//            return APISampleData(statusCode: 200, delay: 1, sampleData: JSONFile.Home.readItems200.sampleData)
 //        }
     }
 }

@@ -26,6 +26,9 @@ let package = Package(
             dependencies: [
                 .product(name: "DomainLayer", package: "DomainLayer"),
                 .product(name: "DataLayer", package: "DataLayer")
+            ],
+            resources: [
+                .process("Resources")
             ]
         )
     ]
