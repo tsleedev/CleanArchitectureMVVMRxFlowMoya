@@ -12,7 +12,7 @@
 		<string>public.swift-source</string>
 	</dict>
 	<key>DefaultCompletionName</key>
-	<string>Flows</string>
+	<string>DILayer</string>
 	<key>MainTemplateFiles</key>
 	<string>___FILEBASENAME___.swift</string>
 	<key>Platforms</key>
@@ -27,9 +27,9 @@
 			<key>Required</key>
 			<string>true</string>
 			<key>Name</key>
-			<string>ServiceDI Name:</string>
+			<string>SceneDI Name:</string>
 			<key>Description</key>
-			<string>The name of the ServiceDI to create</string>
+			<string>The name of the SceneDI to create</string>
 			<key>Type</key>
 			<string>text</string>
 			<key>NotPersisted</key>

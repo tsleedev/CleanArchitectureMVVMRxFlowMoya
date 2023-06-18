@@ -6,7 +6,8 @@ import UIKit
 
 public final class ___VARIABLE_productName:identifier___SceneDIContainer {
     struct Dependencies {
-//        let service: ___VARIABLE_productName:identifier___Service
+//        let service: ___VARIABLE_productName:identifier___APIService
+//        let service: ___VARIABLE_productName:identifier___QueryService
     }
     
     private let dependencies: Dependencies
@@ -33,6 +34,8 @@ private extension ___VARIABLE_productName:identifier___SceneDIContainer {
 
 // MARK: - SampleDataProviding
 struct ___VARIABLE_productName:identifier___APISampleDataProviding: APISampleDataProviding {
+    let mockData: [String : Data?]?
+    
     func provideAPISampleData(forEndpoint endpoint: MoyaTargetTypeWrapper) -> APISampleData? {
         return nil
 //        guard let endpoint = endpoint as? ___VARIABLE_productName:identifier___API else { return nil }
