@@ -24,8 +24,8 @@ struct ___VARIABLE_productName:identifier___View: View {
 struct ___VARIABLE_productName:identifier___View_Previews: PreviewProvider {
     static var previews: some View {
 //        let mockData = [JSONFile.___VARIABLE_productName:identifier___.data.fileName: JSONFile.___VARIABLE_productName:identifier___.data.sampleData]
-        let mockData = nil
-        let appConfiguration = AppConfiguration(forPreviewWithTarget: .dev, mockData: mockData)
+//        let appConfiguration = AppConfiguration(forPreviewWithTarget: .dev, mockData: mockData)
+        let appConfiguration = AppConfiguration(forPreviewWithTarget: .dev, mockData: nil)
         let diContainer = AppDIContainer(configuration: appConfiguration).makeSceneDIContainer()
         let viewModel = ___VARIABLE_productName:identifier___ViewModel(useCase: diContainer.make___VARIABLE_productName:identifier___SceneDIContainer().makeUseCase())
         return ___VARIABLE_productName:identifier___View(viewModel: viewModel)
