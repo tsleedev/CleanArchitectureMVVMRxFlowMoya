@@ -76,3 +76,18 @@ private extension HomeViewController {
         let output = viewModel.transform(input: input)
     }
 }
+
+#if canImport(SwiftUI) && DEBUG
+import DILayer
+import SwiftUI
+
+struct HomeView_Preview: PreviewProvider {
+    static var previews: some View {
+        let appConfiguration = AppConfiguration(forPreviewWithTarget: .dev, mockData: nil)
+        let diContainer = AppDIContainer(configuration: appConfiguration).makeSceneDIContainer()
+        let viewModel = HomeViewModel(useCase: diContainer.makeHomeSceneDIContainer().makeUseCase())
+        return HomeViewController(viewModel: viewModel).showPreview()
+    }
+}
+
+#endif
