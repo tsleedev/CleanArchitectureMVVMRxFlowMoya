@@ -91,3 +91,22 @@ private extension ThumbnailTableViewCell {
         }
     }
 }
+
+#if canImport(SwiftUI) && DEBUG
+import SwiftUI
+
+struct ThumbnailTableViewCell_Preview: PreviewProvider {
+    static var previews: some View {
+        let item = ThumbnailItemViewModel(
+            title: "RxSwift",
+            thumbnailUrl: "https://avatars.githubusercontent.com/u/6407041?v=4",
+            description: "Reactive Programming in Swift")
+        let cell = ThumbnailTableViewCell()
+        cell.configure(item)
+        return cell.showPreview()
+            .previewLayout(.sizeThatFits)
+            .frame(height: 100)
+    }
+}
+
+#endif

@@ -24,10 +24,11 @@ public struct SplashView: View {
     }
 }
 
-// MARK: - Previews
+#if canImport(SwiftUI) && DEBUG
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = SplashViewModel()
         return SplashView(viewModel: viewModel)
     }
 }
+#endif

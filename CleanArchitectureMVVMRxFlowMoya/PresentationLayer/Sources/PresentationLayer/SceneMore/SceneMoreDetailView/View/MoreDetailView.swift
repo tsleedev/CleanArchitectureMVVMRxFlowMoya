@@ -15,9 +15,12 @@ struct MoreDetailView: View {
     }
 }
 
-// MARK: - Previews
+#if canImport(SwiftUI) && DEBUG
+import DILayer
+
 struct MoreDetailView_Previews: PreviewProvider {
     static var previews: some View {
         return MoreDetailView()
     }
 }
+#endif

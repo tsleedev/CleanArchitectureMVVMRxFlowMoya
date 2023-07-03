@@ -5,7 +5,6 @@
 //  Created by TAE SU LEE on 2023/03/20.
 //
 
-import DILayer // For Preview
 import TSCoreUI
 import SwiftUI
 
@@ -37,6 +36,9 @@ struct SettingsView: View {
     }
 }
 
+#if canImport(SwiftUI) && DEBUG
+import DILayer
+
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         let appConfiguration = AppConfiguration(mode: .useSampleData, target: .dev)
@@ -45,3 +47,4 @@ struct SettingsView_Previews: PreviewProvider {
         return SettingsView(viewModel: viewModel)
     }
 }
+#endif

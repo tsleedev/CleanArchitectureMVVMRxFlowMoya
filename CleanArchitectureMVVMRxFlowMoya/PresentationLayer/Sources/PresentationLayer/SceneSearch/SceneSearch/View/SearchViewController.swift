@@ -150,3 +150,19 @@ extension SearchViewController {
     }
 }
 #endif
+
+#if canImport(SwiftUI) && DEBUG
+import DILayer
+import SwiftUI
+
+struct SearchView_Preview: PreviewProvider {
+    static var previews: some View {
+        let mockData = [JSONFile.More.readItems200.fileName: JSONFile.More.readItems200.sampleData]
+        let appConfiguration = AppConfiguration(forPreviewWithTarget: .dev, mockData: mockData)
+        let diContainer = AppDIContainer(configuration: appConfiguration).makeSceneDIContainer()
+        let viewModel = SearchViewModel(useCase: diContainer.makeSearchSceneDIContainer().makeUseCase())
+        return SearchViewController(viewModel: viewModel).showPreview()
+    }
+}
+
+#endif

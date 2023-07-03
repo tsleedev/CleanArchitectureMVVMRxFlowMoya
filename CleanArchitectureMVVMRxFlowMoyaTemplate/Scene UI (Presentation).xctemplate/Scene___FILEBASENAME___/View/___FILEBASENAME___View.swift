@@ -1,6 +1,5 @@
 //  ___FILEHEADER___
 
-import DILayer // For Preview
 import TSCoreUI
 import SwiftUI
 
@@ -20,7 +19,9 @@ struct ___VARIABLE_productName:identifier___View: View {
     }
 }
 
-// MARK: - Previews
+#if canImport(SwiftUI) && DEBUG
+import DILayer
+
 struct ___VARIABLE_productName:identifier___View_Previews: PreviewProvider {
     static var previews: some View {
 //        let mockData = [JSONFile.___VARIABLE_productName:identifier___.data.fileName: JSONFile.___VARIABLE_productName:identifier___.data.sampleData]
@@ -31,3 +32,4 @@ struct ___VARIABLE_productName:identifier___View_Previews: PreviewProvider {
         return ___VARIABLE_productName:identifier___View(viewModel: viewModel)
     }
 }
+#endif

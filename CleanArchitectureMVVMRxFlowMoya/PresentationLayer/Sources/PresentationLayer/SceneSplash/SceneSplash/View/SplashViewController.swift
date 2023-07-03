@@ -55,3 +55,16 @@ private extension SplashViewController {
         }
     }
 }
+
+#if canImport(SwiftUI) && DEBUG
+import DILayer
+import SwiftUI
+
+struct SplashView_Preview: PreviewProvider {
+    static var previews: some View {
+        let viewModel = SplashViewModel()
+        return SplashViewController(viewModel: viewModel).showPreview()
+    }
+}
+
+#endif

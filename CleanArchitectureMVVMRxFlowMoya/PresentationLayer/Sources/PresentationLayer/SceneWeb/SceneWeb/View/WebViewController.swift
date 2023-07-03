@@ -103,3 +103,17 @@ extension WebViewController: WKUIDelegate {
         present(alertController, animated: true, completion: nil)
     }
 }
+
+#if canImport(SwiftUI) && DEBUG
+import DILayer
+import SwiftUI
+
+struct WebView_Preview: PreviewProvider {
+    static var previews: some View {
+        let item = WebItemViewModel(title: "테스트", startUrl: "https://m.naver.com")
+        let viewModel = WebViewModel(itemViewModel: item)
+        return WebViewController(viewModel: viewModel).showPreview()
+    }
+}
+
+#endif

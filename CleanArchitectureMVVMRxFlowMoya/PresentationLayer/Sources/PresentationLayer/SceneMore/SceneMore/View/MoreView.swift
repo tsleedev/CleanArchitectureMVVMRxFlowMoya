@@ -5,7 +5,6 @@
 //  Created by TAE SU LEE on 2023/03/17.
 //
 
-import DILayer // For Preview
 import TSCoreUI
 import SwiftUI
 
@@ -41,6 +40,9 @@ struct MoreView: View {
     }
 }
 
+#if canImport(SwiftUI) && DEBUG
+import DILayer
+
 struct MoreView_Previews: PreviewProvider {
     static var previews: some View {
         let mockData = [JSONFile.More.readItems200.fileName: JSONFile.More.readItems200.sampleData]
@@ -50,3 +52,4 @@ struct MoreView_Previews: PreviewProvider {
         return MoreView(viewModel: viewModel)
     }
 }
+#endif
