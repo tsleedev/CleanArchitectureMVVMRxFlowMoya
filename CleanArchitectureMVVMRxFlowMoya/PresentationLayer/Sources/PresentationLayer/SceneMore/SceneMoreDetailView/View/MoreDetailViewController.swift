@@ -1,19 +1,17 @@
 //  
-//  SplashViewController.swift
+//  MoreDetailViewViewController.swift
 //  
 //
 //  Created by TAE SU LEE on 2023/03/22.
 //
 
-import TSCore
 import TSCoreUI
 import UIKit
 import SwiftUI
 import RxSwift
 import SnapKit
-import Then
 
-class SplashViewController: BaseViewController {
+class MoreDetailViewViewController: BaseViewController {
     // MARK: - Views
     private lazy var hostingView: UIView = {
         addChild(hostingController)
@@ -22,11 +20,11 @@ class SplashViewController: BaseViewController {
     
     // MARK: - Properties
     private let hostingController: UIHostingController<AnyView>
-    private let rootView: SplashView
+    private let rootView: MoreDetailView
     
     // MARK: - Initialize with ViewModel
-    init(viewModel: SplashViewModel) {
-        self.rootView = SplashView(viewModel: viewModel)
+    init() {
+        self.rootView = MoreDetailView()
         self.hostingController = UIHostingController(rootView: AnyView(rootView))
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,7 +42,7 @@ class SplashViewController: BaseViewController {
 }
 
 // MARK: - Setup
-private extension SplashViewController {
+private extension MoreDetailViewViewController {
     func setupViews() {
         view.addSubview(hostingView)
     }

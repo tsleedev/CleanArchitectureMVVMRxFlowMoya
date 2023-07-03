@@ -15,11 +15,12 @@ class ___VARIABLE_productName:identifier___ViewController: BaseViewController {
     
     // MARK: - Properties
     private let hostingController: UIHostingController<AnyView>
+    private let rootView: ___VARIABLE_productName:identifier___View
     
     // MARK: - Initialize with ViewModel
     init(viewModel: ___VARIABLE_productName:identifier___ViewModel) {
-        let view = ___VARIABLE_productName:identifier___View(viewModel: viewModel)
-        self.hostingController = UIHostingController(rootView: AnyView(view))
+        self.rootView = ___VARIABLE_productName:identifier___View(viewModel: viewModel)
+        self.hostingController = UIHostingController(rootView: AnyView(rootView))
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,7 +34,6 @@ class ___VARIABLE_productName:identifier___ViewController: BaseViewController {
         super.viewWillDisappear(animated)
 
         if isMovingFromParent {
-            let rootView = hostingController.rootView as SettingsView
             rootView.input.close.onNext(())
         }
     }

@@ -20,11 +20,13 @@ class MoreViewController: BaseViewController {
     private var rightBarButtonItem: UIBarButtonItem!
     
     // MARK: - Properties
-    private let hostingController: UIHostingController<MoreView>
+    private let hostingController: UIHostingController<AnyView>
+    private let rootView: MoreView
     
     // MARK: - Initialize with ViewModel
     init(viewModel: MoreViewModel) {
-        self.hostingController = UIHostingController(rootView: MoreView(viewModel: viewModel))
+        self.rootView = MoreView(viewModel: viewModel)
+        self.hostingController = UIHostingController(rootView: AnyView(rootView))
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -57,7 +59,7 @@ private extension MoreViewController {
     }
     
     func bindViewModel() {
-        let input = (hostingController.rootView as MoreView).input
+        let input = rootView.input
         rightBarButtonItem.rx.tap.asDriver()
             .drive(input.clickSettings)
             .disposed(by: disposeBag)

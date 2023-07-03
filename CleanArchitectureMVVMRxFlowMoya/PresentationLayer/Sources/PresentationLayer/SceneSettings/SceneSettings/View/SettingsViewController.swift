@@ -19,11 +19,13 @@ class SettingsViewController: BaseViewController {
     }()
     
     // MARK: - Properties
-    private let hostingController: UIHostingController<SettingsView>
+    private let hostingController: UIHostingController<AnyView>
+    private let rootView: SettingsView
     
     // MARK: - Initialize with ViewModel
     init(viewModel: SettingsViewModel) {
-        self.hostingController = UIHostingController(rootView: SettingsView(viewModel: viewModel))
+        self.rootView = SettingsView(viewModel: viewModel)
+        self.hostingController = UIHostingController(rootView: AnyView(rootView))
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,7 +45,6 @@ class SettingsViewController: BaseViewController {
         super.viewWillDisappear(animated)
 
         if isMovingFromParent {
-            let rootView = hostingController.rootView as SettingsView
             rootView.input.flowCompleted.onNext(())
         }
     }
@@ -59,8 +60,7 @@ private extension SettingsViewController {
             rightBarButtonItem.rx.tap.asDriver()
                 .drive(onNext: { [weak self] _ in
                     guard let self = self else { return }
-                    let rootView = self.hostingController.rootView as SettingsView
-                    rootView.input.dismissModal.onNext(())
+                    self.rootView.input.dismissModal.onNext(())
                 })
                 .disposed(by: disposeBag)
         }
