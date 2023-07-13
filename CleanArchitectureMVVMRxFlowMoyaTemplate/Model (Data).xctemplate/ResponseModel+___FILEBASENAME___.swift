@@ -1,6 +1,7 @@
 //  ___FILEHEADER___
 
 import DomainLayer
+import Foundation
 import RxSwift
 
 extension ResponseModel {
