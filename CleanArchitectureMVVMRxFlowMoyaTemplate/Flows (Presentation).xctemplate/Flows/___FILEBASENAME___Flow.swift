@@ -57,7 +57,7 @@ private extension ___VARIABLE_productName:identifier___Flow {
 //        viewController.hidesBottomBarWhenPushed = true
         let viewControllers = rootViewController.viewControllers + [viewController]
         rootViewController.setViewControllers(viewControllers, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: rootViewController, withNextStepper: viewModel))
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewModel))
     }
 }
 

@@ -15,6 +15,7 @@ class MoreViewController: BaseViewController {
     // MARK: - Views
     private lazy var hostingView: UIView = {
         addChild(hostingController)
+        hostingController.didMove(toParent: self)
         return hostingController.view
     }()
     private var rightBarButtonItem: UIBarButtonItem!

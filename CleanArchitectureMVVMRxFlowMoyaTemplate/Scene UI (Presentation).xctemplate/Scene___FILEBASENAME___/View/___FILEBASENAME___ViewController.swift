@@ -10,6 +10,7 @@ class ___VARIABLE_productName:identifier___ViewController: BaseViewController {
     // MARK: - Views
     private lazy var hostingView: UIView = {
         addChild(hostingController)
+        hostingController.didMove(toParent: self)
         return hostingController.view
     }()
     

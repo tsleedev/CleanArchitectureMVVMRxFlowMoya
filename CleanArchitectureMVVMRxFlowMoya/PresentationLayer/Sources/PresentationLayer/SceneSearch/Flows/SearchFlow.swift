@@ -59,7 +59,7 @@ private extension SearchFlow {
         let viewController = SearchViewController(viewModel: viewModel)
         let viewControllers = rootViewController.viewControllers + [viewController]
         rootViewController.setViewControllers(viewControllers, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: rootViewController, withNextStepper: viewModel))
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewModel))
     }
     
     func navigateToWeb(_ itemViewModel: WebItemViewModel) -> FlowContributors {
